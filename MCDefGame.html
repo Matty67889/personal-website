@@ -1,0 +1,342 @@
+<!DOCTYPE HTML>
+<html>
+	<!-- Notes -->
+	<!--
+		Instead of creating defintions for each word immediatley before putting
+		it in a span, put the words in an array and then fill them into a span
+		for createRandomDefinitions()?
+	-->
+
+	<head>
+		<title></title>
+		<style>
+			/* Form styling */
+			form
+			{
+				font-family: Helvetica;
+
+				text-align: center;
+
+				margin-left: 25%;
+
+				width: 50%;
+
+			  background-color: #71EBE5;
+			  border: 3px solid #BF363C;
+
+				padding: 10px 10px;
+
+				margin-top: 20px;
+				margin-bottom: 20px;
+
+				border-radius: 10px;
+			}
+
+			form #word
+			{
+				/* Centers the target word */
+				text-align: center;
+			}
+
+			/* Answer choice styling */
+			span
+			{
+				display: inline-block;
+
+			  background-color: #FFFFFF;
+			  border: 3px solid #813405;
+			  padding: 16px 28px;
+			  transition-duration: 0.4s;
+
+			  cursor: pointer;
+
+				margin-bottom: 15px;
+				border-radius: 10px;
+			}
+
+			span:hover
+			{
+				/* Makes choices change color when hovered over */
+			  background-color: #FAA916;
+			  color: black;
+			}
+
+			input
+			{
+				/* Removes dots at the side of radio buttons */
+				display: none;
+			}
+
+			input:checked + span
+			{
+				/* Allows choices to appear selected when clicked */
+				background-color: #FAA916;
+				color: black;
+			}
+
+			/* Button Styling */
+			.button_container
+			{
+				margin-top: 20px;
+			}
+
+			.button
+			{
+				/* margin-left: 25%; */
+				border-radius: 10px;
+				font-family: Helvetica;
+			}
+
+			/* Feedback message styling */
+			#feedback-msg
+			{
+				margin-top: 10px;
+				font-size: 16pt;
+			}
+		</style>
+		<link rel = "stylesheet" href = "vendors/css/navbarpack.css">
+		<link rel = "stylesheet" href = "vendors/css/buttonpack.css">
+
+		<script src = "vendors/js/utilities.js"></script>
+		<script src = "resources/js/wordgames.js"></script>
+		<script src = "resources/js/WordBank.js"></script>
+		<script src = "resources/js/Word.js"></script>
+		<script>
+			/**
+			 * Sets the webpage variables to their default values.
+			 */
+			function initialize()
+			{
+				formOne = document.getElementById("question1");
+
+				wordToDefine = document.getElementById("word");
+				feedbackMsg = document.getElementById("feedback-msg");
+
+				// the number of choices that the user can pick from in the game
+				NUM_CHOICES = 4;
+
+				// the word bank of words for the game
+				currentWordBank = new WordBank(SMALLWORDBANK);
+
+				// an array of the Word objects that are involved in the current
+				// display
+				currentWords = [];
+				// the Word object that contains the name of the word that the user
+				// must define
+				targetWord = null;
+
+				// the value of the input tag that has the correct answer choice
+				correctAnswerChoice = 0;
+
+				generateNewQuiz();
+			}
+
+			/**
+			 * Returns a random Word from currentWordBank.
+			 */
+			function generateRandWord()
+			{
+				var rndNum =
+					generateRandomInteger(0, currentWordBank.getBank().length - 1);
+				var newWord = currentWordBank.getWord(rndNum);
+
+				return newWord;
+			}
+
+			/**
+			 * Returns an array of numWords Words from currentWordBank
+			 *
+			 * None of the Words in the array will be duplicates.
+			 *
+			 * @param numWords the number of Words to include in the array
+			 *        Precondiiton: numWords must be an int > 0
+			 * @return an array of Words
+			 */
+			function generateUniqueWords(numWords)
+			{
+				var words = [];
+				var newWord = generateRandWord();
+
+				// for each definition that needs to be added, find a unique
+				// definition to add to the array
+				for (var wordCounter = 0; wordCounter < numWords; wordCounter++)
+				{
+					// keep searching for a new definition until it is not a duplicate
+					// of a definition already in the list and it is not the definition
+					// of targetWord
+					newWord = generateRandWord();
+					while (words.indexOf(newWord) > -1)
+					{
+						newWord = generateRandWord();
+					}
+
+					words.push(newWord);
+				}
+
+				return words;
+			}
+
+			/**
+			 * Creates a new quiz, and displays it.
+			 *
+			 * Stops the feedbackMsg from displaying on the screen. Generates a new
+			 * list of words to use for the quiz, and chooses one to be the target
+			 * word. Deselects all radio buttons in the form. Displays the new
+			 * definitions with a call to display.
+			 */
+			function generateNewQuiz()
+			{
+				// removes the feedback message
+				feedbackMsg.style.display = "none";
+
+				// the Words that the user will have to choose from
+				currentWords = generateUniqueWords(NUM_CHOICES);
+
+				// chooses a new target word
+				// must do +1 here because the values of he inputs in the form go from
+				// 1 - 4, inclusive
+				correctAnswerChoice = generateRandomInteger(0, NUM_CHOICES - 1) + 1;
+				targetWord = currentWords[correctAnswerChoice - 1];
+
+				deselectRadioButtonsInForm(formOne);
+				display();
+			}
+
+			/**
+			 * Checks to see the answer that the user has chosen, and displays the
+			 * appropriate feedback message for the user.
+			 *
+			 * If the user has not made a choice, the message should be:
+			 * "Please make a choice."
+			 * If the user has made a choice and it is the correct choice, the
+			 * message should be:
+			 * "Correct"
+			 * If the user has made a choice and it is an incorrect choice, the
+			 * message should be:
+			 * "Incorrect"
+			 */
+			function checkAnswer()
+			{
+				if (!formChoiceSelected())
+				{
+					feedbackMsg.style.color = "#0E34A0";
+					feedbackMsg.innerHTML = "Please make a choice.";
+				}
+				else
+				{
+					if (formOne.question.value == correctAnswerChoice)
+					{
+						feedbackMsg.style.color = "green";
+						feedbackMsg.innerHTML = "Correct";
+					}
+					else
+					{
+						feedbackMsg.style.color = "red";
+						feedbackMsg.innerHTML = "Incorrect";
+					}
+				}
+
+				feedbackMsg.style.display = "block";
+			}
+
+			/**
+			 * Populates the spans that holds the definitions with definitions.
+			 *
+			 * Iterates through the array the spans in the answer form and
+			 * populates them with definitions.
+			 */
+			function displayDefinitions()
+			{
+				for (var i = 0; i < formOne.getElementsByTagName("span").length; i++)
+				{
+					formOne.getElementsByClassName("definition")[i].innerHTML =
+						currentWords[i].getDefinition();
+				}
+			}
+
+			/**
+			 * Sends output to the screen.
+			 *
+			 * Displays the target word and the definitions the user can choose
+			 * from on the screen.
+			 */
+			function display()
+			{
+				wordToDefine.innerHTML = targetWord.getName();
+				// createRandomDefinitions();
+				displayDefinitions();
+			}
+		</script>
+	</head>
+	<body onload = "initialize();">
+		<!-- Navbar -->
+		<ul id = "navbar">
+			<li><a href = "index.html">Homepage</a></li>
+			<li><a href = "SquareNumbers.html">Square Numbers Quiz</a></li>
+			<li><a href = "MemoryGame.html">Memory Game</a></li>
+			<li class = "dropdown">
+				<a class = "dropbtn active" href = "DefinitionGameHomepage.html">
+					Word Games
+				</a>
+				<div class = "dropdown-content">
+					<a href = "UserMadeDefinitionGame.html">
+						Make your own
+					</a>
+					<a href = "DefaultDefinitionGame.html">
+						Definition Game (Free Response)
+					</a>
+					<a class = "active" href = "MCDefGame.html">
+						Definition Game (Multiple Choice)
+					</a>
+				</div>
+			</li>
+			<li><a href = "WebDevProjects.html">
+				Web Development Class Projects
+			</a></li>
+		</ul>
+
+		<!-- Answer Form -->
+		<form id = "question1">
+			<h2 id = "word"></h2>
+
+			<label>
+				<input type = "radio" name = "question" value = "1" />
+				<span class = "definition"></span>
+			</label>
+
+			<br />
+
+			<label>
+				<input type = "radio" name = "question" value = "2" />
+				<span class = "definition"></span>
+			</label>
+
+			<br />
+
+			<label>
+				<input type = "radio" name = "question" value = "3" />
+				<span class = "definition"></span>
+			</label>
+
+			<br />
+
+			<label>
+				<input type = "radio" name = "question" value = "4" />
+				<span class = "definition"></span>
+			</label>
+
+			<!-- Button Container -->
+			<div class = "button_container">
+				<button class = "button" type = "button" onclick = "checkAnswer();">
+					Check Answer
+				</button>
+				<button class = "button" type = "button" onclick = "generateNewQuiz();">
+					New Word
+				</button>
+			</div>
+
+			<!-- Feedback Message -->
+			<div id = "feedback-msg"></div>
+		</form>
+	</body>
+</html>

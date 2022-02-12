@@ -1,0 +1,216 @@
+<!DOCTYPE HTML>
+<html>
+	<!-- Notes -->
+	<!--
+		- Combine the toggle functions?
+		- Add display function
+		- Change Number Button is not working
+	-->
+	<head>
+		<title></title>
+		<style>
+			#answercheckmsg
+			{
+				display: none;
+				color: red;
+			}
+
+			#checkforrange
+			{
+				display:none;
+				color: red;
+			}
+
+			div
+			{
+				font-size: 30pt;
+			}
+		</style>
+		<link rel = "stylesheet" href = "vendors/css/buttonpack.css">
+		<link rel = "stylesheet" href = "vendors/css/navbarpack.css">
+		<script src = "vendors/js/utilities.js"></script>
+		<script>
+			function initialize()
+			{
+				sqNumForm = document.getElementById("squarenumform");
+				questionNum = document.getElementById("rndnum");
+				submitButton = document.getElementById("submit");
+				answerSpace = document.getElementById("answerspace");
+				answerCheckMsg = document.getElementById("answercheckmsg");
+
+				checkForRangeMsg = document.getElementById("checkforrange");
+				numRangeForm = document.getElementById("numrangeform");
+
+				numRange = document.getElementById("numrange");
+
+				answerSpace.select();
+			}
+
+			function generateNewNumber(limit1, limit2)
+			{
+				if (limit1 < limit2)
+				{
+					var numToBeSquared = generateRandomInteger(parseInt(limit1), parseInt(limit2));
+				}
+				else
+				{
+					var numToBeSquared = generateRandomInteger(parseInt(limit2), parseInt(limit1));
+				}
+
+				return numToBeSquared;
+			}
+
+			function toggleVisibility(item, state)
+			{
+				if (item.style.display !== state)
+				{
+					item.style.display = state;
+				}
+			}
+
+			function toggleDisabled(item, state)
+			{
+				item.disabled = state;
+			}
+
+			function changeNumRange()
+			{
+				num1 = numRangeForm.boundaryone.value;
+				num2 = numRangeForm.boundarytwo.value;
+
+				if (num1 == "" || num2 == "")
+				{
+					checkForRangeMsg.innerHTML = "You have not chosen a range yet!";
+					toggleVisibility(checkForRangeMsg, "block");
+				}
+				else
+				{
+					toggleVisibility(checkForRangeMsg, "none");
+					questionNum.innerHTML = generateNewNumber(num1, num2);
+				}
+
+				if (parseInt(num1) < parseInt(num2))
+				{
+					numRange.innerHTML = num1 + " - " + num2;
+				}
+				else
+				{
+					numRange.innerHTML = num2 + " - " + num1;
+				}
+
+				numRangeForm.boundaryone.value = "";
+				numRangeForm.boundarytwo.value = "";
+
+				toggleVisibility(answerCheckMsg, "none");
+			}
+
+			function verify()
+			{
+				var answer = questionNum.innerHTML * questionNum.innerHTML;
+
+				// If user leaves submission field blank
+				if (sqNumForm.answer.value == "")
+				{
+					console.log("Please submit an answer.");
+					answerCheckMsg.innerHTML = "Please submit an answer.";
+					toggleVisibility(answerCheckMsg, "block");
+				}
+				else
+				{
+					if (submitButton.innerHTML == "Submit")
+					{
+						if (sqNumForm.answer.value == answer)
+						{
+							answerCheckMsg.innerHTML = "Your answer is right.";
+							toggleVisibility(answerCheckMsg, "block");
+							submitButton.innerHTML = "Next";
+						}
+						else
+						{
+							answerCheckMsg.innerHTML = "Your answer is wrong.";
+							toggleVisibility(answerCheckMsg, "block");
+						}
+					}
+					else
+					{
+						questionNum.innerHTML = generateNewNumber(num1, num2);
+						toggleVisibility(answerCheckMsg, "none");
+
+						submitButton.innerHTML = "Submit";
+						sqNumForm.answer.value = "";
+						answerSpace.focus();
+					}
+				}
+			}
+		</script>
+	</head>
+	<body onload = "initialize();">
+		<!-- Navbar -->
+		<ul id = "navbar">
+			<li><a href = "index.html">Homepage</a></li>
+			<li><a class = "active" href = "SquareNumbers.html">Square Numbers Quiz</a></li>
+			<li><a href = "MemoryGame.html">Memory Game</a></li>
+			<li class = "dropdown">
+				<a class = "dropbtn" href = "DefinitionGameHomepage.html">Word Games</a>
+				<div class = "dropdown-content">
+					<a href = "UserMadeDefinitionGame.html">Make your own</a>
+					<a href = "DefaultDefinitionGame.html">Definition Game (Free Response)</a>
+					<a href = "MCDefGame.html">Definition Game (Multiple Choice)</a>
+				</div>
+			</li>
+			<li><a href = "WebDevProjects.html">Web Development Class Projects</a></li>
+		</ul>
+
+		<h1>Square Numbers Quiz</h1>
+
+		<form id = "numrangeform">
+			<h3>Range of numbers that will be squared:</h3>
+			Min value: <input type = "text" name = "boundaryone"  />
+			-
+			Max value: <input type = "text" name = "boundarytwo" />
+		</form>
+
+		<br />
+
+		<button id = "" class = "" onclick = "changeNumRange();">Change Number Range</button>
+
+		<div id = "checkforrange"></div>
+
+		<br />
+		<br />
+
+		<div>Current Range: <span id = "numrange"></span></div>
+
+		<form id = "squarenumform">
+			<div><span id = "rndnum">__</span>²</div>
+			Answer: <input type = "text" name = "answer" id = "answerspace" />
+
+			<br />
+			<br />
+		</form>
+
+		<button id = "submit" class = "button" onclick = "verify();">Submit</button>
+		<button id = "" class = "button" onclick = "generateNewNumber(num1, num2);">Change Number</button>
+
+		<br />
+		<br />
+
+		<div id = "answercheckmsg"></div>
+
+		<!--
+		<form>
+			<input type = "radio" name = "" value = "Choice 1" id = "choice_1_1" />
+			<label for = "choice_1_1" class = "button"></label>
+
+			<input type = "radio" name = "" value = "Choice 2" id = "choice_1_2" />
+			<label for = "choice_1_2" class = "button"></label>
+
+			<input type = "radio" name = "" value = "Choice 3" id = "choice_1_3" />
+			<label for = "choice_1_3" class = "button"></label>
+
+			<input type = "radio" name = "" value = "Choice 4" id = "choice_1_4" />
+			<label for = "choice_1_4" class = "button"></label>
+		</form>
+		-->
+	</body>
+</html>

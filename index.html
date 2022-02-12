@@ -1,0 +1,187 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<!--
+			Tag for responsive web design. The meta tag allows designers access
+			properties of the viewport of the browser, which is the visible area of
+			a web page. This tag makes the content on the screen fit according to the
+			user's device.
+
+			Credits to https://www.w3schools.com/css/css_rwd_viewport.asp for this
+			information. To learn more, visit this website.
+		-->
+		<meta name = "viewport" content = "width=device-width, initial-scale = 1.0">
+		<title></title>
+		<style></style>
+		<link rel = "stylesheet" href = "resources/css/index.css">
+		<link rel = "stylesheet" href = "vendors/css/responsive-navbar.css">
+		<link rel = "stylesheet" href = "vendors/css/columns.css">
+		<link rel = "stylesheet" href = "vendors/css/responsive-layout.css">
+		<script>
+			function initialize()
+			{
+			}
+		</script>
+	</head>
+	<body onload = "initialize();">
+		<!-- Navbar -->
+		<!-- Use nav tag for main nav bar and ul for navbar content? -->
+		<nav class = "navbar">
+			<!-- Link to Homepage on the logo -->
+			<!-- <a class = "navbar-logo clearfix" href = "#">
+				Matthew Mentis-Cort
+			</a> -->
+
+			<!-- Button to toggle navbar on smaller screens -->
+			<button type = "button" class = "navbar-toggler">
+				...
+			</button>
+
+			<button type = "button" class = "navbar-closer">
+				X
+			</button>
+
+			<div class = "navbar-content">
+				<ul class = "navbar-link-list">
+					<li class = "navbar-item">
+						<a class = "navbar-link active" href = "index.html">Home</a>
+					</li>
+
+					<li class = "navbar-item">
+						<a class = "navbar-link" href = "SquareNumbers.html">Square Numbers Quiz</a>
+					</li>
+
+					<li class = "navbar-item">
+						<a class = "navbar-link" href = "MemoryGame.html">Memory Game</a>
+					</li>
+
+					<li class = "navbar-item dropdown">
+						<a class = "navbar-link dropbtn" href = "DefinitionGameHomepage.html">
+							Word Games
+						</a>
+						<div class = "dropdown-content">
+							<a class = "navbar-link" href = "UserMadeDefinitionGame.html">Make your own</a>
+							<a class = "navbar-link" href = "DefaultDefinitionGame.html">Definition Game</a>
+							<a class = "navbar-link" href = "MCDefGame.html">Definition Game (Multiple Choice)</a>
+						</div>
+					</li>
+
+					<li class = "navbar-item">
+						<a class = "navbar-link" href = "WebDevProjects.html">
+							Web Development Class Projects
+						</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+
+		<!-- Header -->
+		<header>
+			<div class = "row">
+				<div class = "col-9">
+					<!--
+						Image from Unsplash:
+						https://unsplash.com/s/photos/do-something-great
+					-->
+					<img id = "header-img" src = "resources/images/header-img.jpg"
+					 alt = "Header image." />
+				</div>
+
+				<div class = "col-3">
+					<div id = "header-text-container">
+						<p id = "header-text">
+							Drained from a dreary day at work, you plop down on your couch,
+							ready to slouch and engage in your usual habit of mindlessly
+							watching videos until you fall asleep. As you are about to turn
+							on your phone, the words of the neon sign you passed by as you
+							were heading home suddenly flash in your mind: <q>Do something
+							great</q>. Filled with motivation, you turn on your computer
+							and work on that story you've had in your drafts for a year.
+						</p>
+						<!-- Code.
+						Eat.
+						Sleep.
+						Repeat. -->
+
+						<!-- <p class = "animation-element">Evolve.</p>
+						<p class = "animation-element">Adapt.</p>
+						<p class = "animation-element">Overcome.</p> -->
+
+						<!-- <p class = "animation-element-1">Fantasize.</p>
+						<p class = "animation-element-2">Visualize.</p>
+						<p class = "animation-element-3">Actualize.</p> -->
+					</div>
+					<!-- <img src="" alt="This is also a picture of something."> -->
+				</div>
+			</div>
+		</header>
+
+		<!-- Welcome Message -->
+		<section class = "welcome">
+			<div class = "row">
+				<div class = "col-12">
+					<h1>
+						Welcome, my name is Matthew Mentis-Cort, and I am a human being.
+					</h1>
+				</div>
+			</div>
+		</section>
+
+		<!-- About Me Section -->
+		<section = "about-me">
+			<div class = "row">
+				<div class = "col-12">
+					<h1>About Me</h1>
+				</div>
+			</div>
+
+			<div class = "row">
+				<div class = "col-12">
+					<p>
+						Here is a little bit about me. I hate people. So get off my
+						website. Please and thank you. Also I like computer science,
+						reading, and writing.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- Projects Section -->
+		<section class = "projects">
+			<div class = "row">
+				<div class = "col-12">
+					<h1>Projects</h1>
+				</div>
+			</div>
+
+			<div class = "row">
+				<div class = "col-12">
+					Here are some of the projects I've been working on.
+				</div>
+			</div>
+
+			<div class = "row">
+				<div class = "col-12">
+					<button type = "button" class = "button--no-fill">
+						<a href = "#">Projects</a>
+					</button>
+				</div>
+			</div>
+		</section>
+
+		<!-- Footer -->
+		<footer>
+			<div class = "row">
+				<div class = "col-3">
+					Contact me here:
+				</div>
+
+				<div class = "col-9">
+					<a href = "https://www.linkedin.com/in/matthew-mentis-cort-374430203" target = "_blank">
+						LinkedIn
+					</a>
+				</div>
+			</div>
+		</footer>
+	</body>
+</html>

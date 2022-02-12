@@ -1,0 +1,161 @@
+/**
+ * CSS for building a responsive layout using a 12 column grid system
+ *
+ * This file contains CSS rules for creating a webpage that uses a 12 column
+ * grid system to place elements. A 12 column grid system is used because 12
+ * is easily divisible by 3 and 4. It is common to need to divide a webpage
+ * into thirds or 4ths. The 12 column grid system makes this division simple.
+ *
+ * The grid was designed using a Mobile First design, meaning it was designed
+ * for mobile users first.
+ *
+ * Credits to W3Schools for a guide on how to build this grid system.
+ * https://www.w3schools.com/css/css_rwd_grid.asp
+ *
+ * @author Matthew Mentis-Cort
+ * Date last edited: February 5, 2022
+ */
+
+/**
+ * Included rules:
+  .col- rukes
+
+  A class that represents a column of the webpage grid. The number after each
+  rule that starts with this name represents how many columns an element
+  with this class would take up.
+
+  HTML Ex:
+  <div class "row">
+    <div class = "col-6">
+      <p>Column 1</p>
+    </div>
+
+    <div class = "col-6">
+      <p>Column 2</p>
+    </div>
+  </div>
+
+  Note: When using this class on an HTML element, make sure to nest it in an
+  element with the class "row" to ensure that it works properly. This makes
+  the webpage flow normally after the element with the "col-" class, because
+  each "col-" rule has a "float: left".
+
+  * Included rules:
+   .row
+
+   A class that represents a row of the webpage grid. All elements with the
+   .col class should be wrapped in an element with a ".row" class
+
+   HTML Ex:
+   <div class "row">
+     <div class = "col-6">
+       <p>Column 1</p>
+     </div>
+
+     <div class = "col-6">
+       <p>Column 2</p>
+     </div>
+   </div>
+ */
+
+/*
+  Makes it so that margin and padding are included in the calculation of the
+  width and height of an object
+*/
+*
+{
+  box-sizing: border-box;
+}
+
+/* Row styling */
+.row::after
+{
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Column styling */
+
+/*
+  columns are at full width if the browser size is > 768px
+
+  Note: KEEP THIS ABOVE THE MEDIA QUERIES FOR THE DIFFERENT DEVICES OR THE
+        CODE WILL NOT WORK BECAUSE THIS RULE WILL OVERRIDE THE MEDIA QUERIES.
+*/
+[class ^= "col-"]
+{
+  float: left;
+  width: 100%;
+}
+
+/*
+  Responsive layout for smaller displays - when the screen is less than 768px
+  wide, make the two columns stack on top of each other instead of next to
+  each other.
+
+  Note: 768px was chosen because it is the second lowest PC resolution width
+        on Windows.
+*/
+@media only screen and (min-width: 768px)
+{
+  .col-1
+  {
+    width: 8.33%;
+  }
+
+  .col-2
+  {
+    width: 16.66%;
+  }
+
+  .col-3
+  {
+    width: 25%;
+  }
+
+  .col-4
+  {
+    width: 33.33%;
+  }
+
+  .col-5
+  {
+    width: 41.66%;
+  }
+
+  .col-6
+  {
+    width: 50%;
+  }
+
+  .col-7
+  {
+    width: 58.33%;
+  }
+
+  .col-8
+  {
+    width: 66.66%;
+  }
+
+  .col-9
+  {
+    width: 75%;
+  }
+
+  .col-10
+  {
+    width: 83.33%;
+  }
+
+  .col-11
+  {
+    width: 91.66%;
+  }
+
+  .col-12
+  {
+    width: 100%;
+  }
+}

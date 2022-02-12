@@ -1,0 +1,29 @@
+/**
+ * Button styling for types of buttons on a webpage
+ *
+ * This file contains styling for many different types of buttons. Not all of
+ * the buttons have to be used on a webpage.
+ *
+ * @author Matthew Mentis-Cort
+ * Date last edited: December 29, 2021
+ */
+
+/* Button with no fill */
+.button--no-fill
+{
+  text-align: center;
+
+  background-color: white;
+  color: black;
+  border: 3px solid black;
+  padding: 16px 28px;
+  transition-duration: 0.4s;
+
+  cursor: pointer;
+}
+
+.button:hover
+{
+  background-color: black;
+  color: white;
+}

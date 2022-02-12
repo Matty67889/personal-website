@@ -1,0 +1,79 @@
+/**
+ * Code to split a section into multiple columns
+ *
+ * @author Matthew Mentis-Cort
+ * Date last edited: December 30, 2021
+ */
+
+/**
+ * Wrapper element for columns with it's contents aligned vertically.
+ *
+ * Usage: Create an element, typically a <div> or a <span>, and give it the
+ * class column-container. For each column that you want to add to this
+ * section, create an element and give it the class of the column layout
+ * that you want.
+ *
+ * HTML Ex:
+   <div class="column-container">
+     <div class="column--2-or-3">
+       Column 1
+     </div>
+     <div class="column--2-or-3">
+       Column 2
+     </div>
+   </div>
+  */
+.column-container
+{
+  display: block;
+  /* Spaces out the columns from other elements */
+  margin: 10px;
+}
+
+/**
+ * 2 - 3 column layout with their contents aligned vertically
+ *
+ * HTML Ex:
+   <div class="column-container">
+     <div class="column--2-or-3">
+       Column 1
+     </div>
+     <div class="column--2-or-3">
+       Column 2
+     </div>
+     <div class="column--2-or-3">
+       Column 3
+     </div>
+   </div>
+ */
+.column--2-or-3
+{
+  display: inline-block;
+  width: 32%;
+  vertical-align: top;
+  text-align: center;
+}
+
+/**
+ * 2 column layout with their contents aligned vertically
+ *
+ * HTML Ex:
+   <div class="column-container">
+     <div class="column">
+       Column 1
+     </div>
+     <div class="column">
+       Column 2
+     </div>
+     <div class="column">
+       Column 3
+     </div>
+   </div>
+ */
+.column--2
+{
+  display: inline-block;
+  width: 49%;
+  vertical-align: top;
+  text-align: center;
+}

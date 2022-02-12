@@ -1,0 +1,146 @@
+<!DOCTYPE HTML>
+<html>
+	<!-- Notes -->
+	<!--
+
+	-->
+	<head>
+		<title></title>
+		<style>
+			#startwarning
+			{
+				display: none;
+				color: red;
+			}
+
+			#memoryquiz
+			{
+				border: 3px solid black;
+				height: 50%;
+				width: 50%;
+			}
+		</style>
+		<link rel = "stylesheet" href = "vendors/css/navbarpack.css">
+		<script src = "vendors/js/utilities.js"></script>
+		<script src = "resources/js/wordgames.js"></script>
+		<script>
+			function initialize()
+			{
+				wordQuantityForm = document.getElementById("amntofwrdsform");
+
+				startWarning = document.getElementById("startwarning");
+
+				memoryQuiz = document.getElementById("memoryquiz");
+
+				// Memory Game Testing Stuff
+				console.log(WORDBANK.length);
+			}
+
+			function startGame()
+			{
+				var wordQuantity = wordQuantityForm.gridsize.value;
+				console.log("Numwords: " + wordQuantity);
+
+				if (wordQuantity == "")
+				{
+					startWarning.style.display = "block";
+				}
+				else
+				{
+					startWarning.style.display = "none";
+					createQuiz(wordQuantity);
+				}
+			}
+
+			function createQuiz(numWords)
+			{
+				var badNumbers = [];
+
+				memoryQuiz.innerHTML = "";
+
+				console.log("Memory Game Stuff");
+				console.log("");
+
+				for (var i = 0; i < numWords; i++)
+				{
+					var num = generateRandomInteger(0, (WORDBANK.length - 1));
+
+					console.log((i+1) + ". " + getWordDetail(WORDBANK[num], WORD));
+
+
+					if (badNumbers.length > 0)
+					{
+						for (var b = 0; b < badNumbers.length; b++)
+						{
+							if (num == badNumbers[b])
+							{
+								console.log("Num: " + num + " Array Number: " + badNumbers[b]);
+
+								var num = generateRandomInteger(0, (WORDBANK.length - 1));
+
+								b = -1;
+							}
+						}
+					}
+
+					badNumbers.push(num);
+					console.log(badNumbers);
+					console.log("");
+
+					memoryQuiz.innerHTML += getWordDetail(WORDBANK[num], WORD) + "<br />";
+				}
+			}
+
+			/*
+			function display()
+			{
+
+
+			}
+			*/
+		</script>
+	</head>
+	<body onload = "initialize();">
+		<!-- Navbar -->
+		<ul id = "navbar">
+			<li><a href = "index.html">Homepage</a></li>
+			<li><a href = "SquareNumbers.html">Square Numbers Quiz</a></li>
+			<li><a class = "active" href = "MemoryGame.html">Memory Game</a></li>
+			<li class = "dropdown">
+				<a class = "dropbtn" href = "DefinitionGameHomepage.html">Word Games</a>
+				<div class = "dropdown-content">
+					<a href = "UserMadeDefinitionGame.html">Make your own</a>
+					<a href = "DefaultDefinitionGame.html">Definition Game (Free Response)</a>
+					<a href = "MCDefGame.html">Definition Game (Multiple Choice)</a>
+				</div>
+			</li>
+			<li><a href = "WebDevProjects.html">Web Development Class Projects</a></li>
+		</ul>
+
+		<div class = "clearfix"></div>
+
+		<!-- Memory Game -->
+		<h1>Memory Game</h1>
+		<div>Stare at the words for about 30 seconds and name as many words as you can.</div>
+
+		<h2>Choose how many words you want to see on the screen</h2>
+
+		<form id = "amntofwrdsform">
+			<label>
+				<input type = "radio" name = "gridsize" value = "8" />
+				8
+			</label>
+
+			<label>
+				<input type = "radio" name = "gridsize" value = "16" />
+				16
+			</label>
+		</form>
+
+		<button onclick = "startGame();">Start</button>
+
+		<div id = "memoryquiz"></div>
+
+		<div id = "startwarning">Please select an amount of words.</div>
+	</body>
+</html>

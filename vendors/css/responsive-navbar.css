@@ -1,0 +1,239 @@
+/* Navbar Set */
+
+/* Navbar HTML Template
+<ul id = "navbar">
+	<li><a class = "active" href = "index.html">Homepage</a></li>
+	<li><a href = "SquareNumbers.html">Square Numbers Quiz</a></li>
+	<li><a href = "MemoryGame.html">Memory Game</a></li>
+	<li class = "dropdown">
+		<span class = "dropbtn">Word Games</span>
+		<div class = "dropdown-content">
+			<a href = "UserMadeDefinitionGame.html">Make your own</a>
+			<a href = "DefaultDefinitionGame.html">Definition Game</a>
+		</div>
+	</li>
+</ul>
+*/
+
+/*
+  DO NOT USE MORE THAN ONE NAVBAR ON A SINGLE PAGE, BECAUSE THE TOGGLE WILL NOT
+  WORK
+
+  Use labels for toggles instead of .navbar-toggler?
+*/
+
+/*
+  Makes it so that margin and padding are included in the calculation of the
+  width and height of an object
+*/
+*
+{
+  box-sizing: border-box;
+}
+
+/*
+  When the screen is less than 768px, display a vertical navbar with an icon
+  users can click on to activate it
+*/
+
+/* Veritcal navbar */
+.navbar
+{
+  background-color: #232323;
+  /* border: 3px solid blue; */
+
+  padding: 10px;
+
+  /*
+    For position: fixed:
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+  */
+}
+
+.navbar-toggler
+{
+  margin-bottom: 5px;
+
+  padding: 7px 14px;
+
+  background-color: transparent;
+  color: white;
+
+  border: 1px solid white;
+  border-radius: 20%;
+}
+
+.navbar-toggler:hover
+{
+  background-color: gray;
+}
+
+.navbar-closer
+{
+  /* Do not show initially, only when the navbar-toggler is clicked */
+  display: none;
+
+  /* Has same properties as navbar-item */
+  background-color: transparent;
+  text-align: center;
+
+   /* background-color: #232323; */
+  padding: 14px 16px;
+
+  text-decoration: none;
+  color: white;
+
+  /* Overrides default button properties */
+  width: 100%;
+  border: none;
+}
+
+.navbar-toggler:focus ~ .navbar-content, .navbar-toggler:focus ~ .navbar-closer
+{
+  /* background-color: blue; */
+  /*
+    Show the navbar conent when the toggle button is clicked (credits to
+    https://stackoverflow.com/questions/18749276/css-on-hover-show-another-element
+    for help on this issue)
+  */
+  display: block;
+}
+
+/* .navbar-logo
+{
+  color: yellow;
+  text-decoration: none;
+  margin-left: 30%;
+} */
+
+.navbar-content
+{
+  /* Hide the links for vertical nav bars */
+  display: none;
+}
+
+.navbar-link-list
+{
+  /* width: 30%; */
+  list-style-type: none;
+
+  background-color: #232323;
+
+  padding: 0px;
+  margin: 0px;
+
+  overflow: hidden;
+}
+
+.navbar-item
+{
+  /* Each item should take up the entire width */
+  display: block;
+}
+
+/* When the screen is 768px or more, display a horizontal navbar */
+@media only screen and (min-width: 768px)
+{
+  /* Horizontal navbar */
+  .navbar
+  {
+    /* (only use width 100% if navbar is fixed) */
+    /* width: 100%; */
+    padding: 0;
+  }
+
+  .navbar-toggler, .navbar-toggler:focus ~ .navbar-closer
+  {
+    /* Hide the navbar toggler and the navbar-closer if it is open */
+    display: none;
+  }
+
+  .navbar-content
+  {
+    /* Show the links for the navbar */
+    display: block;
+  }
+
+  .navbar-item
+  {
+    /* Navbar items will display right next to each other */
+  	float: left;
+  	/* border-right: 1px solid black; */
+  }
+
+  .navbar-item .navbar-link, .dropbtn
+  {
+    display: inline-block;
+  }
+
+  .dropdown
+  {
+    display: inline-block;
+  }
+}
+
+/* Rules that stay the same for vertical and horiztonal navbars */
+.navbar-item .navbar-link, .dropbtn
+{
+  display: block;
+
+  text-align: center;
+
+   /* background-color: #232323; */
+  padding: 14px 16px;
+
+  text-decoration: none;
+  color: white;
+}
+
+.navbar-item .navbar-link:hover, .navbar-link.active, .dropdown:hover .dropbtn, .navbar-closer:hover
+{
+  background-color: gray;
+}
+
+.dropdown
+{
+  display: block;
+}
+
+.dropdown-content
+{
+  display: none;
+  position: absolute;
+  background-color: #232323;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content .navbar-link
+{
+  display: block;
+  color: white;
+  /* padding: 14px 16px; */
+  text-decoration: none;
+  text-align: left;
+}
+
+.dropdown-content .navbar-link:hover
+{
+  background-color: c4c4c4;
+}
+
+.dropdown:hover .dropdown-content
+{
+  /* Show the dropdown content when the dropdown button is hovered over */
+  display: block;
+}
+
+/* Clearfix to make items look near after an element with a float property */
+.clearfix::after
+{
+	content: "";
+	clear: both;
+	display: table;
+}

@@ -1,0 +1,152 @@
+<!DOCTYPE HTML>
+<html>
+	<!-- Notes -->
+	<!--
+		- Make an exception for periods and spaces and all the other junk when the system checks if the answer is correct
+		- Add feature that allows the user to make their own definition quiz
+			- Make the functions take the wordbank in as a variable
+			- Program "Finish" button
+			- Add checkbox where if checked the text boxes do not clear but if clicked the textboxes do clear
+			- Allow duplicates?
+			- IF the user puts a word that they have already inputted before, notify them that they have already put in that word under another definition and ask them if they want to continue with it (same thing for definitions
+			- Allow user to delete words from the list thaat they don't want
+			- change all WORDBANKS to currentWords (DONE)
+		- Make reset button (DONE)
+		- Change variables and functions so they don't have "definition" at the end of them
+	-->
+	<head>
+		<title></title>
+		<style></style>
+		<link rel = "stylesheet" href = "vendors/css/navbarpack.css">
+		<link rel = "stylesheet" href = "resources/css/definitiongames.css">
+		<script src = "vendors/js/utilities.js"></script>
+		<script src = "resources/js/wordgames.js"></script>
+		<script src = "resources/js/definitiongames.js"></script>
+		<script>
+			function initialize()
+			{
+				quizContainer = document.getElementById("quizcontainer");
+				definitionQuiz = document.getElementById("definitionquiz");
+				wordToDefine = document.getElementById("wordtodefine");
+
+				wordAmountPicker = document.getElementById("wordamntpicker");
+				startDefinitionWarning = document.getElementById("startdefinitionwarning");
+				finishedWordsList = document.getElementById("finishedwordslist");
+
+				wordsToMemorizeForm = document.getElementById("wordstomemorize");
+				definitionAnswerForm = document.getElementById("definitionanswerform");
+
+				currentWordBank = TESTWORDBANK;
+
+				numWordsToMemorize = 0;
+
+
+				/* For display stuff
+				   currentWord = generateNewWord();
+				*/
+				rndNum = 0;
+			}
+
+			function reset()
+			{
+				numWordsToMemorize = 0;
+				rndNum = 0;
+
+				deselectRadioButtonsInForm(wordsToMemorizeForm);
+
+				quizContainer.style.display = "none";
+				wordAmountPicker.style.display = "block";
+			}
+		</script>
+	</head>
+	<body onload = "initialize();">
+		<!-- Navbar -->
+		<ul id = "navbar">
+			<li><a href = "index.html">Homepage</a></li>
+			<li><a href = "SquareNumbers.html">Square Numbers Quiz</a></li>
+			<li><a href = "MemoryGame.html">Memory Game</a></li>
+			<li class = "dropdown">
+				<a class = "dropbtn active" href = "DefinitionGameHomepage.html">Word Games</a>
+				<div class = "dropdown-content">
+					<a href = "UserMadeDefinitionGame.html">Make your own</a>
+					<a class = "active" href = "DefaultDefinitionGame.html">Definition Game (Free Response)</a>
+					<a href = "MCDefGame.html">Definition Game (Multiple Choice)</a>
+				</div>
+			</li>
+			<li><a href = "WebDevProjects.html">Web Development Class Projects</a></li>
+		</ul>
+
+		<!-- Definition Game -->
+
+		<h1>Definition Game</h1>
+
+		<!-- Amount of Words Picker -->
+		<div id = "wordamntpicker">
+			<h2>Choose how many words you want to see on the screen</h2>
+
+			<form id = "wordstomemorize">
+				<label>
+					<input type = "number" name = "definitionamnt" min = "1" max = "10" />
+				</label>
+
+			<!-- For radio button choice of amount of words -->
+			<!--
+				<label>
+					<input type = "radio" name = "definitionamnt" value = "5" />
+					5
+				</label>
+
+				<label>
+					<input type = "radio" name = "definitionamnt" value = "7" />
+					7
+				</label>
+
+				<label>
+					<input type = "radio" name = "definitionamnt" value = "10" />
+					10
+				</label>
+			-->
+			</form>
+
+			<br />
+
+			<button onclick = "startGame(currentWordBank);">Start Game</button>
+
+			<br />
+			<br />
+
+			<div class = "errormsg" id = "startdefinitionwarning">Please select an amount of words to memorize.</div>
+		</div>
+
+		<!-- The Quiz -->
+		<div id = "quizcontainer">
+			<div id = "definitionquiz"></div>
+			<br />
+
+			<div id = "wordtodefine"></div>
+			<form id = "definitionanswerform">
+				<label>
+					Insert defintion here: <textarea name = "useranswer" placeholder = "Insert defintiion here..."></textarea>
+				</label>
+			</form>
+
+			<br />
+
+			<div id = "finishedwordslist"></div>
+
+			<br />
+
+			<button onclick = "checkAnswer(currentWordBank);">Check Answer</button>
+
+			<br />
+			<br />
+
+			<button onclick = "createNewWord(currentWordBank);">New Word</button>
+
+			<br />
+			<br />
+
+			<button onclick = "reset();">Reset</button>
+		</div>
+	</body>
+</html>

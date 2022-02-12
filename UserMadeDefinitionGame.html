@@ -1,0 +1,334 @@
+<!DOCTYPE HTML>
+<html>
+	<!-- Notes -->
+	<!--
+		- Make an exception for periods and spaces and all the other junk when the system checks if the answer is correct
+		- Add feature that allows the user to make their own definition quiz
+			- Make the functions take the wordbank in as a variable
+			- Program "Finish" button
+			- Add checkbox where if checked the text boxes do not clear but if clicked the textboxes do clear
+			- Allow duplicates?
+			- IF the user puts a word that they have already inputted before, notify them that they have already put in that word under another definition and ask them if they want to continue with it (same thing for definitions
+			- Allow user to delete words from the list thaat they don't want
+			- change all WORDBANKS to currentWords (DONE)
+			- Make it so that the "Finish and Continue" Button only appears when at least one word has been added to the list
+		- Make reset button
+		- Change variables and functions so they don't have "definition" at the end of them
+
+		Next Steps:
+		Use table for the quiz container
+		Make array to contain the words in the quiz container and put each thing of the array into a separate cell of the table
+		Maybe make it a setting for the user to see the words on display?
+	-->
+	<head>
+		<title></title>
+		<style>
+			#wordamntpicker
+			{
+				display: none;
+			}
+
+			#usercreatedwordlist
+			{
+				display: none;
+			}
+
+			#resetwordlistbtn
+			{
+				display: none;
+			}
+		</style>
+		<link rel = "stylesheet" href = "vendors/css/navbarpack.css">
+		<link rel = "stylesheet" href = "resources/css/definitiongames.css">
+		<script src = "vendors/js/utilities.js"></script>
+		<script src = "resources/js/wordgames.js"></script>
+		<script src = "resources/js/definitiongames.js"></script>
+		<script>
+			function initialize()
+			{
+				quizContainer = document.getElementById("quizcontainer");
+				definitionQuiz = document.getElementById("definitionquiz");
+				wordToDefine = document.getElementById("wordtodefine");
+
+				startDefinitionWarning = document.getElementById("startdefinitionwarning");
+				finishedWordsList = document.getElementById("finishedwordslist");
+
+				userCreatedWordList = document.getElementById("usercreatedwordlist");
+				wordAdder = document.getElementById("wordadder");
+				addWordError = document.getElementById("addworderr");
+
+				wordAmountPicker = document.getElementById("wordamntpicker");
+				userGameWarning = document.getElementById("usergamewarning");
+
+				resetWordListBtn = document.getElementById("resetwordlistbtn");
+
+				wordsToMemorizeForm = document.getElementById("wordstomemorize");
+				definitionAnswerForm = document.getElementById("definitionanswerform");
+				userWordInputForm = document.getElementById("userwordinput");
+
+				userWordBank = [];
+
+				currentWordBank = userWordBank;
+
+				numWordsToMemorize = 0;
+
+				/* For display stuff
+				   currentWord = generateNewWord();
+				*/
+				rndNum = 0;
+			}
+
+			function startUserGame()
+			{
+				wordAdder.style.display = "none";
+				startGame(currentWordBank);
+			}
+
+			function displayWordAmountPicker()
+			{
+				if (currentWordBank.length < 1)
+				{
+					userGameWarning.style.display = "block";
+				}
+				else
+				{
+					//wordAdder.style.display = "none";
+					userGameWarning.style.display = "none";
+					wordAmountPicker.style.display = "block";
+				}
+			}
+
+			function addUserWord()
+			{
+				var word = userWordInputForm.userword.value;
+				var definition = userWordInputForm.userdefinition.value;
+				var arrayEntry = word + ";" + definition;
+
+				// Prevents user from entering words when the textboxes are blank
+				if (word == "" || definition == "")
+				{
+					addWordError.innerHTML = "You must insert a word and a definition to add a word.";
+					addWordError.style.display = "block";
+				}
+				else
+				{
+					// On the first word, display the "Reset Word" button
+					if (userWordBank.length == 1)
+					{
+						resetWordListBtn.style.display = "block";
+
+						userWordBank.push(arrayEntry);
+						console.log(findArrayIndex(userWordBank, arrayEntry));
+						userCreatedWordList.innerHTML += "Word " + (findArrayIndex(userWordBank, arrayEntry) + 1) + ": ";
+						console.log(userWordBank);
+
+						userCreatedWordList.innerHTML += word + " - " + definition + "<br /> <br />";
+						userCreatedWordList.style.display = "block";
+					}
+					else
+					{
+						var duplicate = false;
+
+						// Checks for duplicates
+						for (var userWordBankCounter = 0; userWordBankCounter < userWordBank.length; userWordBankCounter++)
+						{
+							if (arrayEntry == userWordBank[userWordBankCounter])
+							{
+								var duplicate = true;
+
+								userWordBankCounter = userWordBank.length;
+							}
+						}
+
+						if (duplicate == true)
+						{
+							addWordError.innerHTML = "You have already entered that word definition pair.";
+							addWordError.style.display = "block";
+						}
+						else
+						{
+							if (addWordError.style.display == "block")
+							{
+								addWordError.style.display = "none";
+							}
+
+							userWordBank.push(arrayEntry);
+							console.log(findArrayIndex(userWordBank, arrayEntry));
+							userCreatedWordList.innerHTML += "Word " + (findArrayIndex(userWordBank, arrayEntry) + 1) + ": ";
+							console.log(userWordBank);
+
+							userCreatedWordList.innerHTML += word + " - " + definition + "<br /> <br />";
+							userCreatedWordList.style.display = "block";
+							/*
+							drug me in my sleep
+							drag my body into a van (make and model not specified)
+							drag me to abandoned field (no location yet, likely in midwest) and have journey with my corpse
+							drop my body into a body of water
+							let the fish eat me
+							*/
+						}
+					}
+				}
+			}
+
+			function resetWordList()
+			{
+				userWordInputForm.userword.value = "";
+				userWordInputForm.userdefinition.value = "";
+
+				userCreatedWordList.innerHTML = "";
+			}
+
+			function reset()
+			{
+				numWordsToMemorize = 0;
+				rndNum = 0;
+
+				deselectRadioButtonsInForm(wordsToMemorizeForm);
+
+				userWordBank = [];
+
+				userWordInputForm.userword.value = "";
+				userWordInputForm.userdefinition.value = "";
+
+				userCreatedWordList.innerHTML = "";
+				definitionQuiz.innerHTML = "";
+
+				wordAdder.style.display = "block";
+				quizContainer.style.display = "none";
+				wordAmountPicker.style.display = "none";
+				userCreatedWordList.style.display = "none";
+			}
+		</script>
+	</head>
+	<body onload = "initialize();">
+		<!-- Navbar -->
+		<ul id = "navbar">
+			<li><a href = "index.html">Homepage</a></li>
+			<li><a href = "SquareNumbers.html">Square Numbers Quiz</a></li>
+			<li><a href = "MemoryGame.html">Memory Game</a></li>
+			<li class = "dropdown">
+				<a class = "dropbtn active" href = "DefinitionGameHomepage.html">Word Games</a>
+				<div class = "dropdown-content">
+					<a class = "active" href = "UserMadeDefinitionGame.html">Make your own</a>
+					<a href = "DefaultDefinitionGame.html">Definition Game (Free Response)</a>
+					<a href = "MCDefGame.html">Definition Game (Multiple Choice)</a>
+				</div>
+			</li>
+			<li><a href = "WebDevProjects.html">Web Development Class Projects</a></li>
+		</ul>
+
+		<!-- Definition Game -->
+
+		<h1>Definition Game</h1>
+
+		<!-- User Made Game -->
+
+		<div id = "wordadder">
+			<h2>Insert a Word and a Definition, then Click the Add Word Button.</h2>
+
+			<form id = "userwordinput">
+				<label>
+					Word: <textarea name = "userword" placeholder = "Insert word here..."></textarea>
+				</label>
+
+				<label>
+					Definition: <textarea name = "userdefinition" placeholder = "Insert definition here..." ></textarea>
+				</label>
+			</form>
+
+			<br />
+
+			<button onclick = "addUserWord();">Add Word</button>
+
+			<br />
+			<br />
+
+			<div class = "errormsg" id = "addworderr"></div>
+
+			<br />
+			<br />
+
+			<div id = "usercreatedwordlist"></div>
+
+			<br />
+			<br />
+
+			<button onclick = "resetWordList();" id = "resetwordlistbtn">Reset Word List</button>
+
+			<button onclick = "displayWordAmountPicker();">Finish and Continue</button>
+
+			<div class = "errormsg" id = "usergamewarning">Please select an amount of words to memorize.</div>
+		</div>
+
+		<!-- Amount of Words Picker -->
+		<div id = "wordamntpicker">
+			<h2>Choose how many words you want to see on the screen (Max: 10)</h2>
+
+			<form id = "wordstomemorize">
+				<label>
+					<input type = "number" name = "definitionamnt" min = "1" max = "10" />
+				</label>
+
+			<!-- For radio button choice of amount of words -->
+			<!--
+				<label>
+					<input type = "radio" name = "definitionamnt" value = "5" />
+					5
+				</label>
+
+				<label>
+					<input type = "radio" name = "definitionamnt" value = "7" />
+					7
+				</label>
+
+				<label>
+					<input type = "radio" name = "definitionamnt" value = "10" />
+					10
+				</label>
+			-->
+			</form>
+
+			<br />
+
+			<button onclick = "startUserGame();">Start Game</button>
+
+			<br />
+			<br />
+
+			<div class = "errormsg" id = "startdefinitionwarning">Please select an amount of words to memorize.</div>
+		</div>
+
+		<!-- The Quiz -->
+
+		<div id = "quizcontainer">
+			<div id = "definitionquiz"></div>
+			<br />
+
+			<div id = "wordtodefine"></div>
+			<form id = "definitionanswerform">
+				<label>
+					Insert defintion here: <textarea name = "useranswer" placeholder = "Insert defintiion here..."></textarea>
+				</label>
+			</form>
+
+			<br />
+
+			<div id = "finishedwordslist"></div>
+
+			<br />
+
+			<button onclick = "checkAnswer(currentWordBank);">Check Answer</button>
+
+			<br />
+			<br />
+
+			<button onclick = "createNewWord();">New Word</button>
+
+			<br />
+			<br />
+
+			<button onclick = "reset();">Reset</button>
+		<div>
+	</body>
+</html>

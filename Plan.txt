@@ -1,0 +1,41 @@
+Author: Matthew Mentis-Cort
+Date Created: December 28, 2021
+Date Last modified: 1 2, 2022
+
+The Plan
+
+Objective for this version:
+Create a homepage for the website.
+
+Ideas:
+Skip to navigation button
+- Navbar
+  - The navbar will be a holder for all the links when it is fit for a computer
+    display. When the display is mobile, there will be a three line menu icon
+    the user can click on to dropdown the navbar elements
+  - Change the text in the navbar to icons and add more spacing to the navbar
+    elements
+  - Change navbar so that it only has links to Homepage, projects, and About
+    Me page
+    - Include All the games in the projects dropdown, split into categories
+
+Main content
+  - At the beginning, make a 2 column section that takes up the height of the
+    user's screen
+    - On the left side, put text that says, "Hi, my name is ___, and I am a"
+      human being." or maybe some quote that is inspirational to me
+    - On the right side, include a picture of a sprite of myself doing
+      something cool
+
+  - Projects section
+    - Include circular informational cards that give a picture of the link
+    on top and at the bottom it is a description of the link
+
+  - Include about me section on this page?
+
+-Bottom section
+  - At the bottom, include a footer with a contact section
+
+- Extra features
+  - Add a back to top button somewhere
+  - Add a light background color to the website

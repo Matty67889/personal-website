@@ -1,0 +1,140 @@
+/**
+ * CSS for creating a navigation bar
+ *
+ * This file contains CSS rules for creating a navigation bar.
+ *
+ * Credits to W3Schools for the guide on how to build this navbar that
+ * this navbar was inspired by.
+ * https://www.w3schools.com/Css/css_navbar.asp
+ *
+ * @author Matthew Mentis-Cort
+ * Date last edited: February 5, 2022
+ */
+
+/* Navbar Set */
+
+/* Navbar HTML Template
+	<ul id = "navbar">
+		<li class = "navbar-item">
+			<a class = "active navbar-link" href = "index.html">
+				Homepage
+			</a>
+		</li>
+		<li class = "navbar-item">
+			<a class = "navbar-link" href = "SquareNumbers.html">
+				Page 1
+			</a>
+		</li>
+		<li class = "navbar-item">
+			<a class = "navbar-link" href = "MemoryGame.html">
+				Page 2
+			</a>
+		</li>
+		<li class = "navbar-item dropdown">
+			<a class = "navbar-link dropbtn" href = "DefinitionGameHomepage.html">
+				Dropdown
+			</a>
+			<div class = "dropdown-content">
+				<a class = "navbar-link" href = "UserMadeDefinitionGame.html">
+					Dropdown Content 1
+				</a>
+				<a class = "navbar-link" href = "DefaultDefinitionGame.html">
+					Dropdown Content 2
+				</a>
+				<a class = "navbar-link" href = "MCDefGame.html">
+					Dropdown Content 3
+				</a>
+			</div>
+		</li>
+		<li class = "navbar-item">
+			<a class = "navbar-link" href = "WebDevProjects.html">
+				Page 4
+			</a>
+		</li>
+	</ul>
+*/
+
+#navbar
+{
+	list-style-type: none;
+
+	background-color: #232323;
+
+	padding: 0px;
+	margin: 0px;
+
+	overflow: hidden;
+
+	/*
+		For position: sticky navbar
+
+	position: sticky;
+	width: 100%;
+	top: 0;
+	left: 0;
+	*/
+}
+
+.navbar-item
+{
+	float: left;
+	/* border-right: 1px solid black; */
+}
+
+.navbar-item .navbar-link, .dropbtn
+{
+	display: inline-block;
+	/* background-color: #232323; */
+	padding: 14px 16px;
+
+	text-align: center;
+
+	text-decoration: none;
+	color: white;
+}
+
+.navbar-item .navbar-link:hover, .navbar-link.active, .dropdown:hover .dropbtn
+{
+	background-color: gray;
+}
+
+.dropdown
+{
+	display: inline-block;
+}
+
+.dropdown-content
+{
+	display: none;
+	position: absolute;
+	background-color: #232323;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	z-index: 1;
+}
+
+.dropdown-content .navbar-link
+{
+	display: block;
+	color: white;
+	/* padding: 14px 16px; */
+	text-decoration: none;
+	text-align: left;
+}
+
+.dropdown-content .navbar-link:hover
+{
+	background-color: c4c4c4;
+}
+
+.dropdown:hover .dropdown-content
+{
+	display: block;
+}
+
+.clearfix::after
+{
+	content: "";
+	clear: both;
+	display: table;
+}
