@@ -137,7 +137,7 @@
 			function generateRandWord()
 			{
 				var rndNum =
-					generateRandomInteger(0, currentWordBank.getBank().length - 1);
+					generateRandomInteger(0, currentWordBank.getLength() - 1);
 				var newWord = currentWordBank.getWord(rndNum);
 
 				return newWord;
@@ -327,10 +327,10 @@
 
 			<!-- Button Container -->
 			<div class = "button_container">
-				<button class = "button" type = "button" onclick = "checkAnswer();">
+				<button class = ".button--no-fill" type = "button" onclick = "checkAnswer();">
 					Check Answer
 				</button>
-				<button class = "button" type = "button" onclick = "generateNewQuiz();">
+				<button class = ".button--no-fill" type = "button" onclick = "generateNewQuiz();">
 					New Word
 				</button>
 			</div>
