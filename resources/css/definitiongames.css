@@ -1,0 +1,39 @@
+#quizcontainer
+{
+	display: none;
+	border: 3px solid black;
+}
+
+.errormsg
+{
+	display: none;
+	color: red;
+}
+
+#definitionquiz
+{
+	border: 3px solid black;
+	height: 50%;
+	width: 50%;
+
+	overflow: auto;
+}
+
+input[type = "text"]
+{
+	/* width: 100px; */
+	height: 100px;
+
+	padding: 12px 20px;
+}
+
+textarea
+{
+	/* display: block; */
+	overflow: auto;
+	placeholder: poop;
+	resize: none;
+
+	height: 100px;
+	width: 50%;
+}
