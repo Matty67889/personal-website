@@ -1,6 +1,6 @@
 Author: Matthew Mentis-Cort
 Date Created: December 24, 2021
-Date last updated: February 12, 2022
+Date last updated: February 19, 2022
 
 Table of Contents
 	1. Introduction
@@ -371,6 +371,55 @@ Table of Contents
 		TXT files
 		Plan.txt
 		README.txt
+
+	Version 0.4:
+	Date Started: February 15, 2022
+	Date Finished: February 19, 2022
+	Objectives: Finish documentation for CSS files (responsive-navbar.css,
+		navbarpack.css)
+	Description:
+	Finished documentation responsive-navbar.css, navbarpack.css.
+	Changed README.txt to README.md. Made some formatting changes to the html
+	in index.html.
+	Hierarchy:
+		Folders
+		resources
+			css
+				definitiongames.css
+				index.css
+			images
+			js
+				definitiongames.js
+				Word.js
+				WordBank.js
+				wordgames.js
+		vendors
+			css
+				buttonpack.css
+				column.css
+				navbarpack.css
+				responsive-layout.css
+				responsive-navbar.css
+			js
+				utilities.js
+		WebDevFiles
+
+		HTML files
+		DefaultDefinitionGame.html
+		DefinitionGameHomepage.html
+		index.html
+		MCDefGame.html
+		MemoryGame.html
+		SquareNumbers.html
+		UserMadeDefinitionGames.html
+		WebDevProjects.html
+
+		TXT files
+		Plan.txt
+
+		Markdown files
+		README.md
+
 
 
 ===== 5. Other Notes =====
