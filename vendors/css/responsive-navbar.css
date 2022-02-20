@@ -1,24 +1,165 @@
+/**
+ * CSS for creating a responsive navigation bar
+ *
+ * This file contains CSS rules for creating a responsive navigation bar.
+ * A navbar is a list (ordered or unordered) of links that allow for
+ * navigation on a website. A responsive navbar is a navbar that changes
+ * its display based on the user's screen size. The navbar was build with
+ * a Mobile First design in mind, so many of the rules are centered around
+ * that.
+ *
+ * Credits to W3Schools for the guide on how to build a navbar that
+ * this navbar was inspired by.
+ * https://www.w3schools.com/Css/css_navbar.asp
+ *
+ * @author Matthew Mentis-Cort
+ * Date last edited: February 19, 2022
+ */
+
 /* Navbar Set */
 
-/* Navbar HTML Template
-<ul id = "navbar">
-	<li><a class = "active" href = "index.html">Homepage</a></li>
-	<li><a href = "SquareNumbers.html">Square Numbers Quiz</a></li>
-	<li><a href = "MemoryGame.html">Memory Game</a></li>
-	<li class = "dropdown">
-		<span class = "dropbtn">Word Games</span>
-		<div class = "dropdown-content">
-			<a href = "UserMadeDefinitionGame.html">Make your own</a>
-			<a href = "DefaultDefinitionGame.html">Definition Game</a>
-		</div>
-	</li>
-</ul>
+/*
+  Note: DO NOT USE MORE THAN ONE NAVBAR ON A SINGLE PAGE, BECAUSE THE TOGGLE
+  WILL NOT WORK
 */
 
 /*
-  DO NOT USE MORE THAN ONE NAVBAR ON A SINGLE PAGE, BECAUSE THE TOGGLE WILL NOT
-  WORK
+  Included Rules:
 
+  ### General
+  *
+  All elements will have their box sizing set to border-box, so margin and
+  padding are included in the calculation of the width and height of an
+  element.
+
+  ### Classes
+  .navbar
+  Used on the wrapper class for your navbar. It's main purpose is to
+	set the color of the navbar and position it properly on the website. Made
+  into a class to allow the use of multiple navbars on a website.
+
+  .navbar-toggler
+  Used in the element that will be interacted with for the user to open
+  the navbar on smaller screen sizes. The element with this class must
+  be succeeded by an element with the class .navbar-closer (does not need
+  to be immediately before, however).
+
+  .navbar-closer
+  Used in the element that will be interacted with for the user to close
+  the navbar on smaller screen sizes. Only appears after the navbar-toggler
+  is in focus (when the vertical navbar is being toggled to). Must be
+  preceded by an element with the class "navbar-toggler" (does not need to
+  be immediately preceded, however).
+
+  .navbar-content
+  Used in the element that is a wrapper class for the element with the class
+  "navbar-link-list". Hides the navbar links for the vertical navbar, and
+  displays the navbar links for the horizontal navbar.
+
+  .navbar-link-list
+  Used in the element that is a wrapper class for the links in the navbar.
+  Removes default ul styling and sets the background color for links.
+
+  .navbar-item
+	Used in tags that represent a tab on the navbar. Handles styling for tabs
+	on the navbar.
+
+	.navbar-link
+	Used in tags that link to other places on the website (namely "anchor" tags).
+	Styles links so they look good with the .navbar-item.
+
+	.dropdown
+	Used as a wrapper class for dropdown related content. A dropdown is a
+	wrapper for all the dropdown related classes (.dropbtn, .dropdown-content)
+	when hovered over, will display content not immediately visible
+	underneath the tab. Styles the dropdown content.
+
+	.dropbtn
+	Used in tags that are the tab in the navbar that, when hovered over, will
+	display the dropdown content. Styles the dropdown button(s) on
+	the page.
+
+	.dropdown-content
+	Used in wrapper class for dropdown content. The dropdown content is the
+	tabs of the navbar within the dropdown. Styles the content in the dropdown
+	and makes it appear under the dropdown button.
+
+	.active
+	Used in links that the user is currently on. Styles the navbar tab for
+	the page that the user is on differently from the other tabs so that users
+	know they are on that page.
+
+	.clearfix::after
+	Removes the property that makes elements flow around elements after an
+	element that is set to float. Should not be needed for this navbar
+	implementation.
+
+  ### At-rules
+  @media only screen and (min-width: 768px)
+  Used to determine when to toggle from vertical to horizontal navbar. Toggles
+  to horiztonal navbar when the screen width is 768px or greater. 768px is the
+  breakpoint for tablets.
+*/
+
+/*
+  Navbar HTML Template
+  <nav class = "navbar">
+    <button type = "button" class = "navbar-toggler">
+      ...
+    </button>
+
+    <button type = "button" class = "navbar-closer">
+      X
+    </button>
+
+    <div class = "navbar-content">
+      <ul class = "navbar-link-list">
+        <li class = "navbar-item">
+          <a class = "navbar-link active" href = "#">
+            Home
+          </a>
+        </li>
+
+        <li class = "navbar-item">
+          <a class = "navbar-link" href = "#">
+            Page 1
+          </a>
+        </li>
+
+        <li class = "navbar-item">
+          <a class = "navbar-link" href = "#">
+            Page 2
+          </a>
+        </li>
+
+        <li class = "navbar-item dropdown">
+          <a class = "navbar-link dropbtn" href = "#">
+            Dropdown
+          </a>
+          <div class = "dropdown-content">
+            <a class = "navbar-link" href = "#">
+              Dropdown Content 1
+            </a>
+            <a class = "navbar-link" href = "#">
+              Dropdown Content 2
+            </a>
+            <a class = "navbar-link" href = "#">
+              Dropdown Content 3
+            </a>
+          </div>
+        </li>
+
+        <li class = "navbar-item">
+          <a class = "navbar-link" href = "#">
+            Page 3
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+*/
+
+/*
   Use labels for toggles instead of .navbar-toggler?
 */
 
@@ -96,7 +237,7 @@
 {
   /* background-color: blue; */
   /*
-    Show the navbar conent when the toggle button is clicked (credits to
+    Show the navbar content when the toggle button is clicked (credits to
     https://stackoverflow.com/questions/18749276/css-on-hover-show-another-element
     for help on this issue)
   */
