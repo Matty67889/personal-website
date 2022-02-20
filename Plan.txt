@@ -1,22 +1,18 @@
 Author: Matthew Mentis-Cort
-Date Created: February 14, 2022
-Date Last modified: February 14, 2022
+Date Created: February 15, 2022
+Date Last modified: February 19, 2022
 
 The Plan
 
 Objectives for this version:
-Restore the website's files to their former glory.
-- Remake the following files using the README as a guide to what they
-  were previously:
-    definitiongames.css
-    definitiongames.js
-    Word.js
-    WordBank.js
-    wordgames.js
-- Add the image for the website back
+Finish documentation for CSS files (responsive-navbar.css, navbarpack.css)
 
 Ideas:
-- Make the Word and WordBank class into one file? (the internet says I can't
-  so no for now)
-  - Also put the functions from wordgames.js in this file
-- Add test files for the Word classes?
+- Change README.txt to README.md
+
+Changed Files:
+README.txt --> README.md
+index.html
+Plan.txt
+responsive-layout.css
+responsive-navbar.css
