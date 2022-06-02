@@ -1,16 +1,20 @@
 Author: Matthew Mentis-Cort
-Date Created: December 24, 2021
-Date last updated: February 19, 2022
 
-Table of Contents
+Date Created: December 24, 2021
+
+Date last updated: June 1, 2022
+
+
+# Table of Contents
 	1. Introduction
 	2. Style Guide for this Document
 	3. Website Hierarchy
 	4. Versions
-	5. Other Notes
+	5. RoadMap
+	6. Other Notes
 
 
-===== 1. Introduction =====
+# Introduction
 	This ReadMe was started on December 24th, 2021, with the objective of
 	documenting the transformation of this website. The plan is to create
 	different versions after a major feature for a version is implemented. A new
@@ -22,7 +26,7 @@ Table of Contents
 	a mix of JavaDocs documentation and Python specifications.
 
 
-===== 2. Style Guide for this Document =====
+# Style Guide for this Document
 	Obey the 80 character rule (don't go over the gray line in Atom for one line
 	of text)
 
@@ -32,46 +36,45 @@ Table of Contents
 	The ===== sign lines are for separation.
 
 
-===== 3. Website Hierarchy =====
-	Credits for the ideas for the hierarchy goes to this website:
-	(https://appcropolis.com/blog/web-technology/organize-html-css-javascript-files/)
+# Website Hierarchy
+	Credits for the ideas for the hierarchy goes to this [website](https://appcropolis.com/blog/web-technology/organize-html-css-javascript-files/)
 
 	Hierarchy:
 		Folders
 		resources
-			css
-				definitiongames.css
-				index.css
-			images
-				header-image.png
-			js
-				definitiongames.js
-				Word.js
-				WordBank.js
-				wordgames.js
+			- css
+				- definitiongames.css
+				- index.css
+			- images
+				- header-image.png
+			- js
+				- definitiongames.js
+				- Word.js
+				- WordBank.js
+				- wordgames.js
 		vendors
-			css
-				buttonpack.css
-				column.css
-				navbarpack.css
-			js
-				utilities.js
+			- css
+				- buttonpack.css
+				- column.css
+				- navbarpack.css
+			- js
+				- utilities.js
 		WebDevFiles
 			(these files can be found on the flash drive)
 
 		HTML files
-		DefaultDefinitionGame.html
-		DefinitionGameHomepage.html
-		index.html
-		MCDefGame.html
-		MemoryGame.html
-		SquareNumbers.html
-		UserMadeDefinitionGames.html
-		WebDevProjects.html
+		- DefaultDefinitionGame.html
+		- DefinitionGameHomepage.html
+		- index.html
+		- MCDefGame.html
+		- MemoryGame.html
+		- SquareNumbers.html
+		- UserMadeDefinitionGames.html
+		- WebDevProjects.html
 
 		TXT files
-		Plan.txt
-		README.txt
+		- Plan.txt
+		- README.txt
 
 	resources folder: Contains files built specifically for the website.
 	vendors folder: Contains files that can be used across multiple websites, such
@@ -79,11 +82,10 @@ Table of Contents
 	WebDevFiles folder: Contains files that have been created in the
 	"Web Development" class that was taken by the author.
 
-	Inspiration for the MCDefGame design game from FreeRice's definition game
-	(website: https://freerice.com/)
+	Inspiration for the MCDefGame design game from [FreeRice](https://freerice.com/)'s definition game
 
 
-===== 4. Versions =====
+# 4. Versions
 	Version 0.0:
 	Date Started: Whenever I started making this website (which was approximately
 	2 years ago from the creation of this README)
@@ -104,35 +106,35 @@ Table of Contents
 			(These files can be found on the flash drive)
 
 		HTML files
-		Basic HTML Template for Website.html
-		Basic HTML Template.html
-		DefaultDefinitionGame.html
-		DefinitionGameHomepage.html
-		index.html
-		MCDefGame.html
-		MemoryGame.html
-		SquareNumbers.html
-		UserMadeDefinitionGames.html
-		WebDevProjects.html
+		- Basic HTML Template for Website.html
+		- Basic HTML Template.html
+		- DefaultDefinitionGame.html
+		- DefinitionGameHomepage.html
+		- index.html
+		- MCDefGame.html
+		- MemoryGame.html
+		- SquareNumbers.html
+		- UserMadeDefinitionGames.html
+		- WebDevProjects.html
 
 		CSS files
-		buttonpack.css
-		columns.css
-		definitiongames.css
-		navbarpack.css
-		style.css
+		- buttonpack.css
+		- columns.css
+		- definitiongames.css
+		- navbarpack.css
+		- style.css
 
 		JS files
-		definitiongames.js
-		script.js
-		utilities.js
-		Word.js
-		WordBank.js
-		wordgames.js
+		- definitiongames.js
+		- script.js
+		- utilities.js
+		- Word.js
+		- WordBank.js
+		- wordgames.js
 
 		TXT files
-		Plan.txt
-		README.txt
+		- Plan.txt
+		- README.txt
 
 	Version 0.10:
 	Date Started: December 24, 2021
@@ -160,38 +162,38 @@ Table of Contents
 	Hierarchy:
 		Folders
 		resources
-			css
-				definitiongames.css
-				index.css
-			images
-			js
-				definitiongames.js
-				Word.js
-				WordBank.js
-				wordgames.js
+			- css
+				- definitiongames.css
+				- index.css
+			- images
+			- js
+				- definitiongames.js
+				- Word.js
+				- WordBank.js
+				- wordgames.js
 		vendors
-			css
-				buttonpack.css
-				column.css
-				navbarpack.css
-			js
-				utilities.js
+			- css
+				- buttonpack.css
+				- column.css
+				- navbarpack.css
+			- js
+				- utilities.js
 		WebDevFiles
 			(these files can be found on the flash drive)
 
 		HTML files
-		DefaultDefinitionGame.html
-		DefinitionGameHomepage.html
-		index.html
-		MCDefGame.html
-		MemoryGame.html
-		SquareNumbers.html
-		UserMadeDefinitionGames.html
-		WebDevProjects.html
+		- DefaultDefinitionGame.html
+		- DefinitionGameHomepage.html
+		- index.html
+		- MCDefGame.html
+		- MemoryGame.html
+		- SquareNumbers.html
+		- UserMadeDefinitionGames.html
+		- WebDevProjects.html
 
 		TXT files
-		Plan.txt
-		README.txt
+		- Plan.txt
+		- README.txt
 
 	Version 0.11:
 	Date Started: December 28, 2021
@@ -210,38 +212,38 @@ Table of Contents
 	Hierarchy:
 		Folders
 		resources
-			css
-				definitiongames.css
+			- css
+				- definitiongames.css
 				index.css
-			images
-			js
-				definitiongames.js
-				Word.js
-				WordBank.js
-				wordgames.js
+			- images
+			- js
+				- definitiongames.js
+				- Word.js
+				- WordBank.js
+				- wordgames.js
 		vendors
-			css
-				buttonpack.css
-				column.css
-				navbarpack.css
-			js
-				utilities.js
+			- css
+				- buttonpack.css
+				- column.css
+				- navbarpack.css
+			- js
+				- utilities.js
 		WebDevFiles
 			(these files can be found on the flash drive)
 
 		HTML files
-		DefaultDefinitionGame.html
-		DefinitionGameHomepage.html
-		index.html
-		MCDefGame.html
-		MemoryGame.html
-		SquareNumbers.html
-		UserMadeDefinitionGames.html
-		WebDevProjects.html
+		- DefaultDefinitionGame.html
+		- DefinitionGameHomepage.html
+		- index.html
+		- MCDefGame.html
+		- MemoryGame.html
+		- SquareNumbers.html
+		- UserMadeDefinitionGames.html
+		- WebDevProjects.html
 
 		TXT files
-		Plan.txt
-		README.txt
+		- Plan.txt
+		- README.txt
 
 	Version 0.2:
 	Date Started: December 28, 2021
@@ -254,11 +256,11 @@ Table of Contents
 	of the files open in Atom Editor, so I was able to recover some of the
 	documented versions. However, I lost the image for my homepage, and the
 	following files:
-	 	definitiongames.css
-		definitiongames.js
-		Word.js
-		WordBank.js
-		wordgames.js
+	 	- definitiongames.css
+		- definitiongames.js
+		- Word.js
+		- WordBank.js
+		- wordgames.js
 	The aforementioned files were restored from a previous version of the
 	website that I had on my other laptop. My plan is to remake the files
 	similar to how I had them before using this README as a guide to what I
@@ -279,39 +281,39 @@ Table of Contents
 	Hierarchy:
 		Folders
 		resources
-			css
-				definitiongames.css
-				index.css
-			images
-			js
-				definitiongames.js
-				Word.js
-				WordBank.js
-				wordgames.js
+			- css
+				- definitiongames.css
+				- index.css
+			- images
+			- js
+				- definitiongames.js
+				- Word.js
+				- WordBank.js
+				- wordgames.js
 		vendors
-			css
-				buttonpack.css
-				column.css
-				navbarpack.css
-				responsive-layout.css
-				responsive-navbar.css
-			js
-				utilities.js
+			- css
+				- buttonpack.css
+				- column.css
+				- navbarpack.css
+				- responsive-layout.css
+				- responsive-navbar.css
+			- js
+				- utilities.js
 		WebDevFiles
 
 		HTML files
-		DefaultDefinitionGame.html
-		DefinitionGameHomepage.html
-		index.html
-		MCDefGame.html
-		MemoryGame.html
-		SquareNumbers.html
-		UserMadeDefinitionGames.html
-		WebDevProjects.html
+		- DefaultDefinitionGame.html
+		- DefinitionGameHomepage.html
+		- index.html
+		- MCDefGame.html
+		- MemoryGame.html
+		- SquareNumbers.html
+		- UserMadeDefinitionGames.html
+		- WebDevProjects.html
 
 		TXT files
-		Plan.txt
-		README.txt
+		- Plan.txt
+		- README.txt
 
 	Version 0.3:
 	Date Started: February 12, 2022
@@ -319,11 +321,11 @@ Table of Contents
 	Objectives: Restore the website's files to their former glory.
 	- Remake the following files using the README as a guide to what they
 	  were previously:
-			definitiongames.css
-			definitiongames.js
-			Word.js
-			WordBank.js
-			wordgames.js
+			- definitiongames.css
+			- definitiongames.js
+			- Word.js
+			- WordBank.js
+			- wordgames.js
 	- Add the image for the website back
 	- Add hierarchies for each version on this page
 	- Restore functionality of the MCDefGame page
@@ -338,39 +340,39 @@ Table of Contents
 	Hierarchy:
 		Folders
 		resources
-			css
-				definitiongames.css
-				index.css
-			images
-			js
-				definitiongames.js
-				Word.js
-				WordBank.js
-				wordgames.js
+			- css
+				- definitiongames.css
+				- index.css
+			- images
+			- js
+				- definitiongames.js
+				- Word.js
+				- WordBank.js
+				- wordgames.js
 		vendors
-			css
-				buttonpack.css
-				column.css
-				navbarpack.css
-				responsive-layout.css
-				responsive-navbar.css
-			js
-				utilities.js
+			- css
+				- buttonpack.css
+				- column.css
+				- navbarpack.css
+				- responsive-layout.css
+				- responsive-navbar.css
+			- js
+				- utilities.js
 		WebDevFiles
 
 		HTML files
-		DefaultDefinitionGame.html
-		DefinitionGameHomepage.html
-		index.html
-		MCDefGame.html
-		MemoryGame.html
-		SquareNumbers.html
-		UserMadeDefinitionGames.html
-		WebDevProjects.html
+		- DefaultDefinitionGame.html
+		- DefinitionGameHomepage.html
+		- index.html
+		- MCDefGame.html
+		- MemoryGame.html
+		- SquareNumbers.html
+		- UserMadeDefinitionGames.html
+		- WebDevProjects.html
 
 		TXT files
-		Plan.txt
-		README.txt
+		- Plan.txt
+		- README.txt
 
 	Version 0.4:
 	Date Started: February 15, 2022
@@ -384,57 +386,118 @@ Table of Contents
 	Hierarchy:
 		Folders
 		resources
-			css
-				definitiongames.css
-				index.css
-			images
-			js
-				definitiongames.js
-				Word.js
-				WordBank.js
-				wordgames.js
+			- css
+				- definitiongames.css
+				- index.css
+			- images
+			- js
+				- definitiongames.js
+				- Word.js
+				- WordBank.js
+				- wordgames.js
 		vendors
-			css
-				buttonpack.css
-				column.css
-				navbarpack.css
-				responsive-layout.css
-				responsive-navbar.css
-			js
-				utilities.js
+			- css
+				- buttonpack.css
+				- column.css
+				- navbarpack.css
+				- responsive-layout.css
+				- responsive-navbar.css
+			- js
+				- utilities.js
 		WebDevFiles
 
 		HTML files
-		DefaultDefinitionGame.html
-		DefinitionGameHomepage.html
-		index.html
-		MCDefGame.html
-		MemoryGame.html
-		SquareNumbers.html
-		UserMadeDefinitionGames.html
-		WebDevProjects.html
+		- DefaultDefinitionGame.html
+		- DefinitionGameHomepage.html
+		- index.html
+		- MCDefGame.html
+		- MemoryGame.html
+		- SquareNumbers.html
+		- UserMadeDefinitionGames.html
+		- WebDevProjects.html
 
 		TXT files
-		Plan.txt
+		- Plan.txt
 
 		Markdown files
-		README.md
+		- README.md
 
+	Version 0.5:
+	Date Started: February 19, 2022
+	Date Finished: June 1, 2022
+	Objectives:
+	- Create About Me page
+	- Make Homepage look better
+		- Restore image for homepage
+	Description:
+	Created about me page by creating about-me.html and about-me.css.
+	Added pictures back to index.html and added pictures to about-me.html. Updated README.md to use Markdown file syntax. Changed Basic HTML Template.html to website-template.html and updated contents to more accurately reflect a template for the website.
+	Hierarchy:
+		Folders
+		resources
+			- css
+				- about-me.css
+				- definitiongames.css
+				- index.css
+			- data
+			- images
+				- compsci-img.jpg
+				- dq9-img.jpg
+				- header-img.jpg
+				- psychology-img.jpg
+				- read-write-img.jpg
+			- js
+				- definitiongames.js
+				- Word.js
+				- WordBank.js
+				- wordgames.js
+		vendors
+			- css
+				- buttonpack.css
+				- columns.css
+				- navbarpack.css
+				- responsive-layout.css
+				- responsive-navbar.css
+			- js
+				- utilities.js
+		WebDevFiles
 
+		HTML files
+		- about-me.html
+		- DefaultDefinitionGame.html
+		- DefinitionGameHomepage.html
+		- index.html
+		- MCDefGame.html
+		- MemoryGame.html
+		- SquareNumbers.html
+		- UserMadeDefinitionGames.html
+		- WebDevProjects.html
 
-===== 5. Other Notes =====
+		TXT files
+		- Plan.txt
+
+		Markdown files
+		- README.md
+
+# 5. RoadMap
+- Finish documentation for old and new files
+- Do About Me page
+- Upload resume to website (with options to print)
+- Relink web development projects to the main site
+	- Possibly make another site for the projects
+
+# 6. Other Notes
 Notes:
-- Code Conventions: https://www.crockford.com/code.html
-- Word API to test: https://dictionaryapi.dev/
-- Possible Urban Dictionary API: https://rapidapi.com/community/api/urban-dictionary
+- [Code Conventions](https://www.crockford.com/code.html)
+- [Word API to test](https://dictionaryapi.dev/)
+- [Possible Urban Dictionary API](https://rapidapi.com/community/api/urban-dictionary)
 - Try Math Jax for Squared Numbers Quiz
-- Documentation for coding languages: https://devdocs.io/
+- [Documentation for coding languages](https://devdocs.io/)
 
 Ideas:
 - add test cases for each class
 - use JSDoc instead of my custom documentation for JS documentation
-  (https://jsdoc.app/about-getting-started.html see this and related links for
-	information on JSDoc)
+  (https://jsdoc.app/about-getting-started.html see this and related links for information on JSDoc)
 - Use KSS for CSS documentation
 - Instead of automatically putting definitions into the spans for MCDefGame,
 	use make an array that holds random word objects based on the number of
@@ -778,7 +841,7 @@ Ideas:
 
 	Notes:
 	- MAKE ALL THE WORDS INTO "word" OBJECTS WITH A DEFINITION AND A WORD ATTRIBUTE AND PART OF SPEECH
-	-FIX THE CSS LINKS ON ALL THE PAGES (Add the slash to close the tag)
+	- FIX THE CSS LINKS ON ALL THE PAGES (Add the slash to close the tag)
 	- Use transparent div to overlap over quiz questions to disable them?
 
 	- Add part of speech tester thing? (maybe after construction of final project)
