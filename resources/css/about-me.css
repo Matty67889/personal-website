@@ -1,0 +1,39 @@
+body
+{
+  background-color: #ededed;
+  /* color: white; */
+
+  font-family: "Brush Script MT", cursive, "Helvetica", sans-serif, "Verdana", sans-serif;
+}
+
+section
+{
+  /* border: 3px solid black; */
+  border-bottom: 1px solid black;
+
+  margin-top: 15px;
+  padding: 10px 15px;
+
+  text-align: center;
+}
+
+section .section-img, section .section-desc
+{
+  padding: 14px;
+}
+
+section .section-desc p
+{
+  margin: 0 auto;
+}
+
+img
+{
+  width: 100%;
+}
+
+/* iframe
+{
+  height: 1000px;
+  width: 100%;
+} */
