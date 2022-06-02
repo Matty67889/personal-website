@@ -44,8 +44,24 @@
   animation-delay: 2s;
 } */
 
-/* Permanent rules */
+/*
+  #### Table of Contents ####
 
+  1. global rules
+  2. header rules
+  3. section rules
+    3a. general section rules
+    3b. welcome section rules
+    3c. project section rules
+    3d. about me section rules
+  4. footer rules
+*/
+
+/*
+  ===========
+  1. global rules
+  ===========
+*/
 body
 {
   background-color: #ededed;
@@ -54,7 +70,11 @@ body
   font-family: "Brush Script MT", cursive, "Helvetica", sans-serif, "Verdana", sans-serif;
 }
 
-/* Header Rules */
+/*
+  ===========
+  2. header rules
+  ===========
+*/
 header
 {
   margin-top: 15px;
@@ -77,39 +97,74 @@ header
   font-size: 15px;
 }
 
-/* General Section Rules */
+/*
+  ===========
+  3. section rules
+  ===========
+*/
+
+/*
+  ===========
+  3a. general section rules
+  ===========
+*/
 section
 {
+  /* background-color: yellow; */
+  border: 3px solid black;
+
   margin-top: 15px;
   padding: 20px 25px;
 
   text-align: center;
 }
 
-/* Welcome Section Rules */
+/*
+  ===========
+  3b. welcome section rules
+  ===========
+*/
 /* .welcome
 {
 
 } */
 
-/* Project Section Rules */
+/*
+  ===========
+  3c. project section rules
+  ===========
+*/
 /* .projects
 {
   padding: 20px 25px;
 } */
 
-/* About Me Rules */
+/*
+  ===========
+  3d. about me section rules
+  ===========
+*/
 /* .about-me
 {
 
 } */
 
-/* Footer Rules */
+/*
+  ===========
+  4. footer rules
+  ===========
+*/
 footer
 {
+  background-color: #B2AC88;
+
   margin-top: 15px;
 
+  height: 150px;
+
   font-size: 20px;
+
+  text-align: center;
 }
 
 footer a
