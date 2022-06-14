@@ -2,7 +2,7 @@ Author: Matthew Mentis-Cort
 
 Date Created: December 24, 2021
 
-Date last updated: June 1, 2022
+Date last updated: June 2, 2022
 
 
 # Table of Contents
@@ -82,7 +82,7 @@ Date last updated: June 1, 2022
 	WebDevFiles folder: Contains files that have been created in the
 	"Web Development" class that was taken by the author.
 
-	Inspiration for the MCDefGame design game from [FreeRice](https://freerice.com/)'s definition game
+	Inspiration for the MCDefGame design game from [FreeRice's](https://freerice.com/) definition game
 
 
 # 4. Versions
@@ -469,6 +469,78 @@ Date last updated: June 1, 2022
 		- index.html
 		- MCDefGame.html
 		- MemoryGame.html
+		- SquareNumbers.html
+		- UserMadeDefinitionGames.html
+		- WebDevProjects.html
+
+		TXT files
+		- Plan.txt
+
+		Markdown files
+		- README.md
+
+	Version 0.6:
+	Date Started: June 2, 2022
+	Date Finished: June 14, 2022
+	Objectives:
+	- Make Projects page and make cards to hold the projects
+	- Improve footer
+	- Find a way to implement resume
+	Description:
+	Created Projects page and created cards to hold the links
+	to the projects. Made a global CSS sheet for footer styles. Improved website-template.html to include the global footer CSS sheet. Added additional hierarchy to support the pictures needed for the Projects page.
+	Hierarchy:
+		Folders
+		resources
+			- css
+				- about-me.css
+				- definitiongames.css
+				- index.css
+				- footer.css
+				- projects.css
+			- data
+			- images
+				- projects
+					- SIP
+						- definition.jpg
+						- memory.jpg
+						- squared.png
+						- words.jpg
+					- web-dev
+						- animal-quiz.jpg
+						- crossing.jpg
+						- dice-roller.png
+						- haunted-house.jpg
+				    - hot-cold.jpg
+				- compsci-img.jpg
+				- dq9-img.jpg
+				- header-img.jpg
+				- psychology-img.jpg
+				- read-write-img.jpg
+			- js
+				- definitiongames.js
+				- Word.js
+				- WordBank.js
+				- wordgames.js
+		vendors
+			- css
+				- buttonpack.css
+				- columns.css
+				- navbarpack.css
+				- responsive-layout.css
+				- responsive-navbar.css
+			- js
+				- utilities.js
+		webdev-files
+
+		HTML files
+		- about-me.html
+		- DefaultDefinitionGame.html
+		- DefinitionGameHomepage.html
+		- index.html
+		- MCDefGame.html
+		- MemoryGame.html
+		- projects.html
 		- SquareNumbers.html
 		- UserMadeDefinitionGames.html
 		- WebDevProjects.html
