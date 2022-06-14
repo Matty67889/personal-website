@@ -13,10 +13,11 @@
 		<meta name = "viewport" content = "width=device-width, initial-scale = 1.0">
 		<title>Matthew's Website</title>
 		<style></style>
-		<link rel = "stylesheet" href = "resources/css/index.css">
+		<link rel = "stylesheet" href = "vendors/css/responsive-layout.css">
 		<link rel = "stylesheet" href = "vendors/css/responsive-navbar.css">
 		<link rel = "stylesheet" href = "vendors/css/columns.css">
-		<link rel = "stylesheet" href = "vendors/css/responsive-layout.css">
+		<link rel = "stylesheet" href = "resources/css/footer.css">
+		<link rel = "stylesheet" href = "resources/css/index.css">
 		<script>
 			function initialize()
 			{
@@ -56,37 +57,8 @@
 					</li>
 
 					<li class = "navbar-item">
-						<a class = "navbar-link" href = "SquareNumbers.html">
-							Square Numbers Quiz
-						</a>
-					</li>
-
-					<li class = "navbar-item">
-						<a class = "navbar-link" href = "MemoryGame.html">
-							Memory Game
-						</a>
-					</li>
-
-					<li class = "navbar-item dropdown">
-						<a class = "navbar-link dropbtn" href = "DefinitionGameHomepage.html">
-							Word Games
-						</a>
-						<div class = "dropdown-content">
-							<a class = "navbar-link" href = "UserMadeDefinitionGame.html">
-								Make your own
-							</a>
-							<a class = "navbar-link" href = "DefaultDefinitionGame.html">
-								Definition Game
-							</a>
-							<a class = "navbar-link" href = "MCDefGame.html">
-								Definition Game (Multiple Choice)
-							</a>
-						</div>
-					</li>
-
-					<li class = "navbar-item">
-						<a class = "navbar-link" href = "WebDevProjects.html">
-							Web Development Class Projects
+						<a class = "navbar-link" href = "projects.html">
+							Projects
 						</a>
 					</li>
 				</ul>
@@ -134,75 +106,104 @@
 			</div>
 		</header>
 
-		<!-- Welcome Message -->
-		<section class = "welcome">
-			<div class = "row">
-				<div class = "col-12">
-					<h1>
-						Welcome, my name is Matthew Mentis-Cort, and I am a human being.
-					</h1>
+		<!-- Main content -->
+		<main>
+			<!-- Welcome Message -->
+			<section class = "welcome">
+				<div class = "row">
+					<div class = "col-12">
+						<h1>
+							Welcome, my name is Matthew Mentis-Cort, and I am a human being.
+						</h1>
+						<h1>
+							This website is still in development, so please bear with
+							its initial looks. They will get better with time.
+						</h1>
+					</div>
 				</div>
-			</div>
-		</section>
+			</section>
 
-		<!-- About Me Section -->
-		<section class = "about-me">
-			<div class = "row">
-				<div class = "col-12">
-					<h1>About Me</h1>
+			<!-- About Me Section -->
+			<section class = "about-me">
+				<div class = "row">
+					<div class = "col-12">
+						<h1>About Me</h1>
+					</div>
 				</div>
-			</div>
 
-			<div class = "row">
-				<div class = "col-12">
-					<p>
-						I am a Freshman at Cornell University studying Computer Science.
-						I hope to use my the knowledge that I gain from coding
-						technology to develop ways to make education easier
-						and more accessible for people around the world. Apart from
-						Computer Science, I am interested in learning concepts in
-						Psychology. It is an interesting field to me as it helps me
-						learn about how are brains work, and I also think that it will
-						allow aid me in my goal of making learning easier for people.
-						In my free time, I read, write, and play video games.
-					</p>
+				<div class = "row">
+					<div class = "col-12">
+						<p>
+							I am a Freshman at Cornell University studying Computer Science.
+							I hope to use my the knowledge that I gain from coding
+							technology to develop ways to make education easier
+							and more accessible for people around the world. Apart from
+							Computer Science, I am interested in learning concepts in
+							Psychology. It is an interesting field to me as it helps me
+							learn about how are brains work, and I also think that it will
+							allow aid me in my goal of making learning easier for people.
+							In my free time, I read, write, and play video games.
+						</p>
+					</div>
 				</div>
-			</div>
-		</section>
 
-		<!-- Projects Section -->
-		<section class = "projects">
-			<div class = "row">
-				<div class = "col-12">
-					<h1>Projects</h1>
-				</div>
-			</div>
-
-			<div class = "row">
-				<div class = "col-12">
-					Here are some of the projects I've been working on.
-				</div>
-			</div>
-
-			<div class = "row">
-				<div class = "col-12">
+				<div class = "row">
 					<button type = "button" class = "button--no-fill">
-						<a href = "#">Projects</a>
+						<a href = "about-me.html">Learn More...</a>
 					</button>
 				</div>
-			</div>
-		</section>
+			</section>
+
+			<!-- Projects Section -->
+			<section class = "projects">
+				<div class = "row">
+					<div class = "col-12">
+						<h1>Projects</h1>
+					</div>
+				</div>
+
+				<div class = "row">
+					<div class = "col-12">
+						<p>
+							Here are some of the projects I've been working on.
+						</p>
+					</div>
+				</div>
+
+				<div class = "row">
+					<button type = "button" class = "button--no-fill">
+						<a href = "projects.html">Projects</a>
+					</button>
+				</div>
+			</section>
+		</main>
 
 		<!-- Footer -->
 		<footer>
 			<div class = "row">
-				<a href = "https://www.linkedin.com/in/matthew-mentis-cort-374430203" target = "_blank">
-					LinkedIn
-				</a>
+				<div class = "col-6">
+					<h2>Contact Me!</h2>
+				</div>
 			</div>
 
-			<div class = "row">
-				Email: matty67889@gmail.com
+			<div class = "row footer-row">
+				<div class = "col-6">
+					<a href = "https://www.linkedin.com/in/matthew-mentis-cort-374430203" target = "_blank">
+						LinkedIn
+					</a>
+				</div>
+				<div class = "col-6">
+					<a href = "index.html">Home</a>
+				</div>
+			</div>
+
+			<div class = "row footer-row">
+				<div class = "col-6">
+					<p>Email: mmentiscort67889@gmail.com</p>
+				</div>
+				<div class = "col-6">
+					<a href = "about-me.html">About Me</a>
+				</div>
 			</div>
 		</footer>
 	</body>
