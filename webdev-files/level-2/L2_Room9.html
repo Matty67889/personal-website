@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Playroom</title>
+		<style>
+		
+			#r9_added_text
+			{
+				font: comic sans 12pt;
+				color:blue;
+				text-align:left;
+				text-decoration: none;
+			}
+		</style>
+		<link rel = "stylesheet" href = "CSS_Sheet.css" />
+		<script src = "utilities.js"></script>
+		<script>
+			
+			/* Commented out things are for Testing */
+			function initialize()
+			{
+				/*
+				initializeVariables();
+				*/
+				r9AddedText = document.getElementById("r9_added_text");
+				
+				display();
+			}
+			
+			/* If user has mallet, display the text. If not, don't display the text. */
+			function display()
+			{
+				/* If user has mellet */
+				if (sessionStorage.malletObtained == 1)
+				{
+					/* 
+					malletTracker.innerHTML = "1";
+					*/
+					r9AddedText.style.display = "block";
+				}
+				/* If user does not have mallet */
+				else 
+				{
+					/*
+					malletTracker.innerHTML = "0";
+					*/
+					r9AddedText.style.display = "none";
+				}
+			}
+		</script>
+	</head>
+	
+	<body onload = "initialize();">
+		<h6><div>L2</div></h6>
+		<h6><div>Playroom</div></h6>
+		<hr />
+		<div><img src = "images/playroom.jpg" /></div>
+		
+		<h3>
+			<p>
+				You enter a room with a lot of color, which surprises you. It seems to be a children's room, as you see many poorly drawn
+				paintings of relatively uninteresting things. You are surprised they are still in-tact. 
+				<br />
+				<br />
+				
+				Many colorful children's products are also still in good shape in the room, such as a toy rocking pony, a stroller, and a
+				small yellow chair. You are shocked that these items have withstood the wrath of whatever happened to this house. A lot of 
+				things about this room surprise you. 
+				<br />
+				<br />
+				
+				<span id = "thoughts">"This room feels childish, but in a creepy way," you think to yourself. "It's like I'm in a horror
+				movie where the protagonist is in a seemingly innocent room, and then they suddenly get jumped by a malicious apparition."
+				</span>
+				<br />
+				<br />
+				
+				Realizing what you just thought, you turn around suddenly, expecting to be attacked. However, you see nothing behind you.
+				No life-threatening ghost that wants to take your soul for invading its house. How unexciting. 
+				<br />
+				<br />
+				
+				You decide that there is nothing good to be gained from this room, and resolve to leave as soon as possible.
+				
+				However, as soon as you turn around to leave, an unusual looking object catches your eye, and you wonder if you should
+				<span id = "interactable" onclick = "ownMallet();">give it a closer look...</span>
+				
+				<!-- <div id = "mallet_tracker"></div> -->
+				
+				<p id = "r9_added_text">You notice that there is a mallet in the playroom. <br /> <img src = "images/mallet.PNG" />
+				<br />
+				
+				Despite your confusion as to why there would be a mallet in a children's playhouse, you decide to carry it with you, in case
+				it becomes useful for bashing in some skulls. Nothing wrong with having a weapon in a haunted house.
+				</p>
+			</p>
+		</h3>
+		<hr />
+		
+		<!-- Choices -->
+		<div id = "choices_title">What Will you Do?</div>
+		<a href = "L2_Room10.html"><img src = "images/LEFT_ARR.png" /></a>
+		<a href = "L2_Room4.html"><img src = "images/DOWN_ARR.png" /></a>
+		&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+		<a href = "L3_Room7.html"><img src = "images/UP_STAIRS.PNG" /></a>
+		<hr />
+		
+		<!--Homepage Link -->
+		<h4><a href = "index.html">Back to Homepage</a></h4>
+	</body>
+</html>

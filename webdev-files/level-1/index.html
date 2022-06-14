@@ -1,0 +1,788 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title></title>
+		<style></style>
+		<script>
+			function initialize()
+			{
+				guessSpan = document.getElementById("output");
+				winOrLoseMessageDiv = document.getElementById("guessMessage");
+				guessesRemainingSpan = document.getElementById("numOfGuesses");
+				previousGuessesSpan = document.getElementById("prevGuesses");
+				hotOrColdDiv = document.getElementById("hotOrColdMessage");
+				actualNumSpan = document.getElementById("actualNum");
+				computerLiesButton = document.getElementById("computerliesbtn");
+				totalNumGuessesSpan = document.getElementById("totalamntguesses");
+				guess = 50;
+				guessCounter = 5;
+				totalGuesses = 0;
+				valueToAdd = 0;
+				badComputerNum = 0;
+				randomPhraseNum = 0;
+				guessDiff = 0;
+				canComputerLie = false;
+				listOfGuesses = "You have made no guesses.";
+				howCloseYouAre = "";
+				victoryMessage = "Congratulations! You guessed the number! Press the reset button to play again!";
+				loseMessage = "Sorry, you did not guess the number. Would you like to try again?";
+				veryHotResponse = "You are very hot!";
+				hotResponse = "You are hot!";
+				veryWarmResponse = "You are very warm!";
+				warmResponse = "You are warm.";
+				coolResponse = "You are cool.";
+				veryCoolResponse = "You are very cool.";
+				coldResponse = "You are cold.";
+				veryColdResponse = "You are very cold.";
+				generateRandomNumber();
+			}
+			
+			/* Generates a random number between 1 and 100 */
+			function generateRandomNumber()
+			{
+				rndNumber = Math.random();
+				rndNumber *= 100;
+				rndNumber = parseInt(rndNumber);
+				rndNumber++;
+				display();
+			}
+			
+			/* Sets canComputerLie to true if it is false and false if it is true */
+			function toggleComputerCanLie()
+			{
+				if (totalGuesses == 0)
+				{
+					canComputerLie = !canComputerLie;
+					display();
+				}
+				else
+				{
+				}
+			}
+			
+			/* Picks a random number between 1 and 20 to determine if the computer will lie */
+			function computerLie()
+			{
+				badComputerNum = Math.random();
+				badComputerNum *= 20;
+				badComputerNum = parseInt(badComputerNum);
+				badComputerNum++;
+				display();
+			}
+			
+			/* Picks a random number between 1 and 8 to be used to pick a random phrase 
+			for the computer to display when it lies at a 5% chance */
+			function randomPhraseGenerator()
+			{
+				randomPhraseNum = Math.random();
+				randomPhraseNum *= 8; 
+				randomPhraseNum = parseInt(randomPhraseNum);
+				randomPhraseNum++;
+				display();
+			}
+			
+			/* Displays: 
+			1. The guess 
+			2. The number of guesses remaining
+			3. The list of guesses
+			4. The Computer Lies Button (if it is on or off)
+			5. The total number of guesses (when the player wins the game)
+			6. The random number (when the player loses or wins the game)			
+			*/
+			
+			function display()
+			{
+				guessSpan.innerHTML = guess;
+				guessesRemainingSpan.innerHTML = guessCounter;
+				previousGuessesSpan.innerHTML = listOfGuesses;
+				
+				if (!canComputerLie)
+				{
+					computerLiesButton.innerHTML = "Computer Lies are OFF";
+				}
+				else
+				{
+					computerLiesButton.innerHTML = "Computer Lies are ON";
+				}
+				
+				if (winOrLoseMessageDiv.innerHTML == loseMessage || winOrLoseMessageDiv.innerHTML == victoryMessage)
+				{
+					totalNumGuessesSpan.innerHTML = totalGuesses;
+				}
+				
+				if (winOrLoseMessageDiv.innerHTML == loseMessage || winOrLoseMessageDiv.innerHTML == victoryMessage)
+				{
+					actualNumSpan.innerHTML = rndNumber;
+				}
+			}
+			
+			/* Adds a value to guess. If the value plus guess is more than 100, it changes the sum to 100. */
+			function addValue(num)
+			{
+				guess = guess + parseInt(num);
+				
+				if (guess > 100)
+				{
+					guess = 100;
+				}
+				
+				display();
+			}
+			
+			/* Subtracts a value from guess. If the guess - value is less than or equal to 0, it changes the difference to 1. */
+			function subtractValue(num)
+			{
+				guess = guess - parseInt(num);
+					
+				if (guess <= 0)
+				{
+					guess = 1;
+				}
+				
+				display();
+			}
+			
+			/* Concatenates a character to the list if the player still has guesses and has not won. */
+			function addCharacter(ch)
+			{
+				/* If the player still has guesses or has just used their last guess */
+				if (guessCounter >= 0)
+				{
+					/* If the player has won */
+					if (winOrLoseMessageDiv.innerHTML == victoryMessage)
+					{
+					}
+					/* If the player has not already won */
+					else
+					{
+						valueToAdd += ch;
+					}
+				}
+				/* If the player does not still have guesses */
+				else
+				{
+				}
+			}
+			
+			/* Checks to see if guess is equal to the randomly generated number and changes message accordingly */
+			function checkNum()
+			{
+				guessDiff = rndNumber - guess;
+				
+				/* If the player still has guesses */
+				if (guessCounter > 0)
+				{
+					/* If the player already won */
+					if (winOrLoseMessageDiv.innerHTML == victoryMessage)
+					{
+					}
+					/* If the player did not already win */
+					else
+					{
+						totalGuesses++;
+						
+						/* If the player guessed the number correctly */
+						if (guess == rndNumber)
+						{
+							endGame();
+							addGuessToList();
+							hotOrCold();
+							guessCounter--;
+						}
+						/* If the player did not guess the number correctly */
+						else
+						{
+							/* If canComputerLie is true */ 
+							if (canComputerLie)
+							{
+								computerLie();
+								randomPhraseGenerator();
+								hotOrCold();
+							}
+							/* If canComputerLie is false */ 
+							else
+							{
+								hotOrCold();
+							}
+							
+							/* If the player was within 5 of the correct answer (according to hotOrCold() function) */
+							if (hotOrColdDiv.innerHTML == veryHotResponse)
+							{
+								winOrLoseMessageDiv.innerHTML = "Wrong guess. Try again.";
+								guessCounter = guessCounter + 0;
+								addGuessToList();
+							}
+							/* If the player was not within 5 of the correect answer (according to hotOrCold() function) */
+							else
+							{
+								guessCounter--;
+								endGame();
+								
+								/* If the player guesses wrong and the game ends */
+								if (winOrLoseMessageDiv.innerHTML == loseMessage)
+								{
+									addGuessToList();
+								}
+								/* If the player guesses wrong and the game does not end */
+								else
+								{
+									winOrLoseMessageDiv.innerHTML = "Wrong guess. Try again.";
+									addGuessToList();
+								}
+							}
+						}
+					}
+					
+					display();
+				}
+				/* If the player does not still have guesses */
+				else 
+				{
+				}
+			}
+			
+			/* Adds last guess to listOfGuesses
+			
+			If badComputerNum is 5:
+				If randomPhraseNum = 1: Add (Cold)
+				If randomPhraseNum = 2: Add (Very Warm)
+				If randomPhraseNum = 3: Add (Very Cold)
+				If randomPhraseNum = 4: Add (Cool)
+				If randomPhraseNum = 5: Add (Hot) 
+				If randomPhraseNum = 6: Add (Very Hot)
+				If randomPhraseNum = 7: Add (Very Cool)
+				If randomPhraseNum = 8: Add (Warm)
+				
+			If badComputerNum is not 5:
+				Within 5 = Add (Very Hot)
+				Within 6-8 = Add (Hot)
+				Within 9-15 = Add (Very Warm)
+				Within 16-20 = Add (Warm)
+				Within 21-30 = Add (Cool)
+				Within 31-40 = Add (Very Cool)
+				Within 41-50 = Add (Cold)
+				55 or above = Add (Very Cold) 
+			*/
+			function addGuessToList()
+			{
+				/* If the player still has guesses or just used their last guess */
+				if (guessCounter >= 0)
+				{
+					valueToAdd = "Guess ";
+					valueToAdd += totalGuesses;
+					valueToAdd += ": ";
+					valueToAdd += guess;
+					
+					/* If badComputerNum is 5 (which is the number it has to be for the computer to lie at a 5% chance) */
+					if (badComputerNum == 5)
+					{
+						if (randomPhraseNum == 1)
+						{
+							addCharacter(" (Cold)");
+						}
+						else
+						{ 
+							if (randomPhraseNum == 2)
+							{
+								addCharacter(" (Very Warm)");
+							}
+							else
+							{
+								if (randomPhraseNum == 3)
+								{
+									addCharacter(" (Very Cold)");
+								}
+								else
+								{
+									if (randomPhraseNum == 4)
+									{
+										addCharacter(" (Cool)");
+									}
+									else
+									{
+										if (randomPhraseNum == 5)
+										{
+											addCharacter(" (Hot)");
+										}
+										else
+										{
+											if(randomPhraseNum == 6)
+											{
+												addCharacter(" (Very Hot)");
+											}
+											else
+											{
+												if (randomPhraseNum == 7)
+												{
+													addCharacter(" (Very Cool)");
+												}
+												else
+												{
+													if (randomPhraseNum == 8)
+													{
+														addCharacter(" (Warm)");
+													}
+													else
+													{
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					/* If badComputerNum is not 5 (which is the number it has to be for the computer to lie at a 5% chance) */
+					else
+					{
+						if (guessDiff >= -5 && guessDiff <= 5)
+						{
+							addCharacter(" (Very Hot)");
+						}
+						else
+						{
+							if (guessDiff >= 6 && guessDiff <= 8 || guessDiff >= -8 && guessDiff <= -6)
+							{
+								addCharacter(" (Hot)");
+							}
+							else
+							{
+								if (guessDiff >= 9 && guessDiff <= 15 || guessDiff >= -15 && guessDiff <= -9)
+								{
+									addCharacter(" (Very Warm)");
+								}
+								else
+								{
+									if (guessDiff >= 16 && guessDiff <= 20 || guessDiff >= -20 && guessDiff <= -16)
+									{
+										addCharacter(" (Warm)");
+									}
+									else
+									{
+										if (guessDiff >= 21 && guessDiff <= 30 || guessDiff >= -30 && guessDiff <= -21)
+										{
+											addCharacter(" (Cool)");
+										}
+										else
+										{
+											if (guessDiff >= 31 && guessDiff <= 40 || guessDiff >= -40 && guessDiff <= -31)
+											{
+												addCharacter(" (Very Cool)");
+											}
+											else
+											{
+												if (guessDiff >= 41 && guessDiff <= 55 || guessDiff >= -55 && guessDiff <= -41)
+												{
+													addCharacter(" (Cold)");
+												}
+												else
+												{
+													if (guessDiff > 55 || guessDiff < -55)
+													{
+														addCharacter(" (Very Cold)");
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					
+					/* If the player has lost the game */
+					if (winOrLoseMessageDiv.innerHTML == loseMessage)
+					{	
+					}
+					/* If the player has not lost the game */ 
+					else
+					{
+						addCharacter(", ");
+					}
+				}
+				/* If the player does not still have guesses */
+				else
+				{
+				}
+				
+				/* If the player has not made any guesses */
+				if (listOfGuesses == "You have made no guesses.")
+				{
+					listOfGuesses = valueToAdd;
+				}
+				/* If the player has made a guess */
+				else
+				{
+					listOfGuesses += valueToAdd;
+				}
+			}
+			
+			/* Compares the guess to the random number and displays a message based on the guess's proximity to the actual number.
+			
+			If badComputerNum is 5:
+				If randomPhraseNum = 1: Cold
+				If randomPhraseNum = 2: Very Warm
+				If randomPhraseNum = 3: Very Cold
+				If randomPhraseNum = 4: Cool
+				If randomPhraseNum = 5: Hot
+				If randomPhraseNum = 6: Very Hot
+				If randomPhraseNum = 7: Very Cool
+				If randomPhraseNum = 8: Warm
+				
+			If badComputerNum is not 5: 
+				Within 5 = Very Hot
+				Within 6-8 = Hot
+				Within 9-15 = Very Warm
+				Within 16-20 = Warm
+				Within 21-30 = Cool
+				Within 31-40 = Very Cool
+				Within 41-50 = Cold
+				55 or above = Very Cold
+			*/			
+			function hotOrCold()
+			{
+				/* If the player still has guesses or just used their last guess */
+				if (guessCounter >= 0)
+				{
+					/* If the player has won */
+					if (winOrLoseMessageDiv.innerHTML == victoryMessage)
+					{
+						hotOrColdDiv.innerHTML = "You're on fire! That's it!"; 
+					}
+					else
+					{
+						/* If badComputerNum is 5 (which is the number it has to be for the computer to lie at a 5% chance) */
+						if (badComputerNum == 5)
+						{
+							if (randomPhraseNum == 1)
+							{
+								hotOrColdDiv.innerHTML = coldResponse;
+							}
+							else
+							{
+								if (randomPhraseNum == 2)
+								{
+									hotOrColdDiv.innerHTML = veryWarmResponse;
+								}
+								else
+								{
+									if (randomPhraseNum == 3)
+									{
+										hotOrColdDiv.innerHTML = veryColdResponse;
+									}
+									else
+									{
+										if (randomPhraseNum == 4)
+										{
+											hotOrColdDiv.innerHTML = coolResponse;
+										}
+										else
+										{
+											if (randomPhraseNum == 5)
+											{
+												hotOrColdDiv.innerHTML = hotResponse;
+											}
+											else
+											{
+												if(randomPhraseNum == 6)
+												{
+													hotOrColdDiv.innerHTML = veryHotResponse;
+												}
+												else
+												{
+													if (randomPhraseNum == 7)
+													{
+														hotOrColdDiv.innerHTML = veryCoolResponse;
+													}
+													else
+													{
+														if (randomPhraseNum == 8)
+														{
+															hotOrColdDiv.innerHTML = warmResponse;
+														}
+														else
+														{
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+						/* If badComputerNum is not 5 (which is the number it has to be for the computer to lie at a 5% chance) */
+						else
+						{
+							if (guessDiff >= -5 && guessDiff <= 5)
+							{	
+								hotOrColdDiv.innerHTML = veryHotResponse;
+							}
+							else 
+							{
+								if (guessDiff >= 6 && guessDiff <= 8 || guessDiff >= -8 && guessDiff <= -6)
+								{	 
+									hotOrColdDiv.innerHTML = hotResponse;
+								}
+								else
+								{
+									if (guessDiff >= 9 && guessDiff <= 15 || guessDiff >= -15 && guessDiff <= -9)
+									{
+										hotOrColdDiv.innerHTML = veryWarmResponse;
+									}
+									else
+									{
+										if (guessDiff >= 16 && guessDiff <= 20 || guessDiff >= -20 && guessDiff <= -16)
+										{
+											hotOrColdDiv.innerHTML = warmResponse;
+										}
+										else 
+										{
+											if (guessDiff >= 21 && guessDiff <= 30 || guessDiff >= -30 && guessDiff <= -21)
+											{
+												hotOrColdDiv.innerHTML = coolResponse;
+											}
+											else
+											{
+												if (guessDiff >= 31 && guessDiff <= 40 || guessDiff >= -40 && guessDiff <= -31)
+												{
+													hotOrColdDiv.innerHTML = veryCoolResponse;
+												}
+												else
+												{
+													if (guessDiff >= 41 && guessDiff <= 55 || guessDiff >= -55 && guessDiff <= -41)
+													{
+														hotOrColdDiv.innerHTML = coldResponse;
+													}
+													else
+													{
+														if (guessDiff > 55 || guessDiff < -55)
+														{
+														hotOrColdDiv.innerHTML = veryColdResponse;
+														}
+													}	
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				/* If the player does not still have guesses */
+				else
+				{
+				}
+			}
+			
+			/* Runs the program over by running initialize and changing winOrLoseMessageDiv to default message and hotOrColdDiv to default message */
+			function resetGame()
+			{
+				initialize();
+				winOrLoseMessageDiv.innerHTML = "You have not guessed yet.";
+				hotOrColdDiv.innerHTML = "";
+				totalNumGuessesSpan.innerHTML = "____";
+				actualNumSpan.innerHTML = "???";
+			}
+			
+			/* Checks to see if the player has won or lost and changes winOrLoseMessageDiv accordingly */
+			function endGame()
+			{
+				/* If the player guesses the number correctly */
+				if (guess == rndNumber)
+				{
+					winOrLoseMessageDiv.innerHTML = victoryMessage;
+				}
+				/* If the player does not guess the number correctly */
+				else
+				{
+					/* If the player does not have any more guesses */
+					if (guessCounter == 0)
+					{
+						winOrLoseMessageDiv.innerHTML = loseMessage;
+					}
+				}
+				
+				display();
+				
+			}		
+		
+		
+		
+		/* ** FOR TESTING **
+			--- PUT THESE IN THE APPROPRIATE SECTION OF THE JAVASCRIPT CODE, AND MAKE SURE 
+			TO PLACE ALL COMPONENTS OF A SET IN EACH APPROPRIATE SECTION AT ONCE. ---
+			
+			FUNCTIONS:
+			initialize() statements:
+				randNumOutput = document.getElementById("rndnum");
+				badNumSpan = document.getElementById("badNum");
+				phraseNumSpan = document.getElementById("phraseNum");
+			
+			display() statements:
+				randNumOutput.innerHTML = rndNumber; 
+				badNum.innerHTML = badComputerNum;
+				phraseNumSpan.innerHTML = randomPhraseNum; 
+				actualNumSpan.innerHTML = rndNumber;
+		*/
+		
+		
+		/* OPTIMIZATIONS
+		1. Make a variable for the message displayed when you win (**DONE**)
+		2. Make a variable for the message displayed when you lose(**DONE**)
+		3. Make is so that the computer lies 5% of the time (**DONE**)
+			1. Add a computer lies togglable button that updates to say if computer lies are on or off
+		4. Add how many guesses it took you in total to guess the number (**DONE**)
+		5. If the player does not guess the number, make the "It took you  __ guesses" line say "It took you __ guesses to not guess the number" instead.
+		6. Make the victory messsage and loss messages fixed/better (**DONE**)
+		7. Make the hotOrColdDiv say "Thats the number!" or something like that when the player wins (**DONE**)
+		8. Don't let the hotOrColdDiv display until the player makes a guess  (**DON'T THINK IT CAN BE DONE**)
+		9. After the game is done, have the comptuer display when it lied to you. 
+		10. Label the guesses by number. (**DONE**)
+		*/
+		
+		/* BUGS 
+		1. For some reason when the guess is one away from the number it says "You are cold" (**FIXED**)
+		2. The message does not change for the hotOrCold thing (**FIXED**)
+		3. Doesn't display last number when you lose game? (**WASNT ACTUALLY A BUG BUT FIXED**)
+		4. If you get a very hot on the first guess the guessMessage HTML doesnt update to say that you've made a guess (**FIXED**)
+		5. When you reset the game, it sets the innerHTML of totalNumGuessesSpan to 0 when it should be ___ (**FIXED**)
+		6. When the player wins, the totalamntguesses span says "It took you NaN guesses..." instead of a number. (**FIXED**)
+		7. When the player wins or loses and presses reset, the website shows the next number for the player to see. (**FIXED**)
+		8. When the player runs out of guesses and loses, the total mnumber of guesses is not displayed. (**FIXED**)
+		*/
+		
+		/* NEATNESS STUFF
+		1. Should if statements go in the same line as regular lines of code? (and put a space between if statements and function calls) (**DONE**)
+		2. Define all variables in the beginning (including guessDiff) (**DONE**)
+		3. Only display hotOrColdDiv when a guess is made (so remove the whitespace thats there). (**DON'T THINK IT CAN BE DONE**)
+		4. Remove all empty else statements?
+		5. Add comments to everything (**DONE**)
+		6. Move function checkNum() underneath function hotOrCold() (or maybe even just under all the other fucntions?)
+		7. Change all the guessMessage.innerHTML to winOrLoseMessageDiv.innerHTML (**DONE**)
+		*/
+		
+		</script>
+	</head>
+	<body onload = "initialize();">
+		
+		<!-- **TEXT** -->
+		<!-- Rules Display -->
+		<div>Guess the random number that is between 1-100!</div>
+		<div>With each guess, I will tell you how close to the number you are.</div>
+		<br />
+		
+		<div>If you are:</div>
+		<div>Very Hot: Within 5 of the number</div>
+		<div>Hot: Within 6-8 of the number</div>
+		<div>Very Warm: Within 9-15 of the number </div>
+		<div>Warm: Within 16-20 of the number</div>
+		<div>Cool: Within 21-30 of the number</div>
+		<div>Very Cool: Within 31-40 of the number</div>
+		<div>Cold: Within 41-50 of the number</div>
+		<div>Very Cold: At least 55 away from the number</div>
+		<br />
+		
+		<div>You can make the game more difficult by enabling "Computer Lies", which makes it so that</div>
+		<div>I can tell you an random result about how close your guess is to the actual number.</div>
+		<br />
+		
+		<div>By default "Computer Lies" are turned off, but you can click the button below to enable this option!</div>
+		<br />
+		
+		<!-- Computer Lies Toggle Button -->
+		<button onclick = "toggleComputerCanLie();" id = "computerliesbtn">Computer Lies are OFF</button>
+		<br />
+		<br />
+		
+		<div>Make sure you decide before you make your first guess, as you cannot change it after you have made your first guess.</div>
+		<br />
+		
+		<div>To restart the game and generate a new random number, press the reset button.</div>
+		<br />
+		
+		<div>Good luck!</div>
+		<hr />
+		
+		<!-- Gueess Display -->
+		Your Guess: <span id = "output"></span>
+		<hr />
+		
+		<!-- Guessed or Not Message Display -->
+		<div id = "guessMessage">You have not guessed yet.</div>
+		<br />
+		
+		<!-- Hot Or Cold Phrase Display -->
+		<div id = "hotOrColdMessage"></div>
+		<br />
+		
+		<!-- Guesses Remaining Display -->
+		Guesses Remaining: <span id = "numOfGuesses"></span>
+		<br />
+		<br />
+		
+		<!-- Guess List Display -->
+		Previous Guesses: <span id = "prevGuesses"></span>
+		<br />
+		
+		<!-- Actual Number Display -->
+		The number is: <span id = "actualNum">???</span>
+		<hr />
+		
+		<!-- Total Number of Guesses Display-->
+		It took you <span id = "totalamntguesses">____</span>  <span> guess(es) to guess (or to not guess) the number.</span>
+		<br />
+		<br />
+		
+		<!-- **BUTTONS** -->
+		<!-- Addition and Subtraction Buttons -->
+		<button onclick = "addValue('1');">Add 1</button> <button onclick = "subtractValue('1');">Sutbract 1</button>
+		<br />
+		<br />
+		
+		<button onclick = "addValue('5');">Add 5</button> <button onclick = "subtractValue('5');">Subtract 5</button>
+		<br />
+		<br />
+		
+		<button onclick = "addValue('10');">Add 10</button> <button onclick = "subtractValue('10');">Subtract 10</button>
+		<br />
+		<br />
+		
+		<button onclick = "addValue('25');">Add 25</button> <button onclick = "subtractValue('25');">Subtract 25</button>
+		<br />
+		<br />
+		
+		<!-- Commit Button -->
+		<button onclick = "checkNum();">Make a Guess!</button>
+		<br />
+		<br />
+		
+		<!-- Reset Button -->
+		<button onclick = "resetGame();">Reset ⟳</button>
+		
+		<!-- ** FOR TESTING **
+			--- PUT THESE WHEREVER YOU WANT THE TEXT AND THE BUTTON TO APPEAR, BUT DON'T FORGET TO 
+			ADD THE APPROPRIATE JAVASCRIPT BACK IN THE CODE AS WELL. ---
+			
+			TEXT:			
+			Bad Computer Number Display
+			The Computer Number is: <span id = "badNum"></span>
+			<br />
+		
+			Random Phrase Number Display
+			The Phrase Number is: <span id = "phraseNum"></span>
+			<br />
+		
+			Random Number Display
+			Your new random number is <span id = "rndnum">0</span>
+			<br />
+			
+			BUTTONS:		
+			Random Number Generator Button 
+			<button onclick = "generateRandomNumber();">Generate a New Random Number</button>
+		-->
+
+	</body>
+</html>

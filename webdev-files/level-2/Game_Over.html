@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>You Died!</title>
+		<style>
+		
+		body
+		{
+			background-image: url("images/game_over_background.jpg");
+		}
+		
+		#game_over_headings
+		{
+			font: bold 26pt comic sans;
+			text-decoration: underline;
+			text-align:center;
+			color:yellow;
+		}
+		
+		#game_over
+		{
+			text-align:center;
+			color:yellow;
+		}
+		
+		#game_over_message
+		{
+			font: comic sans;
+			color:yellow;
+		}
+		</style>
+		<link rel = "stylesheet" href = "CSS_Sheet.css" />
+		<script src = "utilities.js"></script>
+		<script>
+		
+			function initialize()
+			{
+			}
+		</script>
+		
+	</head>
+	
+	<body onload = "initialize();">
+		<h6><div id = "game_over_headings">Rock Bottom</div></h6>
+		<h6><div id = "game_over_headings">Death</div></h6>
+		<hr />
+		<div><img src = "images/death_pic.PNG" /></div>
+		
+		<h1 id = "game_over">
+			GAME OVER!
+		</h1>
+		
+		<p id = "game_over_message">
+			You died! Press the "Back to Homepage" link at the bottom of the page to play again!
+		</p>
+		<hr />
+		
+		<!--Homepage Link -->
+		<h4><a href = "index.html">Return to Homepage</a></h4>
+	</body>
+</html>

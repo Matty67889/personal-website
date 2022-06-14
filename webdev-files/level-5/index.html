@@ -1,0 +1,712 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Which Animal Am I? Quiz</title>
+		<link rel = "stylesheet" href = "style.css">
+		<style>
+			body
+			{
+				background-image: url("images/background.jpg");
+				background-repeat: no-repeat;
+				background-size: 100% 100%;
+				background-attachment: fixed;
+			}
+
+			h1
+			{
+				display: inline-block;
+
+				width: 50%;
+
+				background-color: #CBE3FF;
+				color: #8B008B;
+				font-family: Helvetica;
+
+				padding: 16px;
+
+				border: 3px solid #F6BB93;
+				border-radius: 10px;
+
+				margin-bottom: 20px;
+			}
+
+			form
+			{
+				background-color: #D89FA6;
+
+				border: 3px solid #5EFF89;
+				border-radius: 25px;
+
+				margin-bottom: 75px;
+			}
+
+			.container
+			{
+				text-align: center;
+
+				margin: 60px 70px 75px;
+			}
+
+			label
+			{
+				display: inline-block;
+				width: 39%;
+
+				vertical-align: middle;
+
+				margin: 15px 30px;
+			}
+
+			input
+			{
+    		display: none;
+			}
+
+			input:checked + label.qstyle
+			{
+				background-color: #8B008B;
+				color: white;
+			}
+
+			.qstyle
+			{
+				background-color: #CBE3FF;
+				color: #8B008B;
+
+				font-size: 16pt;
+				font-family: Helvetica;
+
+				border: 3px solid #F6BB93;
+				border-radius: 10px;
+			}
+
+			.qstyle:hover
+			{
+				background-color: #8B008B;
+				color: white;
+			}
+
+			.submit
+			{
+				background-color: white;
+				color: green;
+
+				font-size: 16pt;
+				font-family: Helvetica;
+
+				border: 3px solid green;
+				border-radius: 10px;
+
+				margin-right: 75%;
+			}
+
+			.submit:hover
+			{
+				background-color: #26D701;
+				color: white;
+			}
+
+			.reset
+			{
+				background-color: white;
+				color: red;
+
+				font-size: 16pt;
+				font-family: Helvetica;
+
+				border: 3px solid red;
+				border-radius: 10px;
+			}
+
+			.reset:hover
+			{
+				background-color: #EC3C6A;
+				color: white;
+			}
+
+			#aboutsection
+			{
+				background-color: white;
+				color: black;
+
+				font-size: 16pt;
+
+				padding: 10px;
+
+				border: 3px solid black;
+
+				margin-bottom: 70px;
+			}
+
+			#incomplete_msg
+			{
+				display: none;
+
+				background-color: yellow;
+				color: red;
+
+				font-family: Helvetica;
+				font-size: 20pt;
+
+				margin-bottom: 20px;
+			}
+
+			#resultssection
+			{
+				display: none;
+
+				height: 53%;
+
+				background-color: #D89FA6;
+
+				text-align: center;
+
+				padding: 10px;
+
+				border: 3px solid black;
+			}
+
+			#animalname
+			{
+				color: #8B008B;
+
+				font-size: 28pt;
+			}
+
+			#animalresultpic
+			{
+				width: 85%;
+				height: 75%;
+
+				margin: auto auto;
+				margin-bottom: 20px;
+			}
+
+			#redobutton
+			{
+				background-color: #CBE3FF;
+				color: #8B008B;
+
+				font-size: 20pt;
+				font-family: Helvetica;
+				font-weight: bold;
+
+				border: 3px solid #F6BB93;
+				border-radius: 10px;
+			}
+
+			#redobutton:hover
+			{
+				background-color: #8B008B;
+				color: white;
+			}
+
+			#redoicon
+			{
+				height: 25px;
+				width: 27px;
+			}
+
+			#resultsdescription
+			{
+				font-family: Helvetica;
+
+				padding: 16pt;
+
+				border: 3px solid #F6BB93;
+
+				margin-bottom: 20px;
+			}
+		</style>
+		<script>
+			function initialize()
+			{
+				forms = document.getElementsByTagName("form");
+				amtQuestions = forms.length;
+
+				incompleteMsg = document.getElementById("incomplete_msg");
+				resultsBox = document.getElementById("resultssection");
+				resultName = document.getElementById("animalname");
+				resultsImg = document.getElementById("animalresultpic");
+				resultDescription = document.getElementById("resultsdescription");
+
+				submitButton = document.getElementById("submitbutton");
+				resetButton = document.getElementById("resetbutton");
+
+				wolfPic = "images/wolf.PNG";
+				foxPic = "images/fox.PNG";
+				lionPic = "images/lion.PNG";
+				monkeyPic = "images/monkey.PNG";
+				deerPic = "images/deer.PNG";
+				dovePic = "images/dove.PNG";
+
+				formsComplete = false;
+				showResults = false;
+				disable = false;
+			}
+
+			function checkSelectedChoice(questionNum)
+			{
+				var currentForm = forms[questionNum - 1];
+				var currentFormChoices = currentForm.getElementsByTagName("input");
+
+				for (i = 0; i < currentFormChoices.length; i++)
+				{
+					var choiceNumber = currentFormChoices[i];
+
+					if (choiceNumber.checked == true)
+					{
+						return i + 1;
+					}
+				}
+			}
+
+			function recordData()
+			{
+				var score = 0;
+
+				for (var i = 1; i < forms.length + 1; i++)
+				{
+					score = score + checkSelectedChoice(i);
+				}
+
+				resultName.innerHTML = "You are a ";
+
+				if (score >= 10 && score <= 14)
+				{
+					resultName.innerHTML += "WOLF";
+					resultsImg.src = wolfPic;
+					resultDescription.innerHTML = "You are independent and like to spend most of your time in solitude. Many people underestimate you due to your quiet nature, but you are strong on the inside. You care deeply for others, and try to combat conflict and fight for what you believe is right.";
+				}
+				else
+				{
+					if (score >= 15 && score <= 19)
+					{
+						resultName.innerHTML += "LION";
+						resultsImg.src = lionPic;
+						resultDescription.innerHTML = "You are prideful but reserved. You are usually calm and collected, but when provoked, you can be quite ferocious. You choose your friends wisely, only lettting people that you think highly of into your close friends group. Many think that you look intimidating at first glance, but those that get to know you knwo you are a great person.";
+					}
+					else
+					{
+						if (score >= 20 && score <= 24)
+						{
+							resultName.innerHTML += "DEER";
+							resultsImg.src = deerPic;
+							resultDescription.innerHTML = "You are active and hardworking. You are well known and well-liked in your community. You can sometimes be unpredictable in your behaviors, and it is usually due to having too many tasks and ideas floating around in your head. You try your best to be a supportive and helpful character, and often end up surpressing your emotions and needs as a result. You seek a balanced life where you can be in good health and do what you like.";
+						}
+						else
+						{
+							if (score >= 25 && score <= 29)
+							{
+								resultName.innerHTML += "DOVE";
+								resultsImg.src = dovePic;
+								resultDescription.innerHTML = "You are peaceful and graceful. You are naturally talented, and execute tasks with ease. People admire how humble and helpful you are, as well as your ability to unite people with your kind spirit. You have strong morals that you are willing to fight for. You appear weak to most, but your strong will is displayed when you are contested.";
+							}
+							else
+							{
+								if (score >= 30 && score <= 34)
+								{
+									resultName.innerHTML += "FOX";
+									resultsImg.src = foxPic;
+									resultDescription.innerHTML = "You are mysterious and clever. It hard for most to get a good read on your character because of your enigmatic personality. You like interacting with similar goals and interests to you, but it can sometimes be difficult to find such people because you do not open up to people easily. You mainly like to keep your life private, but you are great company when you are hanging out with others.";
+								}
+								else
+								{
+									if (score >= 35 && score <= 40)
+									{
+										resultName.innerHTML += "MONKEY";
+										resultsImg.src = monkeyPic;
+										resultDescription.innerHTML = "You are silly and adventurous. You make friends wherever you go with your charm and amicability. You like to make whatever you are doing fun for you. Though your intentions are usually good, you sometimes indirectly hurt others due to your rash actions. It is difficult for your to focus on one thing for a long amount of time, because you are an action seeker. With the right companions, you can make everywhere you go much more fun.";
+									}
+								}
+							}
+						}
+					}
+				}
+
+				resultName.innerHTML += "!";
+
+				showResults = true;
+				disable = true;
+				display();
+			}
+
+			function checkFormComplete()
+			{
+				var completedForms = 0;
+
+				for (var num = 0; num < forms.length; num++)
+				{
+					var currentForm = forms[num];
+					var currentFormChoices = currentForm.getElementsByTagName("input");
+
+					for (var i = 0; i < currentFormChoices.length; i++)
+					{
+						var choiceNumber = currentFormChoices[i];
+
+						if (choiceNumber.checked == true)
+						{
+							completedForms++;
+							i = currentFormChoices.length;
+						}
+					}
+				}
+
+				if (completedForms == amtQuestions)
+				{
+					formsComplete = true;
+
+					recordData();
+				}
+				else
+				{
+					formsComplete = false;
+					display();
+				}
+			}
+
+			function reset()
+			{
+				for (var num = 0; num < forms.length; num++)
+				{
+					var currentForm = forms[num];
+					var currentFormChoices = currentForm.getElementsByTagName("input");
+
+					for (var i = 0; i < currentFormChoices.length; i++)
+					{
+						var choiceNumber = currentFormChoices[i];
+
+						if (choiceNumber.checked == true)
+						{
+							choiceNumber.checked = false;
+							i = currentFormChoices.length;
+						}
+					}
+				}
+
+				if (incompleteMsg.style.display == "block")
+				{
+					incompleteMsg.style.display = "none";
+				}
+			}
+
+			function restartQuiz()
+			{
+				reset();
+
+				resultsBox.style.display = "none";
+
+				for (var i = 0; i < amtQuestions; i++)
+				{
+					forms[i].style.pointerEvents = "auto";
+				}
+
+				submitButton.disabled = false;
+				resetButton.disabled = false;
+
+				showResults = false;
+				disable = false;
+				formsComplete = false;
+			}
+
+			function display()
+			{
+				if (formsComplete == true)
+				{
+					incompleteMsg.style.display = "none";
+				}
+				else
+				{
+					incompleteMsg.style.display = "block";
+				}
+
+				if (showResults == true)
+				{
+					resultsBox.style.display = "block";
+				}
+				else
+				{
+					resultsBox.style.display = "none";
+				}
+
+				if (disable == true)
+				{
+					for (var i = 0; i < amtQuestions; i++)
+					{
+						forms[i].style.pointerEvents = "none";
+					}
+
+					submitButton.disabled = true;
+					resetButton.disabled = true;
+				}
+			}
+		</script>
+	</head>
+	<body onload = "initialize();">
+		<div class = "container">
+			<h1>What Animal Are You?</h1>
+			<div id = "aboutsection">
+				We attribute chracter traits to different animals, such as courage to a lion, or gluttony to a pig. Oftentimes, we compare others
+				to certain animals to make them feel better about themselves, or to bring them down. Regardless what others might say about us,
+				our actions and behaviors make us similar to certain animals. Which animal are you most like? Take this quiz to find out! Press the
+				submit button when you are finished with the quiz to get your results. If you are ever unsatisfied with your results, you can press the
+				reset button to clear all your selected choices.
+			</div>
+
+			<h2>1. At a party, I am usually...</h2>
+			<form id = "question_1">
+				<input type = "radio" name = "party" value = "Choice 1" id = "choice_1_1" />
+				<label for = "choice_1_1" class = "button qstyle">
+					not going to a party.
+				</label>
+
+				<input type = "radio" name = "party" value = "Choice 2" id = "choice_1_2" />
+				<label for = "choice_1_2" class = "button qstyle">
+					in a corner of the room chatting with a friend.
+				</label>
+
+				<input type = "radio" name = "party" value = "Choice 3" id = "choice_1_3" />
+				<label for = "choice_1_3" class = "button qstyle">
+					telling anyone that will listen to me about something that's been on my mind.
+				</label>
+
+				<input type = "radio" name = "party" value = "Choice 4" id = "choice_1_4" />
+				<label for = "choice_1_4" class = "button qstyle">
+					in the middle of the dance floor showing everyone my awesome moves.
+				</label>
+			</form>
+
+			<h2>2. A genie appears, and grants you a wish. What do you wish for?</h2>
+			<form id = "question_2">
+				<input type = "radio" name = "genie" value = "Choice 1" id = "choice_2_1" />
+				<label for = "choice_2_1" class = "button qstyle">
+					World Peace
+				</label>
+
+				<input type = "radio" name = "genie" value = "Choice 2" id = "choice_2_2" />
+				<label for = "choice_2_2" class = "button qstyle">
+					Money
+				</label>
+
+				<input type = "radio" name = "genie" value = "Choice 3" id = "choice_2_3" />
+				<label for = "choice_2_3" class = "button qstyle">
+					A butler to run my life for me
+				</label>
+
+				<input type = "radio" name = "genie" value = "Choice 4" id = "choice_2_4" />
+				<label for = "choice_2_4" class = "button qstyle">
+					Fame
+				</label>
+			</form>
+
+			<h2>3. What are you most likely to do when you're stuck at home?</h2>
+			<form id = "question_3">
+				<input type = "radio" name = "stuck_at_home" value = "Choice 1" id = "choice_3_1" />
+				<label for = "choice_3_1" class = "button qstyle">
+					Find a good book to start reading.
+				</label>
+
+				<input type = "radio" name = "stuck_at_home" value = "Choice 2" id = "choice_3_2" />
+				<label for = "choice_3_2" class = "button qstyle">
+					Organize and clean.
+				</label>
+
+				<input type = "radio" name = "stuck_at_home" value = "Choice 3" id = "choice_3_3" />
+				<label for = "choice_3_3" class = "button qstyle">
+					Sleep.
+				</label>
+
+				<input type = "radio" name = "stuck_at_home" value = "Choice 4" id = "choice_3_4" />
+				<label for = "choice_3_4" class = "button qstyle">
+					Boot up my console and start playing games.
+				</label>
+			</form>
+
+			<h2>
+				4. You are walking with your friend and a person you do not know bumps into them. The stranger then accuses your friend of bumping into them,
+				but it was quite evident to you that the stranger walked into your friend on purpose. You know your friend is thinking of apologizing.
+				What do you do?
+			</h2>
+			<form id = "question_4">
+				<input type = "radio" name = "bump_scenario" value = "Choice 1" id = "choice_4_1" />
+				<label for = "choice_4_1" class = "button qstyle">
+					Wait for your friend to apologize and console them after.
+				</label>
+
+				<input type = "radio" name = "bump_scenario" value = "Choice 2" id = "choice_4_2" />
+				<label for = "choice_4_2" class = "button qstyle">
+					Yell at the stranger and accuse them of bumping into your friend.
+				</label>
+
+				<input type = "radio" name = "bump_scenario" value = "Choice 3" id = "choice_4_3" />
+				<label for = "choice_4_3" class = "button qstyle">
+					Try to diffuse the situation.
+				</label>
+
+				<input type = "radio" name = "bump_scenario" value = "Choice 4" id = "choice_4_4" />
+				<label for = "choice_4_4" class = "button qstyle">
+					Walk ahead of your friend, pretending you do not know them.
+				</label>
+			</form>
+
+			<h2>5. What is of the most importance to you?</h2>
+			<form id = "question_5">
+				<input type = "radio" name = "importance" value = "Choice 1" id = "choice_5_1" />
+				<label for = "choice_5_1" class = "button qstyle">
+					Myself
+				</label>
+
+				<input type = "radio" name = "importance" value = "Choice 2" id = "choice_5_2" />
+				<label for = "choice_5_2" class = "button qstyle">
+					Family
+				</label>
+
+				<input type = "radio" name = "importance" value = "Choice 3" id = "choice_5_3" />
+				<label for = "choice_5_3" class = "button qstyle">
+					Significant Other
+				</label>
+
+				<input type = "radio" name = "importance" value = "Choice 4" id = "choice_5_4" />
+				<label for = "choice_5_4" class = "button qstyle">
+					Friends
+				</label>
+			</form>
+
+			<h2>6. Where do you like to hang out the most?</h2>
+			<form id = "question_6">
+				<input type = "radio" name = "hangout" value = "Choice 1" id = "choice_6_1" />
+				<label for = "choice_6_1" class = "button qstyle">
+					A mall
+				</label>
+
+				<input type = "radio" name = "hangout" value = "Choice 2" id = "choice_6_2" />
+				<label for = "choice_6_2" class = "button qstyle">
+					A restaurant
+				</label>
+
+				<input type = "radio" name = "hangout" value = "Choice 3" id = "choice_6_3" />
+				<label for = "choice_6_3" class = "button qstyle">
+					A beach
+				</label>
+
+				<input type = "radio" name = "hangout" value = "Choice 4" id = "choice_6_4" />
+				<label for = "choice_6_4" class = "button qstyle">
+					A park
+				</label>
+			</form>
+
+			<h2>7. How would you like to spend your weekends?</h2>
+			<form id = "question_7">
+				<input type = "radio" name = "weekend" value = "Choice 1" id = "choice_7_1" />
+				<label for = "choice_7_1" class = "button qstyle">
+					Work, work, and more work.
+				</label>
+
+				<input type = "radio" name = "weekend" value = "Choice 2" id = "choice_7_2" />
+				<label for = "choice_7_2" class = "button qstyle">
+					Eating all day.
+				</label>
+
+				<input type = "radio" name = "weekend" value = "Choice 3" id = "choice_7_3" />
+				<label for = "choice_7_3" class = "button qstyle">
+					Relaxing.
+				</label>
+
+				<input type = "radio" name = "weekend" value = "Choice 4" id = "choice_7_4" />
+				<label for = "choice_7_4" class = "button qstyle">
+					Going out and catching up with friends.
+				</label>
+			</form>
+
+			<h2>8. Which element do you think is most associated with you?</h2>
+			<form id = "question_8">
+				<input type = "radio" name = "element" value = "Choice 1" id = "choice_8_1" />
+				<label for = "choice_8_1" class = "button qstyle">
+					Water
+				</label>
+
+				<input type = "radio" name = "element" value = "Choice 2" id = "choice_8_2" />
+				<label for = "choice_8_2" class = "button qstyle">
+					Earth
+				</label>
+
+				<input type = "radio" name = "element" value = "Choice 3" id = "choice_8_3" />
+				<label for = "choice_8_3" class = "button qstyle">
+					Air
+				</label>
+
+				<input type = "radio" name = "element" value = "Choice 4" id = "choice_8_4" />
+				<label for = "choice_8_4" class = "button qstyle">
+					Fire
+				</label>
+			</form>
+
+			<h2>9. What best describes your personality?</h2>
+			<form id = "question_9">
+				<input type = "radio" name = "personality" value = "Choice 1" id = "choice_9_1" />
+				<label for = "choice_9_1" class = "button qstyle">
+					Shy and reserved
+				</label>
+
+				<input type = "radio" name = "personality" value = "Choice 2" id = "choice_9_2" />
+				<label for = "choice_9_2" class = "button qstyle">
+					Independent and creative
+				</label>
+
+				<input type = "radio" name = "personality" value = "Choice 3" id = "choice_9_3" />
+				<label for = "choice_9_3" class = "button qstyle">
+					Vain and narcissistic
+				</label>
+
+				<input type = "radio" name = "personality" value = "Choice 4" id = "choice_9_4" />
+				<label for = "choice_9_4" class = "button qstyle">
+					Fun and outgoing
+				</label>
+			</form>
+
+			<h2>10. What is your favorite season?</h2>
+			<form id = "question_10">
+				<input type = "radio" name = "season" value = "Choice 1" id = "choice_10_1" />
+				<label for = "choice_10_1" class = "button qstyle">
+					Summer
+				</label>
+
+				<input type = "radio" name = "season" value = "Choice 2" id = "choice_10_2" />
+				<label for = "choice_10_2" class = "button qstyle">
+					Fall
+				</label>
+
+				<input type = "radio" name = "season" value = "Choice 3" id = "choice_10_3" />
+				<label for = "choice_10_3" class = "button qstyle">
+					Spring
+				</label>
+
+				<input type = "radio" name = "season" value = "Choice 4" id = "choice_10_4" />
+				<label for = "choice_10_4" class = "button qstyle">
+					Winter
+				</label>
+			</form>
+
+			<div id = "incomplete_msg">All questions have not been answered. Please complete the form.</div>
+
+			<button id = "submitbutton" class = "button submit" onclick = "checkFormComplete();">Submit</button>
+			<button id = "resetbutton" class = "button reset" onclick = "reset();">Reset</button>
+
+			<br />
+			<br />
+
+			<div id = "resultssection">
+				<h3 id = "animalname"></h3>
+
+				<img id = "animalresultpic" src = "" />
+
+				<div id = "resultsdescription"></div>
+
+				<button id = "redobutton" class = "button" onclick = "restartQuiz();">
+					Redo the Quiz!
+					<img id = "redoicon" src = "images/redoicon.png" />
+				</button>
+			</div>
+		</div>
+	</body>
+</html>

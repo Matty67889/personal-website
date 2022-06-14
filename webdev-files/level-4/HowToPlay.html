@@ -1,0 +1,160 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>The Crossing | How to Play</title>
+		<style>
+			body
+			{
+				background-color: #E7F7E7;
+			}
+			
+			h1
+			{
+				text-align: center;
+			}
+			
+			img
+			{
+				height: 100px;
+				margin-right: 70px;
+			}
+			
+			.title
+			{
+				color: #2E36D9;
+				font: 16pt;
+			}
+			
+			.embolden
+			{
+				font-weight: bold;
+			}
+			
+			.underline
+			{
+				text-decoration: underline;
+			}
+		</style>
+		<script></script>
+	</head>
+	<body>
+		<h1 class = "title">How to Play</h1>
+		
+		<p>
+			Welcome to The Crossing! In this game, you will control 3 humans and 3 blomfargles, and a hover car. The 6 people are on another planet,
+			trying to make their escape from a wasteland. They have a hover car that they are riding in, but they have found themselves trapped on one
+			side of a precipice! They have agreed to work together to overcome this obstacle. Unfortunately for the humans, their Blomfargle companions
+			are deadly, and will eat the humans if they ever outnumber them on either side of the precipice. Can you get the party across the precipice
+			without letting any humans die?
+			
+			<br />
+			<br />
+			
+			<span class = "underline embolden title">Objective</span></span>: Get all of the <span class = "embolden">Humans</span> and
+			<span class = "embolden">Blomfargles</span> to the other side of the precipice.
+			
+			<br />
+			<br />
+			
+			<span class = "underline embolden title">Characters:</span></span>
+			
+			<br />
+			<br />
+			
+			<p>
+				<span class = "embolden">Humans:</span>
+				<img src = "images/Human1.png" />
+				<img src = "images/Human2.png" />
+				<img src = "images/Human3.png" />
+				
+				<br />
+				<br />
+				
+				<span class = "embolden">Blomfargles:</span>
+				<img src = "images/Blom1.png" />
+				<img src = "images/Blom2.png" />
+				<img src = "images/Blom3.png" />
+			</p>
+			
+			<br />
+			<br />
+			
+			<span class = "underline embolden title">Rules:</span></span>
+			<ul>
+				<li>There must be at least 1 person in the <span class = "embolden">Hover Car</span> for it to move to the other side of the precipice.</li>
+				<li>There can only be 2 characters in the <span class = "embolden">Hover Car</span> at any time.</li>
+				<li>If a character is inside the <span class = "embolden">Hover Car</span>, that character count as being on the side of the precipice that the <span class = "embolden">Hover Car</span> is on.</li>
+				<li>If the number of <span class = "embolden">Blomfargles</span> outnumbers the number of <span class = "embolden">Humans</span> at any time, you lose the game.</li>
+				<li>If you get all the <span class = "embolden">Blomfargles</span> and <span class = "embolden">Humans</span> to the other side of the precipice, you win the game.</li>
+			</ul>
+			
+			<br />
+			<br />
+			
+			<span class = "underline embolden title">Game Functions:</span></span>
+			<ul>
+				<li>
+					When you start the game, there will be 6 characters on the screen: 3 <span class = "embolden">Humans</span> and 3 <span class = "embolden">Blomfargles</span>
+					on the left side of the precipice, and a <span class = "embolden">Hover Car</span> in the middle of the precipice. There will also be an 
+					action log at the side of the screen. Under the action log, there is a table that displays the location of each character. At the bottom of
+					the screen, there will also be a button to reset the game, a button to return to the homescreen, and a button to reference the How to Play
+					Page (will open in a new tab).
+				</li>
+				
+				<br />
+				
+				<li>
+					When you click on a character: 
+					<ul>
+						<li>If it is not in the <span class = "embolden">Hover Car</span>, it will move to the <span class = "embolden">Hover Car</span>.</li>
+						<li>If it is in the <span class = "embolden">Hover Car</span>, it will move out of the <span class = "embolden">Hover Car</span>.</li>
+						<li>It's position will update on the Side Tracker.</li>
+					</ul>
+				</li>
+				
+				<br />
+				
+				<li>
+					Clicking on the <span class = "embolden">Hover Car</span> will make it move to the other side of the precipice. There must be at least 1 
+					character in the car to make the <span class = "embolden">Hover Car</span> move. If there is not, the <span class = "embolden">Hover Car</span>
+					will not move to the other side of the precipice, and a message will come up in the action log indicating that there is no driver for the
+					<span class = "embolden">Hover Car</span> to move.
+				</li>
+				
+				<br />
+				
+				<li>
+					If you try to add another character to the <span class = "embolden">Hover Car</span> and there are already 2 characters in the
+					<span class = "embolden">Hover Car</span>, the character that you tried to add to the <span class = "embolden">Hover Car</span> will remain
+					where it is, and you will get a message in the action log telling you that you could not add the character to the
+					<span class = "embolden">Hover Car</span> because it is full with 2 chracters.
+				</li>
+				
+				<br />
+				
+				<li>
+					If the <span class = "embolden">Blomfargles</span> ever outnumber the <span class = "embolden">Humans</span> on either side of the
+					precipice, you will lose the game immediately. A message will display in the action log notifying you that you lost the game. You
+					will not be allowed to interact with any of the items on the screen, unless you reset the game.
+				</li>
+				
+				<br />
+				
+				<li>
+					If you manage to get all characters on the other side of the precipice, you will win the game. The game will end as soon as the characters
+					make it to the other side, even if the chracters are still inside the <span class = "embolden">Hover Car</span>. 
+				</li>
+			</ul>
+			
+			<br />
+			<br />
+			
+			Good luck!
+		</p>
+		
+		<br />
+		
+		<button><a href = "index.html">Start the Game!</a></button>
+		<button><a href = "TheCrossingHomepageTest.html">Back to Homepage</a></button>
+	</body>
+</html>

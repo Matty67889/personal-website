@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Guest Bedroom</title>
+		<style>
+		
+			#r5_added_text
+			{
+				font: comic sans 12pt;
+				color:blue;
+				text-align:left;
+				text-decoration: none;
+			}
+		</style>
+		<link rel = "stylesheet" href = "CSS_Sheet.css" />
+		<script src = "utilities.js"></script>
+		<script>
+			
+			/* Commented out things are for Testing */
+			function initialize()
+			{
+				/*
+				initializeVariables();
+				*/
+				
+				r5AddedText = document.getElementById("r5_added_text");
+				
+				display();
+			}
+			
+			/* If note2 is read, display the text. If note2 is not read, hide the text. */
+			function display()
+			{
+				/* If note2 is read */
+				if (sessionStorage.note2Read == 1)
+				{
+					/*
+					note2ReadTracker.innerHTML = "1";
+					*/
+					r5AddedText.style.display = "block";
+				}
+				/* If note2 is not read */
+				else 
+				{
+					/*
+					note2ReadTracker.innerHTML = "0";
+					*/
+					r5AddedText.style.display = "none";
+				}
+			}
+		</script>
+	</head>
+	
+	<body onload = "initialize();">
+		<h6><div>L3</div></h6>
+		<h6><div>Guest Bedroom</div></h6>
+		<hr />
+		<div><img src = "images/guest_bedroom.jpg" /></div>
+		
+		<h3>
+			<p>
+				This room is surprisingly well kept, which is surprising to you considering the state of the other rooms. The room is complete
+				with a bed, a small desk, a lamp, and a window that provides a nice view of the outside. The room has its contents neatly arranged
+				and the bed is well made. Hanging on the wall above the bed are 3 pictures of a girl's face. The only difference between the
+				pictures is their color. 
+				<br />
+				<br />
+				
+				<span id = "thoughts">"Why would the person that vandalized this house destroy everything except this room?" you wonder. Perhaps
+				this room has some special signifcance to it?"</span>
+				<br />
+				<br />
+				
+				You scan the room for anything useful, but there is nothing in sight. You consider 
+				<span id = "interactable" onclick = "readNote2();">checking the drawer</span>
+				...no, theres probably some ghost demon baby in there. You decide that exploring rooms is your best bet.
+				
+				<!-- <div id = "note2_read_tracker"></div> -->
+				
+				<p id = "r5_added_text">
+				You find a note in the closet. It reads, 
+				<br />
+				
+				<img src = "images/Notes/note2.PNG" />
+				<br />
+				
+				You place the note back where it was, considering what to do next. What is this about a crack in the wall in the kitchen...?
+				</p>
+			</p>
+		</h3>
+		<hr />
+		
+		<!-- Choices -->
+		<div id = "choices_title">What Will you Do?</div>
+		<a href = "L3_Room3.html"><img src = "images/LEFT_ARR.png" /></a>
+		<hr />
+		
+		<!--Homepage Link -->
+		<h4><a href = "index.html">Back to Homepage</a></h4>
+	</body>
+</html>

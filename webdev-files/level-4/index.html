@@ -1,0 +1,855 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>The Crossing</title>
+		<style>
+			body
+			{
+				background-color: #00BCDA;
+			}
+			
+			table
+			{
+				width: 500px;
+				border: thick solid black;
+				
+				background-color: #FFFFFF;
+			}
+			
+			img
+			{
+				height:80px;
+			}
+			
+			.characters
+			{
+				height: 88px;
+				width: 100px;
+				padding: 0px;
+			}
+			
+			#HC_pic
+			{
+				position: absolute;
+				height: 100px;
+				
+				left: 40%;
+				top: 40%;
+			}
+			
+			#Human1_pic
+			{
+				position: absolute;
+				top: 2%;
+			}
+			
+			#Human2_pic
+			{
+				position: absolute;
+				top: 18%;
+			}
+			
+			#Human3_pic
+			{
+				position: absolute;
+				top: 34%;
+			}
+			
+			#Blom1_pic
+			{
+				position: absolute;
+				bottom: 36%;
+			}
+			
+			#Blom2_pic
+			{
+				position: absolute;
+				bottom: 20%;
+			}
+			
+			#Blom3_pic
+			{
+				position: absolute;
+				bottom: 2%;
+			}
+			
+			#lossscreen, #winscreen
+			{
+				position: absolute;
+				
+				height: 100%;
+				width: 100%;
+			}
+			
+			#log
+			{
+				height:300px;
+				width:40%;
+				padding: 15px;
+				
+				font: 16pt veranda;
+				color: #00FF00;
+				background-color:#000000;
+				overflow:scroll;
+			}
+			
+			#thearena
+			{
+				background-image: url("images/precipice.PNG");
+				background-size: cover;
+				scaleX: auto;
+				scaleY: auto;
+				
+				position: relative;
+				height: 600px;
+				width: 50%;
+				float:left;
+				
+				margin-right: 75px;
+				
+				border: thick solid black;
+			}
+			
+			.clear
+			{
+				clear:both;
+			}
+		</style>
+		<script>
+			const NAME = 0, TYPE = 1, winConditionArray = ["Human1;Human", "Human2;Human", "Human3;Human", "Blom1;Blomfargle", "Blom2;Blomfargle", "Blom3;Blomfargle"];
+			
+			function initialize()
+			{
+				sideOne = ["Human1;Human", "Human2;Human", "Human3;Human", "Blom1;Blomfargle", "Blom2;Blomfargle", "Blom3;Blomfargle"];
+				sideTwo = [];
+				hoverCar = [];
+				gameEnded = false;
+				playerWin = false;
+				
+				hoverCarOnSide1 = true;
+				hoverCarOnSide2 = !hoverCarOnSide1;
+				
+				actionLog = document.getElementById("log");
+				
+				Human1Pic = document.getElementById("Human1_pic");
+				Human3Pic = document.getElementById("Human3_pic");
+				Human2Pic = document.getElementById("Human2_pic");
+				
+				Blom1Pic = document.getElementById("Blom1_pic");
+				Blom2Pic = document.getElementById("Blom2_pic");
+				Blom3Pic = document.getElementById("Blom3_pic");
+				
+				HoverCarPic = document.getElementById("HC_pic");
+				
+				lossScreenPic = document.getElementById("lossscreen");
+				winScreenPic = document.getElementById("winscreen");
+				
+				positionTrackerTable = document.getElementById("pttable");
+				
+				lossScreenPic.style.display = "none";
+				winScreenPic.style.display = "none";
+				
+				generateSidesDisplay();
+			}
+			
+			/*
+			Takes a string as the first parameter (called it character because the user will be calling up the info using the character)
+			that should be the item of the array that you want to split. Second parameter is the index of the splitted string (what info you want).
+			I will be using globals to see which type of info I want. 
+			*/
+			function getCharacterInfo(character, idx)
+			{
+				return character.split(";")[idx];
+			}
+			
+			// Moves things from one array to another 
+			// First checks to see if there is something to be moved in the array that contains the item you want to be moved
+			// Then checks to see if the thing you want to move is already in the array you want to move it to
+			// Then checks Hover Car conditions:
+				// 1.
+				// If you want to move something from a side to the Hover Car, it first checks that the hover car is on the side that you want to move the item to 
+				// Then it checks if the Hover Car is full
+				// If the first condition is true and the Hover Car is not full, it will move the item
+				
+				// 2.
+				// If you want to move something from the Hover Car to another side, it first checks that the hover car is on the side that you want to move the item to
+				// If this is true, it will move the item
+			
+			// Parameters:
+			// array1 is the array you want to take the item from
+			// array2 is the array you want to move the item to
+			// idx is the position you want to add the item to, as well as the position you will remove the item from the array you are removing the item from
+			// (NEW PARAMETER! (added in index2 pt 2)) picture is the picture that is bound to the item you want to move
+			function moveThings(array1, array2, idx, picture)
+			{				
+				if (!gameEnded)
+				{
+					if (array1[idx] == undefined)
+					{
+					}
+					else
+					{
+						if (array2 == hoverCar)
+						{
+							if (hoverCarOnSide1)
+							{
+								// Moving item from Side 1 to Hover Car 
+								if (array1 == sideOne)
+								{
+									if (hoverCar.length >= 2)
+									{
+										addToLog("Tried to move " + getCharacterInfo(array1[idx], NAME) + " into the Hover Car, but it was full with 2 people. <br />");
+									}
+									else
+									{
+										addToLog("Moved " + getCharacterInfo(array1[idx], NAME) + " into the Hover Car. <br />");
+										
+										array2.push(array1[idx]);
+										array1.splice(idx, 1);
+										
+										if (picture !== undefined)
+										{												
+											if (hoverCar.length > 1)
+											{
+												// Condition to fix the problem if there was a passenger in the car in the second slot and a 
+												// player adds a character to the car from Side 1 or Side 2 (now the characters dont overlap)
+												if (passengerOne == 0)
+												{
+													passengerOne = picture;
+												
+													picture.style.left = "40%";
+													picture.style.top = "27%";
+												}
+												else
+												{
+													passengerTwo = picture;
+													
+													picture.style.left = "52%";
+													picture.style.top = "27%";
+												}
+											}
+											else
+											{
+												passengerOne = picture;
+												
+												picture.style.left = "40%";
+												picture.style.top = "27%";
+											}
+										}
+									}
+								}
+								else
+								{
+									addToLog("Tried to move " + getCharacterInfo(array1[idx], NAME) + " into the Hover Car, but the Hover Car was on the other side of the precipice. <br />");
+								}
+							}
+							else
+							{
+								if (hoverCarOnSide2)
+								{
+									// Moving item from Side 2 to Hover Car
+									if (array1 == sideTwo)
+									{
+										if (hoverCar.length >= 2)
+										{
+											addToLog("Tried to move " + getCharacterInfo(array1[idx], NAME) + " into the Hover Car, but it was full with 2 people. <br />");
+										}
+										else
+										{
+											addToLog("Moved " + getCharacterInfo(array1[idx], NAME) + " into the Hover Car. <br />");
+											
+											array2.push(array1[idx]);
+											array1.splice(idx, 1);
+											
+											if (picture !== undefined)
+											{
+												if (hoverCar.length > 1)
+												{
+													// Condition to fix the problem if there was a passenger in the car in the second slot and a 
+													// player adds a character to the car from Side 1 or Side 2 (now the characters dont overlap)
+													if (passengerOne == 0)
+													{
+														passengerOne = picture;
+													
+														picture.style.left = "40%";
+														picture.style.top = "27%";
+													}
+													else
+													{
+														passengerTwo = picture;
+														
+														picture.style.left = "52%";
+														picture.style.top = "27%";
+													}
+												}
+												else
+												{
+													passengerOne = picture;
+													
+													picture.style.left = "40%";
+													picture.style.top = "27%";
+												}
+											}
+										}
+									}
+									else
+									{
+										addToLog("Tried to move " + getCharacterInfo(array1[idx], NAME) + " into the Hover Car, but the Hover Car was on the other side of the precipice. <br />");
+									}	
+								}
+							}
+						}
+						else
+						{
+							if (array1 == hoverCar)
+							{
+								if (hoverCarOnSide1)
+								{
+									// Moving item from Hover Car to Side 1
+									if (array2 == sideOne)
+									{
+										addToLog("Dropped off " + getCharacterInfo(array1[idx], NAME) + " at Side 1. <br />");
+										
+										array2.push(array1[idx]);
+										array1.splice(idx, 1);
+										
+										if (picture !== undefined)
+										{
+											if (picture == passengerOne)
+											{
+												passengerOne = 0;
+											}
+											else
+											{
+												passengerTwo = 0;
+											}
+											
+											picture.style.left = "0%";
+											picture.style.top = "";
+										}
+									}
+								}
+								else
+								{
+									if (hoverCarOnSide2)
+									{
+										// Moving item from Hover Car to Side 2
+										if (array2 == sideTwo)
+										{
+											addToLog("Dropped off " + getCharacterInfo(array1[idx], NAME) + " at Side 2. <br />");
+											
+											array2.push(array1[idx]);
+											array1.splice(idx, 1);
+											
+											if (picture !== undefined)
+											{
+												if (picture == passengerOne)
+												{
+													passengerOne = 0;
+												}
+												else
+												{
+													passengerTwo = 0;
+												}
+											
+												picture.style.left = "88%";
+												picture.style.top = "";
+											}
+										}
+									}
+								}
+							}
+							else
+							{
+								array2.push(array1[idx]);
+								array1.splice(idx, 1);
+							}
+						}
+					}
+
+					// For Testing
+					display();
+				}
+			}
+			
+			// Finds the index of an item in an array
+			// Takes the array you want to find the index of and the item that you want to find in the index as parameters
+			// iterates through the array and if the item is found in the array, adds the index to a list of indexes 
+			// returns the list of indexes
+			// The function should always return 1 number so it doesnt need an array, but I made it report an array for troubleshooting purposes
+			
+			// (index is equal to 10 just as a placeholder number)
+			
+			// Parameters:
+			// testArray is the array that contains the item that you want to find the index of
+			// item is the item (string) you want to find the index of
+			function findItemInArray(testArray, item)
+			{
+				var indexOfItem = 10;
+				
+				for (var index = 0; index < testArray.length; index++)
+				{
+					if (testArray[index] == item)
+					{
+						indexOfItem = index;
+					}
+				}
+				return indexOfItem;
+			}
+			
+			// Finds the array that an item is in (between side 1 and side 2)
+			// Uses the findItemInArray function to find the index of the item and stores it in positionInArray
+			// If the item is not found in the side 1, it checks side 2
+			
+			// Parameters:
+			// itemOfInterest is the item that you want to find the location of
+			function findLocation(itemOfInterest)
+			{
+				if (!gameEnded)
+				{
+					var positionInArray = findItemInArray(sideOne, itemOfInterest);
+					
+					if (positionInArray !== 10)
+					{
+						return sideOne;
+					}
+					else
+					{
+						positionInArray = findItemInArray(sideTwo, itemOfInterest);
+						
+						if (positionInArray !== 10)
+						{
+							return sideTwo;
+						}
+						else
+						{
+							positionInArray = findItemInArray(hoverCar, itemOfInterest);
+							
+							if (positionInArray !== 10)
+							{
+								return hoverCar;
+							}
+							
+						}
+					}
+				}
+			}
+			
+			// Checks to see the position of an item, and reports hoverCar if the item is on a side, and reports the side that the Hover Car is on if the item is in the Hover Car.
+			// Note: Should be used for the characters only
+			
+			// Parameters:
+			// item is the item you want to move
+			function moveOrganismCheck(item)
+			{
+				if (findLocation(item) == sideOne || findLocation(item) == sideTwo)
+				{
+					return hoverCar;
+				}
+				
+				if (findLocation(item) == hoverCar)
+				{
+					if (hoverCarOnSide1)
+					{
+						return sideOne;
+					}
+					else
+					{
+						if (hoverCarOnSide2)
+						{
+							return sideTwo;
+						}
+					}
+				}
+			}
+			
+			// Counts the number of Bloms and Humans in an array
+			// If there are more Bloms then Humans on a side, it reports true, but if not, it reports false.
+			
+			// Parameters:
+			// testArray is the array that will be tested
+			function checkMoreBlomsThanHumans(testArray)
+			{
+				var humanCounter = 0;
+				var blomCounter = 0;
+				var moreBlomsThanHumans = false;
+				
+				// Checks for all the homies on side 1
+				for (var a = 0; a < testArray.length; a++)
+				{
+					var charType = getCharacterInfo(testArray[a], TYPE);
+					
+					if (charType == "Human")
+					{
+						humanCounter++;
+					}
+					
+					if (charType == "Blomfargle")
+					{
+						blomCounter++;
+					}
+				}
+				
+				for (var b = 0; b < hoverCar.length; b++)
+				{
+					var charType = getCharacterInfo(hoverCar[b], TYPE);
+					
+					if (hoverCarOnSide1 && testArray == sideOne)
+					{
+						if (charType == "Human")
+						{
+							humanCounter++;
+						}
+						
+						if (charType == "Blomfargle")
+						{
+							blomCounter++;
+						}
+					}
+					else
+					{
+						if (hoverCarOnSide2 && testArray == sideTwo)
+						{
+							if (charType == "Human")
+							{
+								humanCounter++;
+							}
+							
+							if (charType == "Blomfargle")
+							{
+								blomCounter++;
+							}
+						}
+					}
+				}
+				
+				if (blomCounter > humanCounter)
+				{
+					if (humanCounter == 0)
+					{
+						moreBlomsThanHumans = false;
+					}
+					else
+					{
+						moreBlomsThanHumans = true;
+					}
+				}
+				
+				return moreBlomsThanHumans;
+			}
+			
+			// Constructs a Table that tells the user where the characters are located.
+			// Builds row by row
+			// First builds Headings ("Side 1", "Side 2", "Hover Car")
+			// Then takes the arrays of the possible locations and fills the names in the table row by row (starting with Side 1)
+			function generateSidesDisplay()
+			{
+				if (!gameEnded)
+				{
+					positionTrackerTable.innerHTML = "";
+					
+					var newRow = positionTrackerTable.insertRow();
+					var newCell = newRow.insertCell();
+					
+					newCell.innerHTML = "Side 1";
+					
+					newCell = newRow.insertCell();
+					newCell.innerHTML = "|";
+					
+					newCell = newRow.insertCell();
+					if (hoverCarOnSide1)
+					{
+						newCell.innerHTML = "Hover Car (Currently at: Side 1)";
+						newCell.style.textAlign = "center";
+					}
+					else
+					{
+						if (hoverCarOnSide2)
+						{
+							newCell.innerHTML = "Hover Car (Currently at: Side 2)";
+							newCell.style.textAlign = "center";
+						}
+					}
+					
+					newCell = newRow.insertCell();
+					newCell.innerHTML = "|";
+					
+					newCell = newRow.insertCell();
+					newCell.innerHTML = "Side 2";
+					newCell.style.textAlign = "right";
+					
+					
+					for (var i = 0; i < 6; i++)
+					{
+						newRow = positionTrackerTable.insertRow();
+						newCell = newRow.insertCell();
+						
+						if (i >= sideOne.length || sideOne.length - 1 < 0)
+						{
+						}
+						else
+						{
+							newCell.innerHTML = getCharacterInfo(sideOne[i], NAME);
+						}
+						
+						newCell = newRow.insertCell();
+						newCell.innerHTML = "|";
+						
+						newCell = newRow.insertCell();
+						
+						if (i >= hoverCar.length || hoverCar.length - 1 < 0)
+						{
+						}
+						else
+						{
+							newCell.innerHTML = getCharacterInfo(hoverCar[i], NAME);
+							newCell.style.textAlign = "center";
+						}
+						
+						newCell = newRow.insertCell();
+						newCell.innerHTML = "|";
+						
+						newCell = newRow.insertCell();
+						
+						if (i >= sideTwo.length || sideTwo.length - 1 < 0)
+						{
+						}
+						else
+						{
+							newCell.innerHTML = getCharacterInfo(sideTwo[i], NAME);
+							newCell.style.textAlign = "right";
+						}
+					}
+				}
+			}
+			
+			// Switches the Side of the HoverCar to the opposite side
+			// If its on side 1, it switches it to side 2
+			// If its on side 2, it switches it to side 1
+			function changeHoverCarSide()
+			{
+				if (!gameEnded)
+				{
+					if (hoverCar.length >= 1)
+					{
+						if (hoverCarOnSide1)
+						{
+							hoverCarOnSide1 = !hoverCarOnSide1;
+							hoverCarOnSide2 = !hoverCarOnSide1;
+							
+							addToLog("Moved Hover Car from Side 1 to Side 2. <br />");
+							
+							HoverCarPic.style.transform = "scaleX(-1)";
+						}
+						else
+						{
+							if (hoverCarOnSide2)
+							{
+								hoverCarOnSide2 = !hoverCarOnSide2;
+								hoverCarOnSide1 = !hoverCarOnSide2;
+								
+								addToLog("Moved Hover Car from Side 2 to Side 1. <br />");
+								
+								HoverCarPic.style.transform = "scaleX(1)";
+							}
+						}
+						
+						display();
+						checkGameOver();
+					}
+					else
+					{
+						addToLog("Tried to move the car, but there was no driver. <br />");
+					}
+				}
+			}
+			
+			// Stores the log in a variable, and adds a phrase (taken as a parameter) on a new line on top of the log.
+			
+			// Parameters:
+			// text - the text that you want to add on top of the other text
+			function addToLog(text)
+			{
+				var prevActionLog = actionLog;
+				actionLog.innerHTML = text + prevActionLog.innerHTML;
+			}
+
+			// Checks if the game is over
+			// First checks to see if you lost on each side by seeing if the number of bloms or more than the number of humans on each side
+			// If the player hasn't lost, and there are 6 units on side 2 or the people in the hover car + the people on side 2 is 6 and the hover car is on side 2, it checks to see if the player won
+			// Compares the items in the hover car and on side 2 to the items in a constant array called winConditionArray
+			// If the items are the same, it counts up one on a counter, and if the counter equals, the player has won and the endGame function is called
+			// If the player loses at any time, endGame function is called
+			function checkGameOver()
+			{
+				var sameCharCounter = 0;
+				
+				if (checkMoreBlomsThanHumans(sideOne) == true)
+				{
+					addToLog("...but it caused you to lose the game! Would you like to play again? <br />");
+					playerWin = false;
+					endGame();
+				}
+				else
+				{
+					if (checkMoreBlomsThanHumans(sideTwo) == true)
+					{
+						addToLog("...but it caused you to lose the game! Would you like to play again? <br />");
+						playerWin = false;
+						endGame();
+					}
+					else
+					{
+						if (sideTwo.length == 6 || (sideTwo.length + hoverCar.length == 6 && hoverCarOnSide2))
+						{
+							for (var winConditionArrayIdx = 0; winConditionArrayIdx < winConditionArray.length; winConditionArrayIdx++)
+							{
+								for (var sideTwoIdx = 0; sideTwoIdx < sideTwo.length; sideTwoIdx++)
+								{
+									if (winConditionArray[winConditionArrayIdx] == sideTwo[sideTwoIdx])
+									{
+										sameCharCounter++;
+										
+										sideTwoIdx = sideTwo.length;
+									}
+								}
+								
+								if (hoverCarOnSide2)
+								{
+									for (var hoverCarIdx = 0; hoverCarIdx < hoverCar.length; hoverCarIdx++)
+									{
+										if (winConditionArray[winConditionArrayIdx] == hoverCar[hoverCarIdx])
+										{
+											sameCharCounter++;
+										}
+									}
+								}
+							}
+							
+							
+							if (sameCharCounter == 6)
+							{								
+								addToLog("...and you won the game! Would you like to play again? <br />");
+								playerWin = true;
+								endGame();
+							}
+						}
+					}
+				}
+			}
+			
+			// Checks to see if the game is over
+			// If playerWin is true (if the player has won) then it sends a message that the player won and sets gameEnded to true
+			// If playerWin is false (if the player has lost) then it sends a message that the player lost and sets gameEnded to true
+			function endGame()
+			{
+				if (playerWin)
+				{
+					gameEnded = true;
+					
+					winScreenPic.style.display = "block";
+				}
+				else
+				{
+					gameEnded = true;
+					
+					lossScreenPic.style.display = "block";
+				}
+			}
+			
+			function reset()
+			{
+				sideOne = ["Human1;Human", "Human2;Human", "Human3;Human", "Blom1;Blomfargle", "Blom2;Blomfargle", "Blom3;Blomfargle"];
+				sideTwo = [];
+				hoverCar = [];
+				gameEnded = false;
+				playerWin = false;
+				
+				hoverCarOnSide1 = true;
+				hoverCarOnSide2 = !hoverCarOnSide1;
+				
+				generateSidesDisplay();
+				
+				Human1Pic.style.left = "0%";
+				Human1Pic.style.top = "2%";
+				
+				Human3Pic.style.left = "0%";
+				Human3Pic.style.top = "34%";
+				
+				Human2Pic.style.left = "0%";
+				Human2Pic.style.top = "18%";
+				
+				
+				Blom1Pic.style.left = "0%";
+				Blom1Pic.style.bottom = "36%";
+				Blom1Pic.style.top = "";
+				
+				Blom2Pic.style.left = "0%";
+				Blom2Pic.style.bottom = "20%";
+				Blom2Pic.style.top = "";
+				
+				Blom3Pic.style.left = "0%";
+				Blom3Pic.style.bottom = "2%";
+				Blom3Pic.style.top = "";
+				
+				HoverCarPic.style.transform = "scaleX(1)";
+				
+				lossScreenPic.style.display = "none";
+				winScreenPic.style.display = "none";
+				
+				
+				actionLog.innerHTML = "";
+				addToLog("Resetted the game.");
+			}
+			
+			// Updates the table
+			function display()
+			{				
+				generateSidesDisplay();
+			}
+		</script>
+	</head>
+	<body onload = "initialize();">
+	
+		<!-- The Arena-->
+		<div id = "thearena">
+			<!-- Humans -->
+			<div id = "Human1_pic" class = "characters"><img src = "images/Human1.png" onclick = "moveThings(findLocation('Human1;Human'), moveOrganismCheck('Human1;Human'), findItemInArray(findLocation('Human1;Human'), 'Human1;Human'), Human1Pic);checkGameOver();" /></div>
+			<div id = "Human2_pic" class = "characters"><img src = "images/Human2.png" onclick = "moveThings(findLocation('Human2;Human'), moveOrganismCheck('Human2;Human'), findItemInArray(findLocation('Human2;Human'), 'Human2;Human'), Human2Pic);checkGameOver();" /></div>
+			<div id = "Human3_pic" class = "characters"><img src = "images/Human3.png" onclick = "moveThings(findLocation('Human3;Human'), moveOrganismCheck('Human3;Human'), findItemInArray(findLocation('Human3;Human'), 'Human3;Human'), Human3Pic);checkGameOver();" /></div>
+			
+			<!-- Bloms -->
+			<div id = "Blom1_pic" class = "characters"><img src = "images/Blom1.png" onclick = "moveThings(findLocation('Blom1;Blomfargle'), moveOrganismCheck('Blom1;Blomfargle'), findItemInArray(findLocation('Blom1;Blomfargle'), 'Blom1;Blomfargle'), Blom1Pic);checkGameOver();" /></div>
+			<div id = "Blom2_pic" class = "characters"><img src = "images/Blom2.png" onclick = "moveThings(findLocation('Blom2;Blomfargle'), moveOrganismCheck('Blom2;Blomfargle'), findItemInArray(findLocation('Blom2;Blomfargle'), 'Blom2;Blomfargle'), Blom2Pic);checkGameOver();" /></div>
+			<div id = "Blom3_pic" class = "characters"><img src = "images/Blom3.png" onclick = "moveThings(findLocation('Blom3;Blomfargle'), moveOrganismCheck('Blom3;Blomfargle'), findItemInArray(findLocation('Blom3;Blomfargle'), 'Blom3;Blomfargle'), Blom3Pic);checkGameOver();" /></div>
+			
+			<div id = "HC_pic"><img src = "images/Hover_Car.png" onclick = "changeHoverCarSide();" /></div>
+			
+			<img id = "lossscreen" src = "images/Loss.png" />
+			<img id = "winscreen" src = "images/winscreen.jpg" />
+		</div>
+			
+		<div id = "log"></div>
+		
+		<br />
+		<br />
+		
+		<table id = "pttable"></table>
+		
+		<br />
+		
+		<div class = "clear">
+			<button onclick = "reset();">Reset</button>
+			
+			<br />
+			<br />
+			
+			<button><a href = "HowToPlay.html" target = "_blank">How To Play<a/></button>
+			
+			<br />
+			<br />
+			
+			<button><a href = "TheCrossingHomepageTest.html">Back to Homepage</a></button>
+		</div>
+	</body>
+</html>

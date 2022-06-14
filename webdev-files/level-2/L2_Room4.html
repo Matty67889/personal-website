@@ -1,0 +1,213 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Unknown Room?</title>
+		<style>
+		
+			#r4_added_text
+			{
+				font: comic sans 12pt;
+				color:blue;
+				text-align:left;
+				text-decoration: none;
+			}
+		</style>
+		<link rel = "stylesheet" href = "CSS_Sheet.css" />
+		<script src = "utilities.js"></script>
+		<script>
+			
+			/* Commented out things are for Testing */
+			function initialize()
+			{
+				/*
+				initializeVariables();
+				
+				if(!sessionStorage.numVisitsR4)
+					sessionStorage.numVisitsR4 = 1;
+				else
+					sessionStorage.numVisitsR4++;
+					
+				visitCounterR4 = document.getElementById("counter_R4");
+				*/
+				
+				r4AddedText = document.getElementById("r4_added_text");
+				titleText = document.getElementById("title");
+				familyRoomSpan = document.getElementById("family_room");
+				foyerSpan = document.getElementById("foyer");
+				homeOfficeSpan = document.getElementById("home_office");
+				triQMarkSpan = document.getElementById("tri_q_mark");
+				
+				familyRoomName = false;
+				homeOfficeName = false;
+				foyerName = false;
+				triQMark = false; 
+				
+				display();
+			}
+			
+			/* Make familyRoom title active */
+			function changeToFamilyRoom()
+			{
+				familyRoomName = true;
+				homeOfficeName = false;
+				foyerName = false;
+				triQMark = false; 
+				
+				display();
+			}
+			
+			/* Make foyer title active */
+			function changeToFoyer()
+			{
+				familyRoomName = false;
+				homeOfficeName = false;
+				foyerName = true;
+				triQMark = false; 
+				
+				display();
+			}
+			
+			/* Make homeOffice title active */
+			function changeToHomeOffice()
+			{
+				familyRoomName = false;
+				homeOfficeName = true;
+				foyerName = false;
+				triQMark = false; 
+				
+				display();
+			}
+			
+			/* Make triQMark title active */
+			function changeToTriQMark()
+			{
+				familyRoomName = false;
+				homeOfficeName = false;
+				foyerName = false;
+				triQMark = true; 
+				
+				display();
+			}
+			
+			/* 
+			If note1 was read, display the extra text, if not, hide the extra text.
+			
+			Also, check to see which title is active out of familyRoom, foyer, homeOffice, or triQMark and change the title display to that name.
+			*/
+			function display()
+			{
+				/* If note1 was read */
+				if(sessionStorage.note1Read == 1)
+				{
+					r4AddedText.style.display = "block";
+				}
+				/* If note1 was not read */
+				else
+				{
+					r4AddedText.style.display = "none";
+				}
+				
+				/* If familyRoom is active */
+				if(familyRoomName == true)
+				{
+					titleText.innerHTML = familyRoomSpan.innerHTML;
+				}
+				/* If familyRoom is not active */
+				else
+				{
+					/* If foyer is active */
+					if(foyerName == true)
+					{
+						titleText.innerHTML = foyerSpan.innerHTML;
+					}
+					/* If foyer is not active */
+					else
+					{
+						/* If homeOffice is active */
+						if(homeOfficeName == true)
+						{
+							titleText.innerHTML = homeOfficeSpan.innerHTML;
+						}
+						/*If homeOffice is not active */
+						else
+						{
+							/* If triQMark is active */
+							if(triQMark == true)
+							{
+								titleText.innerHTML = triQMarkSpan.innerHTML;
+							}
+						}
+					}
+				}
+				
+				/* 
+				visitCounterR4.innerHTML = sessionStorage.numVisitsR4;
+				*/
+			}
+		</script>
+	</head>
+	
+	<body onload = "initialize();">
+		<h6><div>L2</div></h6>
+		<h6><div id = "title">???</div></h6>
+		<hr />
+		<div><img src = "images/unknown.jpg" /></div>
+		
+		<h3>
+			<p>
+				You find yourself in a room that is surprisingly devoid of furniture. The only things you see in the room are a water fountain 
+				looking object in the middle, a closet in a corner, and a radiator.
+				<br />
+				<br />
+				
+				The walls are cracked and stained with a brown material of some kind, supposedly dirt that has stuck to the wall after a very 
+				long time. Rubble is scattered all about the floor, as if there was some kind of earthquake that knocked everything out of place.
+				You cannot even properly determine what this place is supposed to be. Should you call it a 
+				<span id = "interactable"><span id = "family_room" onclick = "changeToFamilyRoom();">Family Room</span></span>, 
+				a <span id = "interactable"><span id = "foyer" onclick = "changeToFoyer();">Foyer</span></span>, a 
+				<span id = "interactable"><span id = "home_office" onclick = "changeToHomeOffice();">Home Office</span></span>, or just leave it as 
+				<span id = "interactable"><span id = "tri_q_mark" onclick = "changeToTriQMark();">???</span></span>?
+				<br />
+				<span id = "interactable">(Click the names to change the title at the top!)</span>
+				
+				<br />
+				<br />
+				
+				You walk around the room looking for any clues, but find nothing.
+				<br />
+				<br />
+				
+				<span id = "thoughts">"There is probably nothing of value in this room, unless there is something in that closet,"</span> you think.
+				<span id = "thoughts">"I'm not sure if I should check in there though. Seems creepy."</span>
+				<br />
+				<br />
+				
+				You start to make your way out of the room, but turn back, wondering if that <span id = "interactable" onclick = "readNote1();">closet</span>
+				will yield anything.
+				
+				<!-- <div id = "counter_R4"></div> -->
+				
+				<p id = "r4_added_text">
+				You find a note in the closet. It reads, 
+				<br /> 
+				
+				<img src = "images/Notes/note1.PNG" /> 
+				<br />
+				
+				You place the note back where it was, thinking about it's words. You wonder if you should take it seriously.
+				</p>
+		</h3>
+		<hr />
+		
+		<!-- Choices -->
+		<div id = "choices_title">What Will you Do?</div>
+		<a href = "L2_Room10.html"><img src = "images/LEFT_ARR.png" /></a>
+		<a href = "L2_Room9.html"><img src = "images/UP_ARR.png" /></a>
+		&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+		<a href = "Start.html"><img src = "images/DOWN_STAIRS.PNG" /></a>
+		<hr />
+		
+		<!--Homepage Link -->
+		<h4><a href = "index.html">Back to Homepage</a></h4>
+	</body>
+</html>

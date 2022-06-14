@@ -1,0 +1,160 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Kitchen</title>
+		<style>
+		
+			#r8_added_text_w_note2
+			{
+				font: comic sans 12pt;
+				color:blue;
+				text-align:left;
+				text-decoration: none;
+			}
+			
+			#r8_added_text_no_note2
+			{
+				font: comic sans 12pt;
+				color:blue;
+				text-align:left;
+				text-decoration: none;
+			}
+		</style>
+		<link rel = "stylesheet" href = "CSS_Sheet.css" />
+		<script src = "utilities.js"></script>
+		<script>
+			
+			/* Commented out things are for Testing */
+			function initialize()
+			{
+				/* 
+				initializeVariables();
+				*/
+				r8AddedTextWNote2 = document.getElementById("r8_added_text_w_note2");
+				r8AddedTextNoNote2 = document.getElementById("r8_added_text_no_note2");
+				inspectCrackButton = document.getElementById("inspect_crack");
+				
+				display();
+			}
+			
+			/* If user has mallet display the text and the button. if not, hide the text and the button. */
+			function display()
+			{
+				/*
+				if(sessionStorage.malletObtained == 1)
+				{
+					malletTracker.innerHTML = "1";
+				}
+				else 
+				{
+					malletTracker.innerHTML = "0";
+				}
+				
+				if(sessionStorage.keyObtained == 1)
+				{
+					keyTracker.innerHTML = "1";
+				}
+				else 
+				{
+					keyTracker.innerHTML = "0";
+				}
+				
+				if(sessionStorage.note2Read == 1)
+				{
+					note2ReadTracker.innerHTML = "1";
+				}
+				else
+				{
+					note2ReadTracker.innerHTML = "0";
+				}
+				*/
+				
+				/* If user has mallet */
+				if(sessionStorage.malletObtained == 1)
+				{				
+					/* If user has mallet and read note2 */
+					if(sessionStorage.note2Read == 1)
+					{
+						r8AddedTextNoNote2.style.display = "none";
+						r8AddedTextWNote2.style.display = "block";
+						inspectCrackButton.style.display = "block";
+					}
+					/* If user has mallet but did not read note2 */
+					else
+					{
+						r8AddedTextWNote2.style.display = "none";
+						r8AddedTextNoNote2.style.display = "block";
+						inspectCrackButton.style.display = "block";
+					}
+				}
+				/* If user does not have mallet */
+				else 
+				{
+					r8AddedTextWNote2.style.display = "none";
+					r8AddedTextNoNote2.style.display = "none";
+					inspectCrackButton.style.display = "none";
+				}
+			}
+		</script>
+	</head>
+	
+	<body onload = "initialize();">
+		<h6><div>L1</div></h6>
+		<h6><div>Kitchen</div></h6>
+		<hr />
+		<div><img src = "images/kitchen.jpg" /></div>
+		
+		<h3>
+			<p>
+				You enter the room and immediately realize that it is a kitchen. You were hungry, but you decided not to cook in
+				this kitchen, for obvious reasons. Not that there was much to cook with anyway. The kitchen's cooking contents are
+				deprived of everything; cutlery, food, even the microwave and has been stolen.
+				<br />
+				<br />
+				
+				The kitchen looks normal, with the exception of the floor being covered in bits and pieces of the deteriorating ceiling.
+				The cabinets are left open from the invasion of whoever stole everything from this room. You begin to wonder why anyone 
+				would leave a house as nice as this. 
+				<br />
+				<br />
+				
+				You look around the kitchen for anything that would be useful in your search for the exit, but find nothing. 
+				<br />
+				<br />
+				
+				<span id = "thoughts">"Time to go to another room I suppose,"</span> you think to yourself.
+				
+				<!--
+				<div id = "mallet_tracker"></div>
+				<div id = "key_tracker"></div>
+				<div id = "note2_read_tracker"></div>
+				-->
+				
+				<p id = "r8_added_text_w_note2">
+				However, before you leave, you look around the room to see if the note was telling the truth 
+				about the crack in the wall. And sure enough, in the far corner of the room, you notice a crack that you had overlooked before.
+				Now to decide if you should inspect the crack. You can proababy use the mallet to break through the wall, but what if this is a 
+				trap?
+				</p>
+				
+				<p id = "r8_added_text_no_note2">
+				However, before you leave, you notice a crack in the wall in the corner of the room. You surmise 
+				that you can use your mallet to bust through the wall. Though it might lead you somewhere that will help you with your search for 
+				the exit, you remain hesitant about doing it, as it could be a trap...
+				</p>
+			</p>
+		</h3>
+		<hr />
+		
+		<!-- Choices -->
+		<div id = "choices_title">What Will you Do?</div>
+		<a href = "L1_Room2.html"><img src = "images/DOWN_ARR.png" /></a>
+		<a href = "Start.html"><img src = "images/RIGHT_ARR.png" /></a>
+		&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+		<button id = "inspect_crack"><a href = "Door.html">Inspect the Crack</a></button>
+		<hr />
+		
+		<!--Homepage Link -->
+		<h4><a href = "index.html">Back to Homepage</a></h4>
+	</body>
+</html>

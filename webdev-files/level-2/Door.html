@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Crack Door</title>
+		<style>
+		
+			#door_added_text
+			{
+				font: comic sans 12pt;
+				color:blue;
+				text-align:left;
+				text-decoration: none;
+			}
+		</style>
+		<link rel = "stylesheet" href = "CSS_Sheet.css" />
+		<script src = "utilities.js"></script>
+		<script>
+			
+			/* Commented out things are for Testing */
+			function initialize()
+			{
+				/*
+				initializeVariables();
+				*/
+				
+				doorAddedText = document.getElementById("door_added_text");
+				openDoorButton = document.getElementById("open_door");
+				
+				display();
+			}
+			
+			/* If user has key, display the text and the button. If the user does not have the key, hide the text and the button. */
+			function display()
+			{
+				/* If the user has the key */
+				if(sessionStorage.keyObtained == 1)
+				{
+					/*
+					keyTracker.innerHTML = "1";
+					*/
+					doorAddedText.style.display = "block";
+					openDoorButton.style.display = "block";
+				}
+				/* If they user does not have the key */
+				else 
+				{
+					/*
+					keyTracker.innerHTML = "0";
+					*/
+					doorAddedText.style.display = "none";
+					openDoorButton.style.display = "none";
+				}
+				
+			}
+		</script>
+	</head>
+	
+	<body onload = "initialize();">
+		<h6><div>L1</div></h6>
+		<h6><div>Crack Door</div></h6>
+		<hr />
+		<div><img src = "images/door.jpg" /></div>
+		
+		<h3>
+			<p>
+				You give the deal a powerful blow to the crack, and it immediately crumbles before your might. To your surprise, you aren't immediately
+				greeted by the dark light and bitter cold of the night. The crumbling of the crack revealed a small passageway, issuing a bright light 
+				at its end.
+				<br />
+				<br />
+				
+				You decide to crawl down the path to see where it will lead you. After about a minute of crawling, you are met with a small arched door
+				that you are sure you can fit through. You try to open it, but it seems to be locked.
+				<br />
+				<br />
+				
+				<span id = "thoughts">"Damnit, now I need a key?" you think angrily. It feels like I'm so close but these silly obstacles keep getting
+				in my way.</span>
+				<br />
+				<br />
+				
+				What will you do now?
+				
+				<!--
+				<div id = "mallet_tracker"></div>
+				<div id = "key_tracker"></div>
+				-->
+				
+				<p id = "door_added_text">All of a sudden, you remember that you have the key that you got earlier in your pocket. Awesome! Now you can 
+				make it through the door and see what awaits you!</p>
+			</p>
+		</h3>
+		
+		<!-- Choices -->
+		<div id = "choices_title">What Will you Do?</div>
+		<a href = "L1_Room8.html"><img src = "images/LEFT_ARR.png" /></a>
+		&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+		<button id = "open_door"><a href = "Exit.html">Open the Door</a></button>
+		<hr />
+		
+		<!--Homepage Link -->
+		<h4><a href = "index.html">Back to Homepage</a></h4>
+	</body>
+</html>

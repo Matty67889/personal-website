@@ -1,0 +1,39 @@
+body
+{
+	background-color:orange;
+}
+
+div
+{
+	font: bold 26pt comic sans;
+	text-decoration: underline;
+	text-align:center;
+}
+
+p
+{
+	font: comic sans;
+	color:red;
+}
+
+/* Special Divs */
+#choices_title
+{
+	font: bold 26pt aharoni;
+	text-decoration: underline;
+	text-align:left;
+}
+
+/* Special Spans */
+#thoughts
+{
+	font: comic sans;
+	font-style: italic;
+	color:red;
+}
+
+#interactable
+{
+	font: aharoni;
+	color:blue;
+}

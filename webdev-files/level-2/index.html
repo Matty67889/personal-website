@@ -1,0 +1,146 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Spooky Scary Haunted House</title>
+		<style></style>
+		<link rel = "stylesheet" href = "CSS_Sheet.css" />
+		<script src = "utilities.js"></script>
+		<script>
+			
+			/* Reset Game */
+			function initialize()
+			{
+				resetHouse();
+			}
+		</script>
+	</head>
+	
+	<body onload = "initialize();">
+		<div><img src = "images/Haunted House Outside.jpg" /></div>
+		
+		<h3>
+			<p>
+				It's Halloween, and you and your 3 friends decided to visit a haunted house. You had heard about it yesterday and thought
+				it would be a cool idea to test your friends' mettle and see if they would come with you. Surprisingly, they all agreed.
+				<br />
+				<br />
+			
+				Your party sets out at 10 pm to get to the house, enjoying humorous and tantalizing banter along the way. 
+				<br />
+				<br />
+			
+				"Ha, you're not even gonna step foot in there I bet!" one of your friends mused.
+				<br />
+				<br />
+			
+				"Yea," another agreed, "We're gonna get there and you're gonna wuss out."
+				<br />
+				<br />
+			
+				You ignored their comments and continued walking. <span id = "thoughts">"I'll show them,"</span> you thought to yourself.
+				<br />
+				<br />
+			
+				In about 7 minutes, you and your friends face the entrance of the haunted house. The place seems like a graveyard.
+				Tombstones litter the front yard. Leafless trees thick with naked branches surround the house, like a cult making an offering
+				to a higher being. Dead bushes are on both sides of the entrance.
+				<br />
+				<br />
+			
+				The house itself is tall and menacing, yet worn and tattered. Most of its adornments seemed to have stayed intact despite its old age.
+				It's dull gray and blue color scheme dissuades visitors from entering, but the entrance staircase invites them. The color of the sky
+				around it warns trespassers to turn back or suffer unimaginably horifying nightmares.  
+				<br />
+				<br />
+			
+				In one of the top windows, you notice a light is on, but you neglect to say anything to your friends, because you are afraid they 
+				will think you are scared.
+				<br	/>
+				<br />
+			
+				"Sooo, who's first?" one of your friends says. 
+				<br />
+				<br />
+				
+				Showing no fear, you make your way up the entrance stairs and open the door to enter the house. Your friends stay back in the yard,
+				watching you in awe. <span id = "thoughts">They're a just a bunch of hypocritical scaredy cats," you think." Haunted houses aren't
+				even scary."</span>
+				
+				After you've made your way to the door of the house, you turn back to see where they are. They are standing in the yard, 
+				huddling with each other like scared people in a horror movie. You open your mouth to call them out for their cowardice, when all
+				all of a sudden, something hits your head very forecefully, knocking you out. Your friends watch in horror as something drags you 
+				into the house, and the door slams shut. 
+				<br />
+				<br />
+			
+				Upon regaining consciousness, you stand up and survey your surroundings. <span id = "thoughts">"Where... where am I?"</span> you 
+				think to yourself.
+				
+				<br />
+				<br />
+				You have to make it out of the haunted house and get back to your friends! Are you ready? Click Start to begin! (If you return to 
+				the homepage, the game will restart.)
+				<br />				
+				
+				(Also, you can click on the text in blue in the story to interact with it!)
+			</p>
+		</h3>
+		
+		<div><a href = "Start.html" onclick = "initialize();"><img src = "images/START_BTN.png" /></a></div>
+	</body>
+</html>
+
+
+<!--
+	**TO DO LIST**
+	1. Finsih Adding "Choices" to all sheets (DONE)
+	2. Make it so there is a way to get to R5 from R8? (DONE)
+	3. Rearrange the arrows on each page so it makes sense when the page changes (DONE)
+	4. Label all the Rooms with real liief rooms and find pics for all of them (DONE)
+		a. Align them all to center (DONE)
+		b. Renaname the titles of the rooms to the appropriate thing (DONE)
+	5. Add a link for restarting (DONE) 
+	6. Write the story (Extra Choice Labels: (R3, R4, R1, (make it so you cant open the window), R5, R7, R8, R10) (DONE)
+	7. Make Rooms on different floors? (DONE)
+	8. Check each room to look for clues that you placed there so you can highlight them and make it so when you click on them it gives reader
+	   a clue or lore (On r3) (Separate display function for each page?) (DONE)
+		a. Make a separate Session stoage function for each page (DONE)
+	9. Add page number tracker to each page 
+	10. Change background of thing (DONE)
+	11. Add give up link to each page. (ALREADY HAVE R6 FOR THAT)
+	
+	
+	**IDEAS**
+	1. Make R1 L2 a basement where you can uncover something 
+	2. Crack in the wall in R9 and person can break the wall to find a secret (if the person has gone into the room and then comes back into 
+	it, so they notice the crack in the wall on their second time coming in)(maybe passage to another room?) liek a treasure/key (KINDA DONE)
+	3. Make the user need 2 buttons to unlock door. (ABANDONED IDEA OF BUTTONS AND USED MALLET AND KEY INSTEAD)
+	4. In room 4, give the reader a choice on what room they should name the room and change the HTML based on the decision. (DONE)
+	5. Play around with image onclcick (TOO MUCH WORK)
+	6. Make the code be able to detect if you have visited other pages and change the text accordingly (If they visited r4 and heard about the 
+	   window thing already, don't show it on room 1 and vice versa) (EXTRA WORK - UNECESSARY)
+	
+	**OPTIMIZATIONS**
+	1. Add wall.html page and make it go back to previous page? (ABANDONED)
+	2. Make the rooms on diff floors? (DONE)
+	3. Try to make the "are you ready" part of the description bigger (different heading) (ABANDONED)
+	4. Use session storage to display different messages if the user hasn't visited the page vs. if they have visited. 
+	5. Change fonts and such
+	6. Figure out how to get the name changing thing working for r4 (DONE)
+	7. For room 6, make the jumping out the window not look like a link 
+	
+	**NEATNESS**
+	1. Add slashes to close all img tags (DONE)
+	2. Make the tense consistent in the story 
+	3. Comment the order of the arrows (DONE)
+	4. Remove irrelevant CSS on each page 
+	5. Make key picture smaller (R3) (DONE)
+	6. Put the link to the css sheet before the style tag things (CHANGED MIND)
+	7. Make sure there is a space after every style and initialize at the top and no space at the bottom (DONE)
+	8. Comment everything (DONE)
+		a. Comment Choices with Choices above it (DONE)
+		b. Comment Homepage link with homepage above it (DONE)
+	
+	**BUGS**
+	1. Make sure that in r4 it doesnt display the closet thing when clicking on names of rooms (DONE)
+-->

@@ -1,0 +1,972 @@
+<!DOCTYPE HTML>
+<html>
+<!--
+	This planning page has the content needed to make the display intuitive and nice looking (index(5) pt. 2).
+
+	New organization for table: Have column for Sum value, Frequency and have mean, median and mode at the bottom
+
+	Ideas:
+	1. Add something that shows you how many dice you chose to roll and how many times you chose to roll them (DONE)
+	2. Put median, mean, mode finder in separate functions (DONE)
+	3. Give addDataToTable parameters for each value it needs
+
+	Enhancements:
+	1. Make it so that the doubles/triples display doesn't display the same double twice. (DONE)
+	2. Add hide table button (DONE)
+	3. Make is so that there is no white space underneath the button before the button is clicked.
+	4. Make is so that if the value inserted in the thing is not a number the code doesn't run (DONE)
+	5. Add a thing that updates to show you dice rolls and amount of rolls. (DONE)
+
+	Neatness:
+	1. Comment everything
+		a. Comment the display parts of mean meadian mode triples and doubles
+	2. Remove all the newCell things i commented out
+	3. Remove extra comments
+	4. Make it so that the doubles and triples things display was and were at the correct times (DONE)
+		a. Do the same for mean median and mode
+		b. Make it so that the thing doesnt dislpay "The doubles/triples were:" if there are no triples/doubles (DONE)
+	5. Take out console log statements (DONE)
+	6. 	FIX THE TEXT FOR DOUBLES AND TRIPLES (DONE)
+-->
+	<head>
+		<title>World's Best Dice Roller</title>
+		<style>
+			body
+			{
+				background-color: #00ffff;
+				background-position: bottom;
+			}
+
+			table
+			{
+				border: thick solid black;
+				border-collapse: collapse;
+				width:100%
+			}
+
+			th
+			{
+				border:medium solid black;
+				padding:5px;
+			}
+
+			td
+			{
+				border:thin solid black;
+				padding:3px;
+				width:1%;
+			}
+
+			/*
+			#value
+			{
+				writing-mode:vertical-rl;
+				text-orientation:upright;
+				font-size:24pt;
+			}
+			*/
+
+			#title
+			{
+				color: red;
+				text-align: center;
+				font-size: 30pt;
+			}
+
+			#instructions
+			{
+				text-align: center;
+				font: bold 18pt comic sans;
+			}
+
+			#embolden
+			{
+				font-weight: bold;
+			}
+			
+			#NaNError
+			{
+				color:red;
+				font: bold 24pt comic sans;
+			}
+			
+			#diceinfodisplay
+			{
+				color: red;
+			}
+		</style>
+		<script src = "utilities.js"></script>
+		<script>
+			function initialize()
+			{
+				//These are testing variables
+				variableTracker = document.getElementById("variabletracker");
+
+				userInputForm = document.getElementById("userinput");
+				
+				diceResultsTable = document.getElementById("diceresultstable");
+				diceResultsTableTwo = document.getElementById("diceresultstabletwo");
+				
+				listOfValues = document.getElementById("listofvalues");
+				
+				diceValuesArrayDisplay = document.getElementById("dicevaluesarray");
+				sumOfRollsArrayDisplay = document.getElementById("sumofrollsarray");
+				
+				diceInfoDisplay = document.getElementById("diceinfodisplay");
+				
+				nanErrorDisplay = document.getElementById("NaNError");
+
+				diceValues = "";
+				diceValuesArray = [];
+				sumOfRollsArray = [];
+				numDiceInput = "";
+				numDiceRollsInput = "";
+
+				tableName = document.getElementById("tablename");
+			}
+
+		
+			//Sets table to clear
+			function clearTable()
+			{
+				diceResultsTable.innerHTML = "";
+				diceResultsTableTwo.innerHTML = "";
+				diceValuesArray = [];
+				sumOfRollsArray = [];
+				
+				diceInfoDisplay.style.display = "none";
+				
+				diceResultsTable.style.display = "none";
+				diceResultsTableTwo.style.display = "none";
+				
+				nanErrorDisplay.style.display = "none";
+			}
+			
+			//Records the values that the user inputs and assigned them to vairbales
+			function recordUserInput()
+			{
+				numDiceInput = userInputForm.numdice.value;
+				numDiceRollsInput = userInputForm.numdicerolls.value;
+				
+				diceInfoDisplay.innerHTML = "You rolled " + userInputForm.numdice.value + " dice " + userInputForm.numdicerolls.value + " times.";
+				
+				if (isNaN(userInputForm.numdice.value) || userInputForm.numdice.value == "" || isNaN(userInputForm.numdicerolls.value) || userInputForm.numdicerolls.value == "")
+				{
+					nanErrorDisplay.innerHTML = "Error: Please insert a number into both boxes with no other characters."
+					
+					userInputForm.numdice.value = "";
+					userInputForm.numdicerolls.value = "";
+					
+					display();
+				}
+				else
+				{					
+					rollDice();
+					
+					userInputForm.numdice.value = "";
+					userInputForm.numdicerolls.value = "";
+				}
+			}
+
+			/*
+				Needs to pick a number from 1 to 6 for each die
+					- Maybe use for loop for i = 1-3 and run getRandomInteger for each?
+
+				How function works:
+				1. Sets a to 0
+				2. If a is less than numDiceInput, adds Roll + (a + 1) + Rolls:
+				3. Sets i to 0
+				4. If i is less than numDiceRollsInput, adds a random number between 1 and 6
+				5. If i is equal to the last number that needs to be displayed, don't add a comma. Otherwise add a comma.
+
+			*/
+			//Realized I needed to roll dice per number of rolls, not the other way around (I was rolling 1 die x times per number of dice instead of 1 die x times)
+			function rollDice()
+			{
+				diceValues = "";
+				// findRowspanOfValueColumn();
+
+				for (var a = 0; a < parseInt(numDiceRollsInput); a++)
+				{
+					var sumOfRolls = 0;
+
+					diceValues += "<br /> <br />";
+					diceValues += "Roll ";
+					diceValues += (a + 1);
+					diceValues += ": "
+
+					for (var w = 0; w < parseInt(numDiceInput); w++)
+					{
+						var roll = getRandomInteger(1, 6);
+
+						diceValues += "Die ";
+						diceValues += (w + 1);
+						diceValues += ": "
+
+						diceValues += roll;
+						if (w !== parseInt(numDiceInput) - 1)
+						{
+							diceValues += ", ";
+						}
+
+						sumOfRolls = (sumOfRolls + roll);
+
+						diceValuesArray.push(roll);
+
+						if (w == parseInt(numDiceInput) - 1)
+						{
+							sumOfRollsArray.push(sumOfRolls);
+						}
+					}
+				}
+
+				addDataToTable();
+
+				//For testing rollDice(); function
+				// display();
+			}
+			
+			// Checks for duplicates and then displays true for duplicates if a duplicate is found
+			// Finds Duplicates in an unodrdered array
+			function deleteDuplicatesForDoublesAndTriples(arrayWithDuplicates)
+			{
+				var duplicates = false;
+				
+				for (var indexOfArrayWithDuplicates = 0; indexOfArrayWithDuplicates < arrayWithDuplicates.length; indexOfArrayWithDuplicates++)
+				{
+					for (var indexOfArrayWithDuplicatesTwo = 0; indexOfArrayWithDuplicatesTwo < arrayWithDuplicates.length; indexOfArrayWithDuplicatesTwo++)
+					{
+						if (indexOfArrayWithDuplicates == indexOfArrayWithDuplicatesTwo)
+						{
+						}
+						else
+						{
+							if (arrayWithDuplicates[indexOfArrayWithDuplicates] == arrayWithDuplicates[indexOfArrayWithDuplicatesTwo])
+							{
+								duplicates = true;
+							}
+							else
+							{
+							}
+						}
+					}
+					
+				}
+				
+				return duplicates;
+			}
+
+			function findMean(meanArray)
+			{
+				var sumOfSums = 0;
+				var mean = 0;
+
+				for (var indexOfMeanArray = 0; indexOfMeanArray < meanArray.length; indexOfMeanArray++)
+				{
+					sumOfSums = sumOfSums + meanArray[indexOfMeanArray];
+				}
+
+				mean = (Math.round((sumOfSums/meanArray.length) * 100))/100;
+
+				return mean;
+			}
+
+			function findMode(modeArray)
+			{
+				var modeFreq = 0;
+				var mode = [];
+				var counter = 0;
+
+				for (var MAI = 0; MAI < modeArray.length; MAI++)
+				{
+					// If there is only one item in modeArray
+					if (modeArray.length == 1)
+					{
+						modeFreq = 1;
+						mode.push(modeArray[MAI]);
+					}
+					// If there is more than one item in modeArray
+					else
+					{
+						//If you are reading the first item of modeArray 	(MAI = 0)
+						if (MAI == 0)
+						{
+							counter++;
+						}
+						// If you are reading the second or more item of modeArray (MAI >= 1)
+						else
+						{
+							// If the current item is the same as the previous item
+							if (modeArray[MAI - 1] == modeArray[MAI])
+							{
+								counter++;
+
+								// If this is the last iteration of the loop
+								if (MAI == modeArray.length - 1)
+								{
+									// If the frequency of appearance for the mode is 0 (if no mode has been decided yet)
+									if (mode.length == 0)
+									{
+										modeFreq = counter;
+										mode.push(modeArray[MAI - 1]);
+									}
+									// If the frequency of appearance for the mode is NOT 0 (if a mode has been decided)
+									else
+									{
+										// If the counter is greater than the current frequency of appearance for the mode (if the tested number appears more times than then previous mode)
+										if (counter > modeFreq)
+										{
+											modeFreq = counter;
+											mode = [0];
+											mode.push(modeArray[MAI - 1]);
+											mode.shift();
+										}
+										// If the counter is NOT greater than the current frequency of appearance for the mode (if the tested number DOES NOT appear more times than then previous mode)
+										else
+										{
+											// If the counter is equal to the current frequency of appearance for the mode (if the tested number appears an equal amount of times than the previous mode)
+											if (counter == modeFreq)
+											{
+												mode.push(modeArray[MAI - 1]);
+											}
+											// If the counter is NOT equal to the current frequency of appearance for the mode (if the tested number DOES NOT appear an equal amount of times than the previous mode)
+											else
+											{
+												// If the counter is less than the current frequence of appearance for the mode (if the tested number appears less times than the previous mode)
+												if (counter < modeFreq)
+												{
+												}
+											}
+										}
+									}
+								}
+							}
+							// If the current item is NOT the same as the previous item
+							else
+							{
+								// If this is the last iteration of the loop
+								if (MAI == modeArray.length - 1)
+								{
+									// If the frequency of appearance for the mode is 0 (if no mode has been decided yet)
+									if (mode.length == 0)
+									{
+										// If the length of modeArray is 2
+										if (modeArray.length == 2)
+										{
+											modeFreq = counter;
+											mode.push(modeArray[MAI - 1]);
+											mode.push(modeArray[MAI]);
+										}
+										// If the length of modeArray is NOT 2
+										else
+										{
+											modeFreq = counter;
+											mode.push(modeArray[MAI]);
+										}
+									}
+									// If the frequency of appearance for the mode is NOT 0 (if a mode has been decided)
+									else
+									{
+										// If the counter is greater than the current frequency of appearance for the mode (if the tested number appears more times than then previous mode)
+										if (counter > modeFreq)
+										{
+											modeFreq = counter;
+											mode = [0];
+											mode.push(modeArray[MAI - 1]);
+											mode.shift();
+										}
+										// If the counter is NOT greater than the current frequency of appearance for the mode (if the tested number DOES NOT appear more times than then previous mode)
+										else
+										{
+											// If the counter is equal to the current frequency of appearance for the mode (if the tested number appears an equal amount of times than the previous mode)
+											if (counter == modeFreq)
+											{
+												if (counter == 1)
+												{
+													mode.push(modeArray[MAI - 1]);
+													mode.push(modeArray[MAI]);
+												}
+												else
+												{
+													if (counter > 1)
+													{
+														mode.push(modeArray[MAI - 1]);
+													}
+												}
+											}
+											// If the counter is NOT equal to the current frequency of appearance for the mode (if the tested number DOES NOT appear an equal amount of times than the previous mode)
+											else
+											{
+												// If the counter is less than the current frequence of appearance for the mode (if the tested number appears less times than the previous mode)
+												if (counter < modeFreq)
+												{
+												}
+											}
+										}
+									}
+								}
+								// If this is NOT the last iteration of the loop
+								else
+								{
+									// If the frequency of appearance for the mode is 0 (if no mode has been decided yet)
+									if (mode.length == 0)
+									{
+										modeFreq = counter;
+										mode.push(modeArray[MAI - 1]);
+									}
+									// If the frequency of appearance for the mode is NOT 0 (if a mode has been decided)
+									else
+									{
+										// If the counter is greater than the current frequency of appearance for the mode (if the tested number appears more times than then previous mode)
+										if (counter > modeFreq)
+										{
+											modeFreq = counter;
+											mode = [0];
+											mode.push(modeArray[MAI - 1]);
+											mode.shift();
+										}
+										// If the counter is NOT greater than the current frequency of appearance for the mode (if the tested number DOES NOT appear more times than then previous mode)
+										else
+										{
+											// If the counter is equal to the current frequency of appearance for the mode (if the tested number appears an equal amount of times than the previous mode)
+											if (counter == modeFreq)
+											{
+												mode.push(modeArray[MAI - 1]);
+											}
+											// If the counter is NOT equal to the current frequency of appearance for the mode (if the tested number DOES NOT appear an equal amount of times than the previous mode)
+											else
+											{
+												// If the counter is less than the current frequence of appearance for the mode (if the tested number appears less times than the previous mode)
+												if (counter < modeFreq)
+												{
+												}
+											}
+										}
+									}
+
+									counter = 1;
+								}
+							}
+						}
+					}
+				}
+				mode.sort(function(a, b){return a - b});
+
+				return [mode, modeFreq];
+			}
+
+			function findMedian(medianArray)
+			{
+				var median = 0;
+
+				if (medianArray.length % 2 === 0)
+				{
+					median = ((medianArray[(medianArray.length/2) - 1] + medianArray[(medianArray.length/2)])/2);
+				}
+				else
+				{
+					median = medianArray[parseInt(medianArray.length/2)];
+				}
+
+				return median;
+			}
+
+			//Doubles and Triples function Stuff
+			/*
+				counterPairsForArray = 0;
+				dblsFreqForArray = 0;
+				triplesFreqForArray = 0;
+				doublesArray = [];
+				triplesArray = [];
+
+			Console Log statements are for testing and seeing the values
+			*/
+			function checkForDoublesAndTriples (testArray)
+			{
+				var counterPairsForArray = 0;
+				var doublesFreqForArray = 0;
+				var triplesFreqForArray = 0;
+				var doublesArray = [];
+				var triplesArray = [];
+				// testArray.sort(function(a, b){return a - b});
+
+				// For each roll
+				for (var s = 1;  s < parseInt(numDiceRollsInput) + 1; s++)
+				{
+					counterPairsForArray = 0;
+					
+					/*
+					console.log("DiceRoll: " + parseInt(numDiceRollsInput));
+					console.log("s: " + s);
+					console.log("counter: " + counterPairsForArray);
+					console.log(doublesArray);
+					console.log(triplesArray);
+					*/
+
+					var valuesArray = [];
+					
+					// Creates an array for only the items of the roll (does this for every roll, there will be as many items in the array as there are number of dice)
+					for (var e = (s * numDiceInput) - numDiceInput;  e < (s * numDiceInput); e++)
+					{
+						valuesArray.push(testArray[e]);
+						// console.log(valuesArray);
+					}
+					
+					// Sorts the array
+					valuesArray.sort(function(a, b){return a - b});
+					// console.log(valuesArray);
+
+					// For each item of the array in each roll
+					for (var z = 0;  z < valuesArray.length; z++)
+					{
+						// If you are looking at the first item of the roll
+						if (z == (s * numDiceInput) - numDiceInput)
+						{
+							counterPairsForArray++;
+							// console.log("counter: " + counterPairsForArray);
+							// console.log("Freq: " + doublesFreqForArray);
+						}
+						// If you are NOT looking at the first item of the roll
+						else
+						{
+							// If the current item is the same as the previous item
+							if (valuesArray[z] == valuesArray[z - 1])
+							{
+								counterPairsForArray++;
+								// console.log("counter: " + counterPairsForArray);
+								// console.log("Freq: " + doublesFreqForArray);
+
+								// If this is the last iteration of the loop
+								if (z == valuesArray.length - 1)
+								{
+									// If there was exactly 2 instances of the item
+									if (counterPairsForArray == 2)
+									{
+										doublesFreqForArray++;
+										doublesArray.push(valuesArray[z]);
+										// console.log("Freq: " + doublesFreqForArray);
+										// console.log("counter: " + counterPairsForArray);
+										
+										if (doublesArray.length > 1)
+										{
+											if (deleteDuplicatesForDoublesAndTriples(doublesArray) == true)
+											{
+												doublesArray.pop();
+											}
+										}
+									}
+									else
+									{
+										// If 3 dice were rolled
+										if (numDiceInput >= 3)
+										{
+											// If there was exactly 3 instances of the item
+											if (counterPairsForArray == 3)
+											{
+												triplesFreqForArray++;
+												triplesArray.push(valuesArray[z]);
+												
+												if (triplesArray.length > 1)
+												{
+													if (deleteDuplicatesForDoublesAndTriples(triplesArray) == true)
+													{
+														triplesArray.pop();
+													}
+												}
+											}
+										}
+									}
+								}
+
+							}
+							// If the current item is NOT the same as the previous item
+							else
+							{
+								// console.log("Freq: " + doublesFreqForArray);
+								// If there was exactly 2 instances of the previous item
+								if (counterPairsForArray == 2)
+								{
+									doublesFreqForArray++;
+									doublesArray.push(valuesArray[z - 1]);
+									// console.log("Freq: " + doublesFreqForArray);
+									// console.log("counter: " + counterPairsForArray);
+									
+									if (doublesArray.length > 1)
+									{
+										if (deleteDuplicatesForDoublesAndTriples(doublesArray) == true)
+										{
+											doublesArray.pop();
+										}
+									}
+								}
+
+								// If there was exactly three instances of the item
+								if (numDiceInput >= 3)
+								{
+									// If 3 dice were rolled
+									if (counterPairsForArray == 3)
+									{
+										triplesFreqForArray++;
+										triplesArray.push(valuesArray[z - 1]);
+										
+										if (triplesArray.length > 1)
+										{
+											if (deleteDuplicatesForDoublesAndTriples(triplesArray) == true)
+											{
+												triplesArray.pop();
+											}
+										}
+									}
+								}
+
+								// If this is the last iteration of the loop
+								if (z == valuesArray.length - 1)
+								{
+									counterPairsForArray = 0;
+									// console.log("counter: " + counterPairsForArray);
+								}
+
+								counterPairsForArray = 1;
+								// console.log("counter: " + counterPairsForArray);
+							}
+						}
+					}
+				}
+
+				// console.log(doublesArray.sort(function(a, b){return a - b}));
+				// console.log(triplesArray.sort(function(a, b){return a - b}));
+				
+				doublesArray.sort(function(a, b){return a - b});
+				triplesArray.sort(function(a, b){return a - b});
+				
+				return [doublesArray, triplesArray, doublesFreqForArray, triplesFreqForArray];
+			}
+
+			//Creates new row
+			//Creats new cell
+			// For first row:
+			//	1. Sets first cell to value
+			//	2. Adds in the possible sums of the dice in the cells next to the value column
+			function addDataToTable()
+			{
+				for (var dataAdder = 1; dataAdder < 10; dataAdder++)
+				{
+					if (dataAdder <= 2)
+					{
+						var newRow = diceResultsTable.insertRow();
+						var newCell = newRow.insertCell();
+					}
+					else
+					{
+						if (dataAdder == 3)
+						{
+							var newRow = diceResultsTableTwo.insertRow();
+						}
+						var newCell = newRow.insertCell();
+					}
+
+					if (dataAdder >= 5)
+					{
+						diceValuesArray.sort(function(a, b){return a - b});
+						sumOfRollsArray.sort(function(a, b){return a - b});
+					}
+
+
+					if (dataAdder == 1)
+					{
+						newCell.innerHTML = "Value";
+
+						for (var possibleSumsVal = parseInt(numDiceInput) - 1; possibleSumsVal < (parseInt(numDiceInput) * 6); possibleSumsVal++)
+						{
+							var newCell = newRow.insertCell();
+
+							newCell.innerHTML = (possibleSumsVal + 1);
+						}
+					}
+
+					if (dataAdder == 2)
+					{
+						newCell.innerHTML = "Frequency";
+
+						for (var possibleSumsFreq = parseInt(numDiceInput) - 1; possibleSumsFreq < (parseInt(numDiceInput) * 6); possibleSumsFreq++)
+						{
+							var newCell = newRow.insertCell();
+							var addFreq = 0;
+
+							for (var sumOfRollsArrayPosition = 0; sumOfRollsArrayPosition < sumOfRollsArray.length; sumOfRollsArrayPosition++)
+							{
+								if (possibleSumsFreq + 1 == sumOfRollsArray[sumOfRollsArrayPosition])
+								{
+									addFreq++;
+
+									if (sumOfRollsArrayPosition == sumOfRollsArray.length - 1)
+									{
+										newCell.innerHTML = addFreq;
+									}
+								}
+								else
+								{
+									if (sumOfRollsArrayPosition == sumOfRollsArray.length - 1)
+									{
+										newCell.innerHTML = addFreq;
+									}
+								}
+							}
+
+						}
+					}
+
+					if (dataAdder == 3)
+					{
+						if (numDiceInput >= 2)
+						{
+							newCell.innerHTML = "Doubles Frequency: ";
+
+							// For testing checkForDoublesAndTriples function
+							// checkForDoublesAndTriples(diceValuesArray);
+
+							var doublesValues = checkForDoublesAndTriples(diceValuesArray);
+							var doubles = doublesValues[0];
+							var doublesFreq = doublesValues[2];
+							
+							newCell.innerHTML += "There ";
+							
+							if (doubles.length == 0)
+							{
+								newCell.innerHTML += " are no doubles.";
+							}
+							else
+							{
+								if (doubles.length == 1)
+								{
+									newCell.innerHTML += "was "  + doublesFreq +  " double. <br /> The double was: ";
+								}
+								else
+								{
+									newCell.innerHTML += "were "  + doublesFreq +  " doubles. <br /> The doubles were:  ";
+								}
+								
+								for (var DI = 0; DI < doubles.length; DI++)
+								{
+									newCell.innerHTML += doubles[DI];
+									if (DI != doubles.length - 1)
+									{
+										newCell.innerHTML += ", ";
+									}
+								}
+							}							
+						}
+						else
+						{
+							var demolishCell = newRow.deleteCell(-1);
+						}
+					}
+
+					if (dataAdder == 4)
+					{
+						if (numDiceInput >= 3)
+						{
+							newCell.innerHTML = "Triples Frequency: ";
+
+							// checkForDoublesAndTriples(diceValuesArray);
+
+							var triplesValues = checkForDoublesAndTriples(diceValuesArray);
+							var triples = triplesValues[1];
+							var triplesFreq = triplesValues[3];
+							
+							newCell.innerHTML += "There ";
+							
+							if (triples.length == 0)
+							{
+								newCell.innerHTML += " are no triples.";
+							}
+							else
+							{							
+								if (triples.length == 1)
+								{
+									newCell.innerHTML += "was "  + triplesFreq +  " triple. <br /> The triple was: ";
+								}
+								else
+								{
+									newCell.innerHTML += "were "  + triplesFreq +  " triples. <br /> The triples were:  ";
+								}
+							
+								for (var TI = 0; TI < triples.length; TI++)
+								{
+									newCell.innerHTML += triples[TI];
+									if (TI != triples.length - 1)
+									{
+										newCell.innerHTML += ", ";
+									}
+								}
+							}
+						}
+						else
+						{
+							var demolishCell = newRow.deleteCell(-1);
+						}
+					}
+
+					if (dataAdder == 5)
+					{
+						newCell.innerHTML = "Mean: ";
+						newCell.innerHTML += findMean(diceValuesArray);
+					}
+
+					if (dataAdder == 6)
+					{
+						newCell.innerHTML = "Median (Sums of Rolls): ";
+						newCell.innerHTML += findMedian(sumOfRollsArray);
+					}
+
+					if (dataAdder == 7)
+					{
+						newCell.innerHTML = "Median (Dice Rolls): ";
+						newCell.innerHTML += findMedian(diceValuesArray);
+					}
+
+					if (dataAdder == 8)
+					{
+						newCell.innerHTML = "Mode(s) (Sums of Rolls): ";
+
+						var modeValuesSOR = findMode(sumOfRollsArray);
+						var modeTwoSOR = modeValuesSOR[0];
+						var modeFreqSOR = modeValuesSOR[1];
+
+						if (modeTwoSOR.length > 1 && sumOfRollsArray.length == modeTwoSOR.length)
+						{
+							newCell.innerHTML += "There is no mode."
+						}
+						else
+						{
+							for (var MTSORI = 0; MTSORI < modeTwoSOR.length; MTSORI++)
+							{
+								newCell.innerHTML += modeTwoSOR[MTSORI];
+								if (MTSORI != modeTwoSOR.length - 1)
+								{
+									newCell.innerHTML += ", ";
+								}
+							}
+
+							newCell.innerHTML += "<br />" + "These numbers occured " + modeFreqSOR + " time(s)."
+						}
+					}
+
+					if (dataAdder == 9)
+					{
+						newCell.innerHTML = "Mode(s) (Dice Rolls): ";
+
+						var modeValuesDV = findMode(diceValuesArray);
+						var modeTwoDV = modeValuesDV[0];
+						var modeFreqDV = modeValuesDV[1];
+
+						if (modeTwoDV.length > 1 && modeTwoDV.length == diceValuesArray.length)
+						{
+							newCell.innerHTML += "There is no mode.";
+						}
+						else
+						{
+							for (var MTDVI = 0; MTDVI < modeTwoDV.length; MTDVI++)
+							{
+								newCell.innerHTML += modeTwoDV[MTDVI];
+								if (MTDVI != modeTwoDV.length - 1)
+								{
+									newCell.innerHTML += ", ";
+								}
+							}
+
+							newCell.innerHTML += "<br />" + "These numbers occured " + modeFreqDV + " time(s).";
+						}
+					}
+				}
+
+				display();
+			}
+
+			function display()
+			{
+				// For seeing the individual rolls
+				// variableTracker.innerHTML = "Num Dice: " + numDiceInput + "<br /> <br />" + "Num Rolls: " + numDiceRollsInput + "<br /> <br />" + "Dice Values: " + diceValues;
+				
+				if (isNaN(userInputForm.numdice.value) || userInputForm.numdice.value == "" || isNaN(userInputForm.numdicerolls.value) || userInputForm.numdicerolls.value == "")
+				{
+					nanErrorDisplay.style.display = "block";
+				}
+				else
+				{
+					diceInfoDisplay.style.display = "block";
+					
+					diceResultsTable.style.display = "block";
+					diceResultsTableTwo.style.display = "block";
+				}
+				
+				//For seeing the values of each roll and testing
+				// diceValuesArrayDisplay.innerHTML = "Dice Values: " + diceValuesArray;
+				// sumOfRollsArrayDisplay.innerHTML = "Sum of Rolls: " + sumOfRollsArray;
+			}
+		</script>
+	</head>
+	<body onload = "initialize();">
+		<div id = "title">Welcome to the Dice Roller!</div>
+
+		<div>Welcome to the Dice Rolling Page!</div>
+
+		<h2>Directions:</h2>
+		<ol>
+			<li>Input the amount of dice you want rolled. Make sure you input a <span id = "embolden">number with no other characters.</span></li>
+			<li>Click the "Roll the Dice" button.</li>
+			<li>Sit back and watch as the webpage gives you data based on the rolls:
+			the frequency of the sums of rolls, the mean, the mode, the median, the amount of doubles, and the amount of triples.</li>
+		</ol>
+
+		<form id = "userinput">
+			How many dice do you want rolled? <input name = "numdice" type = "text" />
+			<br />
+			<br />
+			How many times do you want the dice rolled? <input name = "numdicerolls" type = "text" />
+		</form>
+
+		<hr />
+
+		<button onclick = "clearTable();recordUserInput();">Roll the Dice</button>
+
+		<br />
+		<br />
+		
+		<div style = "display:none" id = "diceinfodisplay"></div>
+		
+		<br />
+		
+		<div style = "display:none" id = "NaNError"></div>
+		<table style = "display:none" id = "diceresultstable">
+			<!-- <th colspan = "findRowspanOfValueColumn();" id = "tablename"> Dice Rolled Results</th> -->
+		</table>
+
+		<br />
+		<br />
+
+		<table style = "display:none" id = "diceresultstabletwo"></table>
+		<!-- This is for separating testing variables from the table
+		<hr /> 
+		-->
+
+		<br />
+		<br />
+
+		<div id = "dicevaluesarray"></div>
+
+		<br />
+		<br />
+
+		<div id = "sumofrollsarray"></div>
+
+		<br />
+		<br />
+
+		<br />
+		<br />
+
+		<!-- Moved this down here so th button wouldnt disappear when values were given -->
+		<div id = "variabletracker"></div>
+	</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Dining Room</title>
+		<style>
+			
+			#r1_added_text
+			{
+				font: comic sans 12pt;
+				color:blue;
+				text-align:left;
+				text-decoration: none;
+			}
+		</style>
+		<link rel = "stylesheet" href = "CSS_Sheet.css" />
+		<script src = "utilities.js"></script>
+		<script>
+			
+			/* Commented out things are for Testing */
+			function initialize()
+			{
+				/*
+				initializeVariables();
+				
+				if(!sessionStorage.numVisitsR1)
+					sessionStorage.numVisitsR1 = 1;
+				else
+					sessionStorage.numVisitsR1++;
+					
+				visitCounterR1 = document.getElementById("counter_R1");
+				*/
+				
+				r1AddedText = document.getElementById("r1_added_text");
+				
+				display();
+			}
+			
+			/* If window thing clicked, then display the text, if not, don't display the text*/
+			function display()
+			{
+				/* If window thing clicked */
+				if(sessionStorage.checkedWindow == 1)
+				{
+					r1AddedText.style.display = "block";
+				}
+				/* If window thing not clicked */
+				else
+				{
+					r1AddedText.style.display = "none";
+				}
+				
+				/* visitCounterR1.innerHTML = sessionStorage.numVisitsR1; */
+			}
+		</script>
+	</head>
+	
+	<body onload = "initialize();">
+		<h6><div>L1</div></h6>
+		<h6><div>Dining Room</div></h6>
+		<hr />
+		<div><img src = "images/dining_room.jpg" /></div>
+		
+		<h3>
+			<p id = "r1_default">
+				You come across a room an extremely dusty room with 6 chairs surrounding a table. From this alone, you detemine that this
+				room used to be a dining room. It reminds you of Alice in Wonderland, specifically the scene where Alice had the tea party
+				with the Mad Hatter and the other creatures of her imagination. Except now the scene wasn't as colorful; there were no guests,
+				no tea, no food, and rubble covering the table.
+				<br />
+				<br />
+				
+				On the side of the table appeared to be a small cupboard, with a single in-tact jar sitting solemnly on its counter. Some drawers
+				of the cupboard were opened, and their contents taken, as if a very hungry someone had been rumaging through it looking for a 
+				snack.
+				<br />
+				<br />
+				
+				Across the room from the cupboard, on the other side of the table, there is another, larger cupboard, who has a much larger
+				storage capability. It has also been deprived of its contents and also has a single storage vessel on its counter, a teapot.
+				<br />
+				<br />
+				
+				<span id = "thoughts">"This person really likes their teapots I guess,"</span> you muse.
+				<br />
+				<br />
+				
+				On one side of the room, you notice a window with bright light emitting through it. You find it odd, because you and your friends
+				arrived at the haunted house at an extremely late time, so it sould not be sunny outside. You conclude that either time is warped
+				in this house, or your eyes are playing tricks on you. 
+				<br />
+				<br />
+				
+				You consider if you should <span id = "interactable" onclick = "windowChecked();">inspect the window</span> to find out what's going on, 
+				or if you should just keep exploring rooms.
+				
+				<!-- <div id = "counter_R1"></div> -->
+				
+				<p id = "r1_added_text">
+				You walk up to the window and try to look up out of it, but see nothing but the bright light striking your face. You try opening the 
+				window, but it does not budge. You look closer at the window, and realize that the light coming from it is only a painting that is 
+				somehow emitting light. Mysterious forces are at work in this house.
+				</p>				
+			</p>
+		</h3>
+		<hr />
+		
+		<!-- Choices -->
+		<div id = "choices_title">What Will you Do?</div>
+		<a href = "Start.html"><img src = "images/LEFT_ARR.png" /></a>
+		<hr />
+		
+		<!--Homepage Link -->
+		<h4><a href = "index.html">Back to Homepage</a></h4>
+	</body>
+</html>
