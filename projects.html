@@ -1,0 +1,213 @@
+<!DOCTYPE HTML>
+<html>
+	<!-- Notes -->
+	<head>
+		<!--
+			Tag for responsive web design. The meta tag allows designers access
+			properties of the viewport of the browser, which is the visible area of
+			a web page. This tag makes the content on the screen fit according to the
+			user's device.
+
+			Credits to https://www.w3schools.com/css/css_rwd_viewport.asp for this
+			information. To learn more, visit this website.
+		-->
+		<meta name = "viewport" content = "width=device-width, initial-scale = 1.0">
+		<title></title>
+		<style></style>
+		<link rel = "stylesheet" href = "vendors/css/responsive-layout.css">
+		<link rel = "stylesheet" href = "vendors/css/responsive-navbar.css">
+		<link rel = "stylesheet" href = "resources/css/footer.css">
+		<link rel = "stylesheet" href = "resources/css/projects.css">
+		<script>
+			function initialize()
+			{
+			}
+		</script>
+	</head>
+	<body onload = "initialize();">
+		<!-- Navbar -->
+		<!-- Use nav tag for main nav bar and ul for navbar content? -->
+		<nav class = "navbar">
+			<!-- Link to Homepage on the logo -->
+			<!-- <a class = "navbar-logo clearfix" href = "#">
+				Matthew Mentis-Cort
+			</a> -->
+
+			<!-- Button to toggle navbar on smaller screens -->
+			<button type = "button" class = "navbar-toggler">
+				...
+			</button>
+
+			<button type = "button" class = "navbar-closer">
+				X
+			</button>
+
+			<div class = "navbar-content">
+				<ul class = "navbar-link-list">
+					<li class = "navbar-item">
+						<a class = "navbar-link" href = "index.html">
+							Home
+						</a>
+					</li>
+
+					<li class = "navbar-item">
+						<a class = "navbar-link" href = "about-me.html">
+							About Me
+						</a>
+					</li>
+
+					<li class = "navbar-item">
+						<a class = "navbar-link active" href = "projects.html">
+							Projects
+						</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+
+		<!-- Header -->
+		<header>
+			<h1>Projects</h1>
+		</header>
+
+		<!-- Main content -->
+		<main>
+			<!-- WebDev Projects -->
+			<section id = "webdev-projects">
+				<div class = "row">
+					<h1>Web Dev Projects</h1>
+					<p>
+						Projects made in my web development class in high school.
+					</p>
+				</div>
+
+				<div class = "row">
+					<ul class = "card-list">
+						<li class = "card">
+							<img src = "resources/images/projects/web-dev/hot-cold.jpg" alt = "Picture representing square numbers quiz" class = "card-img" />
+							<div class = "card-desc">
+								<a href = "webdev-files/level-1/index.html" target = "_blank">
+									Hot and Cold
+								</a>
+						</li>
+
+						<li class = "card">
+							<img src = "resources/images/projects/web-dev/haunted-house.jpg" alt = "Picture representing memory game" class = "card-img" />
+							<div class = "card-desc">
+								<a href = "webdev-files/level-2/index.html" target = "_blank">
+									Scary Story Adventure
+								</a>
+							</div>
+						</li>
+
+						<li class = "card">
+							<img src = "resources/images/projects/web-dev/dice-roller.png" alt = "Picture representing square numbers quiz" class = "card-img" />
+							<div class = "card-desc">
+								<a href = "webdev-files/level-3/index.html" target = "_blank">
+									Dice Roller
+								</a>
+							</div>
+						</li>
+
+						<li class = "card">
+							<img src = "resources/images/projects/web-dev/crossing.jpg" alt = "Picture representing square numbers quiz" class = "card-img" />
+							<div class = "card-desc">
+								<a href = "webdev-files/level-4/index.html" target = "_blank">
+									The Crossing
+								</a>
+							</div>
+						</li>
+
+						<li class = "card">
+							<img src = "resources/images/projects/web-dev/animal-quiz.jpg" alt = "Picture representing square numbers quiz" class = "card-img" />
+							<div class = "card-desc">
+								<a href = "webdev-files/level-5/index.html" target = "_blank">
+									Which Animal Are You?
+								</a>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</section>
+
+			<!-- Self Inspired Projects -->
+			<section id = "self-inspired-projects">
+				<div class = "row">
+					<h1>Self Inspired Projects</h1>
+					<p>
+						Projects that I had ideas for that I decided to act on.
+					</p>
+				</div>
+
+				<div class = "row">
+					<ul class = "card-list">
+						<li class = "card">
+							<img src = "resources/images/projects/SIP/squared.png" alt = "Picture representing square numbers quiz" class = "card-img" />
+							<div class = "card-desc">
+								<a href = "SquareNumbers.html" target = "_blank">
+									Square Numbers Quiz
+								</a>
+							</div>
+						</li>
+
+						<li class = "card">
+							<img src = "resources/images/projects/SIP/memory.jpg" alt = "Picture representing memory game" class = "card-img" />
+							<div class = "card-desc">
+								<a href = "MemoryGame.html" target = "_blank">
+									Memory Game
+								</a>
+							</div>
+						</li>
+
+						<li class = "card">
+							<img src = "resources/images/projects/SIP/definition.jpg" alt = "Picture representing definition game quiz" class = "card-img" />
+							<div class = "card-desc">
+								<a href = "MCDefGame.html" target = "_blank">
+									Definition Game (Multiple Choice)
+								</a>
+							</div>
+						</li>
+
+						<li class = "card">
+							<img src = "resources/images/projects/SIP/words.jpg" alt = "Picture representing word games" class = "card-img" />
+							<div class = "card-desc">
+								<a href = "DefinitionGameHomepage.html" target = "_blank">
+									Word Games
+								</a>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</section>
+		</main>
+
+		<!-- Footer -->
+		<footer>
+			<div class = "row">
+				<div class = "col-6">
+					<h2>Contact Me!</h2>
+				</div>
+			</div>
+
+			<div class = "row footer-row">
+				<div class = "col-6">
+					<a href = "https://www.linkedin.com/in/matthew-mentis-cort-374430203" target = "_blank">
+						LinkedIn
+					</a>
+				</div>
+				<div class = "col-6">
+					<a href = "index.html">Home</a>
+				</div>
+			</div>
+
+			<div class = "row footer-row">
+				<div class = "col-6">
+					<p>Email: mmentiscort67889@gmail.com</p>
+				</div>
+				<div class = "col-6">
+					<a href = "about-me.html">About Me</a>
+				</div>
+			</div>
+		</footer>
+	</body>
+</html>
