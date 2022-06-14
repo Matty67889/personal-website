@@ -1,0 +1,98 @@
+*
+{
+  box-sizing: border-box;
+}
+
+body
+{
+  margin: 0;
+}
+
+header
+{
+  text-align: center;
+  background-color: burlywood;
+}
+
+section
+{
+  text-align: center;
+  margin-bottom: 20px;
+  border-bottom: 1px solid black;
+}
+
+ul.card-list
+{
+  list-style-type: none;
+  padding-left: 0;
+  /* padding-bottom: 20px; */
+
+  /* Uncomment these two for scrollable projects */
+  white-space: nowrap;
+  overflow: auto;
+
+  /* border: 3px solid gray; */
+}
+
+ul.card-list > li
+{
+  display: inline-block;
+  width: 100%;
+  /* border: 3px solid brown; */
+}
+
+@media only screen and (min-width: 768px)
+{
+  ul.card-list > li
+  {
+    width: 25%;
+    margin-left: 50px;
+  }
+
+  ul.card-list:first-child
+  {
+    margin-left: 0px;
+  }
+}
+
+.card
+{
+  /* width: 100%; used so the card takes up 100% of the width of the list item */
+  /* border: 3px solid black; */
+
+  margin-bottom: 10px;
+
+  border-radius: 20px;
+  transition: 0.5s;
+}
+
+.card:hover
+{
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.card-img
+{
+  width: 100%;
+
+  /* background-color: yellow; */
+  /* border: 3px solid blue; */
+
+  border-radius: 20px 20px 0 0;
+}
+
+.card-desc
+{
+  /* border: 3px solid green; */
+  background-color: hotpink;
+
+  padding: 10px;
+  white-space: normal; /* Used to override the ul.card-list white space */
+
+  border-radius: 0 0 20px 20px;
+}
+
+.card-desc a
+{
+  text-decoration: none;
+}
