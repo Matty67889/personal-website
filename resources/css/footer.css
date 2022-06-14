@@ -1,0 +1,51 @@
+html, body
+{
+  height: 100%; /* for sticky footer */
+}
+
+body
+{
+  display: flex; /* for sticky footer */
+  flex-direction: column; /* for sticky footer */
+}
+
+main
+{
+  flex: 1 0 auto; /* for sticky footer */
+}
+
+footer
+{
+  flex-shrink: 0; /* for sticky footer */
+
+  background-color: #B2AC88;
+
+  /* margin-top: 15px; */
+
+  padding: 10px 0px 50px;
+
+  font-size: 20px;
+
+  text-align: center;
+}
+
+footer a
+{
+  text-decoration: none;
+  color: black;
+}
+
+footer a:hover
+{
+  color: blue;
+}
+
+.footer-row
+{
+  margin-top: 10px;
+}
+
+footer p
+{
+  margin: 0;
+}
