@@ -16,6 +16,7 @@
 		<style></style>
 		<link rel = "stylesheet" href = "vendors/css/responsive-layout.css">
 		<link rel = "stylesheet" href = "vendors/css/responsive-navbar.css">
+		<link rel = "stylesheet" href = "resources/css/footer.css">
 		<link rel = "stylesheet" href = "resources/css/about-me.css">
 		<script>
 			function initialize()
@@ -56,37 +57,8 @@
 					</li>
 
 					<li class = "navbar-item">
-						<a class = "navbar-link" href = "SquareNumbers.html">
-							Square Numbers Quiz
-						</a>
-					</li>
-
-					<li class = "navbar-item">
-						<a class = "navbar-link" href = "MemoryGame.html">
-							Memory Game
-						</a>
-					</li>
-
-					<li class = "navbar-item dropdown">
-						<a class = "navbar-link dropbtn" href = "DefinitionGameHomepage.html">
-							Word Games
-						</a>
-						<div class = "dropdown-content">
-							<a class = "navbar-link" href = "UserMadeDefinitionGame.html">
-								Make your own
-							</a>
-							<a class = "navbar-link" href = "DefaultDefinitionGame.html">
-								Definition Game
-							</a>
-							<a class = "navbar-link" href = "MCDefGame.html">
-								Definition Game (Multiple Choice)
-							</a>
-						</div>
-					</li>
-
-					<li class = "navbar-item">
-						<a class = "navbar-link" href = "WebDevProjects.html">
-							Web Development Class Projects
+						<a class = "navbar-link" href = "projects.html">
+							Projects
 						</a>
 					</li>
 				</ul>
@@ -95,95 +67,149 @@
 
 		<!-- Header -->
 		<header>
-			<h1>About Me</h1>
+			<div class = "row">
+				<div class = "col-3">
+					<h1>About Me</h1>
+				</div>
+
+				<div class = "col-9">
+					<p id = "header-text">
+						I am a Freshman at Cornell University studying Computer Science.
+						I hope to use my the knowledge that I gain from coding
+						technology to develop ways to make education easier
+						and more accessible for people around the world. Apart from
+						Computer Science, I am interested in learning concepts in
+						Psychology. It is an interesting field to me as it helps me
+						learn about how are brains work, and I also think that it will
+						allow aid me in my goal of making learning easier for people.
+						In my free time, I read, write, and play video games.
+					</p>
+				</div>
+			</div>
 		</header>
 
 		<!-- Main content -->
-		<section class = "computer-science">
-			<div class = "row">
-				<div class = "col-6 section-img">
-					<img src = "resources/images/compsci-img.jpg" alt = "Image of computer science">
+		<main>
+			<!-- Computer Science Section -->
+			<section class = "computer-science">
+				<div class = "row">
+					<div class = "col-6 section-img">
+						<img src = "resources/images/compsci-img.jpg" alt = "Image of computer science" />
+					</div>
+					<div class = "col-6 section-desc">
+						<p>
+							My interest in computer science budded when I was young and I
+							became enamored by how cool it was to see coding in movies. When
+							I first entered high school, my interest was nurtured when I got
+							my first taste of coding. I realized that although it was
+							difficult at times, it was still rewarding and fun to engage in.
+							In college, I am hoping to make my interest blossom by studying
+							it as my major.
+						</p>
+					</div>
 				</div>
-				<div class = "col-6 section-desc">
-					<p>
-						My interest in computer science budded when I was young and I
-						became enamored by how cool it was to see coding in movies. When
-						I first entered high school, my interest was nurtured when I got
-						my first taste of coding. I realized that although it was
-						difficult at times, it was still rewarding and fun to engage in.
-						In college, I am hoping to make my interest blossom by studying
-						it as my major.
-					</p>
+			</section>
+
+			<!-- Reading and Writing Section -->
+			<section class = "reading-writing">
+				<div class = "row">
+					<div class = "col-6 section-desc">
+						<p>
+							When I read books, I become enamored by the way authors string
+							together words into a glorious symphony of text. They suck me
+							into their fantasy world they've created and amaze me with
+							unexpected twists and adorable love stories. It amazes me
+							that authors manage to create suspense and trepidation like
+							that of a movie even in text where everything that happens is
+							laid out for the reader to see. Their writing prowess has
+							inspired me to try to achieve something as good on paper. I
+							tried to write a book when I was younger, and still write
+							down my story ideas to this day.
+						</p>
+					</div>
+					<div class = "col-6 section-img">
+						<img src = "resources/images/read-write-img.jpg" alt = "Image of reading and writing" />
+					</div>
+				</div>
+			</section>
+
+			<!-- Psychology Section -->
+			<section class = "psychology">
+				<div class = "row">
+					<div class = "col-6 section-img">
+						<img src = "resources/images/psychology-img.jpg" alt = "Image of psychology" />
+					</div>
+					<div class = "col-6 section-desc">
+						<p>
+							Throughout our lives we're told that everyone is unique, and that
+							concept has always intrigued me. We all think in different ways,
+							react differently to stimuli, are interested in different
+							activities, and make different decisions based on our past
+							experiences. I want to learn more about what goes on in our
+							brain, and how our environment causes us to explore different
+							paths in our lives. With this knowledge, I will not only
+							achieve a greater understanding of our world, but I may also
+							be able to use it to find the most effective ways to educate
+							people with technology, which is something I hope to do.
+						</p>
+					</div>
+				</div>
+			</section>
+
+			<!-- Game Section -->
+			<section class = "games">
+				<div class = "row">
+					<div class = "col-6 section-desc">
+						<p>
+							Games have always been a big part of my life, whether they be
+							digital, table based, or satirical. They challenge my mind by
+							presenting me with unfamiliar situations and force me to
+							think critically. Oftentimes I am able to apply the thinking
+							I use in games to make things easier to understand in real life.
+							When I do play games, they usually involve strategy. One
+							of my favorites is Dragon Quest 9, an RPG about a hero's quest to
+							rid the world of evil. It's outlandish humor and extensive
+							vocabulary has taught me a lot, and contributed to making me who
+							I am today.
+						</p>
+					</div>
+					<div class = "col-6 section-img">
+						<img src = "resources/images/dq9-img.jpg" alt = "Image of dragon Quest 9" />
+					</div>
+				</div>
+			</section>
+
+			<!-- Resume -->
+			<!-- <iframe src = "resources/data/resume.pdf" /> -->
+		</main>
+
+		<!-- Footer -->
+		<footer>
+			<div class = "row">
+				<div class = "col-6">
+					<h2>Contact Me!</h2>
 				</div>
 			</div>
-		</section>
 
-		<section class = "reading-writing">
-			<div class = "row">
-				<div class = "col-6 section-desc">
-					<p>
-						When I read books, I become enamored by the way authors string
-						together words into a glorious symphony of text. They suck me
-						into their fantasy world they've created and amaze me with
-						unexpected twists and adorable love stories. It amazes me
-						that authors manage to create suspense and trepidation like
-						that of a movie even in text where everything that happens is
-						laid out for the reader to see. Their writing prowess has
-						inspired me to try to achieve something as good on paper. I
-						tried to write a book when I was younger, and still write
-						down my story ideas to this day.
-					</p>
+			<div class = "row footer-row">
+				<div class = "col-6">
+					<a href = "https://www.linkedin.com/in/matthew-mentis-cort-374430203" target = "_blank">
+						LinkedIn
+					</a>
 				</div>
-				<div class = "col-6 section-img">
-					<img src = "resources/images/read-write-img.jpg" alt = "Image of reading and writing">
+				<div class = "col-6">
+					<a href = "index.html">Home</a>
 				</div>
 			</div>
-		</section>
 
-		<section class = "psychology">
-			<div class = "row">
-				<div class = "col-6 section-img">
-					<img src = "resources/images/psychology-img.jpg" alt = "Image of psychology">
+			<div class = "row footer-row">
+				<div class = "col-6">
+					<p>Email: mmentiscort67889@gmail.com</p>
 				</div>
-				<div class = "col-6 section-desc">
-					<p>
-						Throughout our lives we're told that everyone is unique, and that
-						concept has always intrigued me. We all think in different ways,
-						react differently to stimuli, are interested in different
-						activities, and make different decisions based on our past
-						experiences. I want to learn more about what goes on in our
-						brain, and how our environment causes us to explore different
-						paths in our lives. With this knowledge, I will not only
-						achieve a greater understanding of our world, but I may also
-						be able to use it to find the most effective ways to educate
-						people with technology, which is something I hope to do.
-					</p>
+				<div class = "col-6">
+					<a href = "about-me.html">About Me</a>
 				</div>
 			</div>
-		</section>
-
-		<section class = "games">
-			<div class = "row">
-				<div class = "col-6 section-desc">
-					<p>
-						Games have always been a big part of my life, whether they be
-						digital, table based, or satirical. They challenge my mind by
-						presenting me with unfamiliar situations and force me to
-						think critically. Oftentimes I am able to apply the thinking
-						I use in games to make things easier to understand in real life.
-						When I do play games, they usually involve strategy. One
-						of my favorites is Dragon Quest 9, an RPG about a hero's quest to
-						rid the world of evil. It's outlandish humor and extensive
-						vocabulary has taught me a lot, and contributed to making me who
-						I am today.
-					</p>
-				</div>
-				<div class = "col-6 section-img">
-					<img src = "resources/images/dq9-img.jpg" alt = "Image of dragon Quest 9">
-				</div>
-			</div>
-		</section>
-
-		<!-- <iframe src = "resources/data/resume.pdf" /> -->
+		</footer>
 	</body>
 </html>
