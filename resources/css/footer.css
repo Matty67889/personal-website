@@ -18,7 +18,9 @@ footer
 {
   flex-shrink: 0; /* for sticky footer */
 
-  background-color: #B2AC88;
+  background-color: black;
+  /* alt color: #B2AC88 */
+  color: white;
 
   /* margin-top: 15px; */
 
@@ -32,12 +34,16 @@ footer
 footer a
 {
   text-decoration: none;
-  color: black;
+}
+
+footer a:visited
+{
+  color: white;
 }
 
 footer a:hover
 {
-  color: blue;
+  color: cyan;
 }
 
 .footer-row
