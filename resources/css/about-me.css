@@ -1,13 +1,52 @@
+*
+{
+  box-sizing: border-box;
+}
+
 body
 {
-  background-color: #ededed;
-  /* color: white; */
+  margin: 0;
+  background-color: var(--background-color);
+  color: var(--alt-color);
 
   font-family: "Brush Script MT", cursive, "Helvetica", sans-serif, "Verdana", sans-serif;
 }
 
+header
+{
+  /* background-image: url("../images/about-me-header.jpg");
+  background-size: 100% 100%; */
+
+  /* padding-top: 70vh;
+  padding-bottom: 10vh; */
+  padding: 20vh 50px;
+
+  /* text-align: center; */
+  background-color: var(--alt-color);
+  color: var(--background-color);
+
+  /* border: 3px solid white; */
+}
+
+#header-heading
+{
+  text-align: center;
+
+  /* border: 3px solid white; */
+}
+
+#header-text
+{
+  text-align: justify;
+  /* padding: 100px; */
+  margin: auto auto;
+
+  /* border: 3px solid white; */
+}
+
 section
 {
+  /* display: flex; */
   /* border: 3px solid black; */
   border-bottom: 1px solid black;
 
@@ -17,17 +56,23 @@ section
   text-align: center;
 }
 
+section .row
+{
+  display: flex;
+}
+
 section .section-img, section .section-desc
 {
   padding: 14px;
+  /* border: 3px solid black; */
 }
 
-section .section-desc p
+section .section-desc
 {
-  margin: 0 auto;
+  margin: auto auto;
 }
 
-img
+.section-img img
 {
   width: 100%;
 }
