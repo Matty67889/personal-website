@@ -55,6 +55,7 @@
     3c. project section rules
     3d. about me section rules
   4. footer rules
+  5. button rules
 */
 
 /*
@@ -69,13 +70,10 @@
 
 body
 {
-  position: relative;
-
   margin: 0;
-  background-color: #ededed;
-  /* color: white; */
+  background-color: var(--background-color);
 
-  font-family: "Brush Script MT", cursive, "Helvetica", sans-serif, "Verdana", sans-serif;
+  font-family: var(--font);
 }
 
 /*
@@ -85,16 +83,34 @@ body
 */
 header
 {
-  margin-top: 15px;
+  background-image: url("../images/home-header-img.jpg");
+  background-size: 100% 100%;
+
+  padding-top: 65vh;
+  padding-bottom: 10vh;
+  /*
+    Link to header image:
+    https://images.unsplash.com/photo-1504805572947-34fad45aed93?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80
+  */
+  /* margin-top: 15px; */
+
+  text-align: center;
+
+  /* border: 3px solid hotpink; */
 }
 
-#header-img
+header article
 {
-  width: 100%;
-  /* background-size: cover; */
+  /* border: 3px solid white; */
+  /* margin-top: 20%; */
 }
 
-#header-text-container
+header p
+{
+  color: var(--background-color);
+}
+
+/* #header-text-container
 {
   padding: 0px 15px;
   text-align: center;
@@ -103,7 +119,7 @@ header
 #header-text
 {
   font-size: 15px;
-}
+} */
 
 /*
   ===========
@@ -122,6 +138,8 @@ section
   border-bottom: 1px solid black;
 
   margin-top: 15px;
+  margin-left: auto;
+  margin-right: auto;
   padding: 20px 25px;
 
   text-align: center;
@@ -162,3 +180,48 @@ section
   4. footer rules
   ===========
 */
+
+/*
+  ===========
+  5. button rules
+  ===========
+*/
+.header-button
+{
+  background-color: transparent;
+  color: white;
+  padding: 10px 16px;
+  border: 2px solid white;
+
+  font-size: 16px;
+
+  transition: 0.5s;
+}
+
+.header-button:hover
+{
+  background-color: white;
+  color: black;
+
+  cursor: pointer;
+}
+
+.main-button
+{
+  background-color: transparent;
+  color: black;
+  padding: 10px 16px;
+  border: 2px solid black;
+
+  font-size: 16px;
+
+  transition: 0.5s;
+}
+
+.main-button:hover
+{
+  background-color: black;
+  color: white;
+
+  cursor: pointer;
+}
