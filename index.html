@@ -16,6 +16,7 @@
 		<link rel = "stylesheet" href = "vendors/css/responsive-layout.css">
 		<link rel = "stylesheet" href = "vendors/css/responsive-navbar.css">
 		<link rel = "stylesheet" href = "vendors/css/columns.css">
+		<link rel = "stylesheet" href = "resources/css/default-styles.css">
 		<link rel = "stylesheet" href = "resources/css/footer.css">
 		<link rel = "stylesheet" href = "resources/css/index.css">
 		<script>
@@ -34,13 +35,10 @@
 			</a> -->
 
 			<!-- Button to toggle navbar on smaller screens -->
-			<button type = "button" class = "navbar-toggler">
+			<input type = checkbox id = "navbar-toggler-checkbox" />
+			<label for = "navbar-toggler-checkbox" class = "navbar-toggler">
 				...
-			</button>
-
-			<button type = "button" class = "navbar-closer">
-				X
-			</button>
+			</label>
 
 			<div class = "navbar-content">
 				<ul class = "navbar-link-list">
@@ -67,14 +65,21 @@
 
 		<!-- Header -->
 		<header>
-			<div class = "row">
+			<article>
+				<p>Keep working to achieve your goals.</p>
+				<div id = "button-wrapper">
+					<a href = "about-me.html">
+						<button type = "button" class = "header-button">About Me</button>
+					</a>
+					<a href = "projects.html">
+						<button type = "button" class = "header-button">My Projects</button>
+					</a>
+				</div>
+			</article>
+			<!-- <div class = "row">
 				<div class = "col-9">
-					<!--
 						Image from Unsplash:
 						https://unsplash.com/s/photos/do-something-great
-					-->
-					<img id = "header-img" src = "resources/images/header-img.jpg"
-					 alt = "Header image." />
 				</div>
 
 				<div class = "col-3">
@@ -88,22 +93,9 @@
 							great</q>. Filled with motivation, you turn on your computer
 							and work on that story you've had in your drafts for a year.
 						</p>
-						<!-- Code.
-						Eat.
-						Sleep.
-						Repeat. -->
-
-						<!-- <p class = "animation-element">Evolve.</p>
-						<p class = "animation-element">Adapt.</p>
-						<p class = "animation-element">Overcome.</p> -->
-
-						<!-- <p class = "animation-element-1">Fantasize.</p>
-						<p class = "animation-element-2">Visualize.</p>
-						<p class = "animation-element-3">Actualize.</p> -->
 					</div>
-					<!-- <img src="" alt="This is also a picture of something."> -->
 				</div>
-			</div>
+			</div> -->
 		</header>
 
 		<!-- Main content -->
@@ -148,9 +140,10 @@
 				</div>
 
 				<div class = "row">
-					<button type = "button" class = "button--no-fill">
-						<a href = "about-me.html">Learn More...</a>
-					</button>
+					<a href = "about-me.html">
+						<button type = "button" class = "main-button">Learn More...</button>
+					</a>
+
 				</div>
 			</section>
 
@@ -171,9 +164,10 @@
 				</div>
 
 				<div class = "row">
-					<button type = "button" class = "button--no-fill">
-						<a href = "projects.html">Projects</a>
-					</button>
+					<a href = "projects.html">
+						<button type = "button" class = "main-button">Projects</button>
+					</a>
+
 				</div>
 			</section>
 		</main>
