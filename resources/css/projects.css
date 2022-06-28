@@ -6,12 +6,15 @@
 body
 {
   margin: 0;
+  background-color: var(--background-color);
+  font-family: var(--font);
 }
 
 header
 {
   text-align: center;
-  background-color: burlywood;
+  background-color: var(--alt-color);
+  color: var(--background-color);
 }
 
 section
@@ -57,7 +60,6 @@ ul.card-list > li
 
 .card
 {
-  /* width: 100%; used so the card takes up 100% of the width of the list item */
   /* border: 3px solid black; */
 
   margin-bottom: 10px;
@@ -84,7 +86,8 @@ ul.card-list > li
 .card-desc
 {
   /* border: 3px solid green; */
-  background-color: hotpink;
+  background-color: var(--alt-color);
+  color: var(--background-color);
 
   padding: 10px;
   white-space: normal; /* Used to override the ul.card-list white space */
@@ -95,4 +98,5 @@ ul.card-list > li
 .card-desc a
 {
   text-decoration: none;
+  color: var(--background-color);
 }
