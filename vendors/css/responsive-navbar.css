@@ -32,6 +32,11 @@
   padding are included in the calculation of the width and height of an
   element.
 
+  ### Ids
+  #navbar-toggler-checkbox
+  Used to determine if the navbar will display its links or not. Must be
+  an input element with type = checked and id = navbar-toggler-checkbox.
+
   ### Classes
   .navbar
   Used on the wrapper class for your navbar. It's main purpose is to
@@ -41,15 +46,7 @@
   .navbar-toggler
   Used in the element that will be interacted with for the user to open
   the navbar on smaller screen sizes. The element with this class must
-  be succeeded by an element with the class .navbar-closer (does not need
-  to be immediately before, however).
-
-  .navbar-closer
-  Used in the element that will be interacted with for the user to close
-  the navbar on smaller screen sizes. Only appears after the navbar-toggler
-  is in focus (when the vertical navbar is being toggled to). Must be
-  preceded by an element with the class "navbar-toggler" (does not need to
-  be immediately preceded, however).
+  be a label with the for property set to #navbar-toggler-checkbox.
 
   .navbar-content
   Used in the element that is a wrapper class for the element with the class
@@ -104,13 +101,10 @@
 /*
   Navbar HTML Template
   <nav class = "navbar">
-    <button type = "button" class = "navbar-toggler">
-      ...
-    </button>
-
-    <button type = "button" class = "navbar-closer">
-      X
-    </button>
+    <input type = checkbox id = "navbar-toggler-checkbox" />
+		<label for = "navbar-toggler-checkbox" class = "navbar-toggler">
+			...
+		</label>
 
     <div class = "navbar-content">
       <ul class = "navbar-link-list">
@@ -197,6 +191,8 @@
 
 .navbar-toggler
 {
+  display: inline-block;
+
   margin-bottom: 5px;
 
   padding: 7px 14px;
@@ -213,27 +209,12 @@
   background-color: gray;
 }
 
-.navbar-closer
+#navbar-toggler-checkbox
 {
-  /* Do not show initially, only when the navbar-toggler is clicked */
   display: none;
-
-  /* Has same properties as navbar-item */
-  background-color: transparent;
-  text-align: center;
-
-   /* background-color: #232323; */
-  padding: 14px 16px;
-
-  text-decoration: none;
-  color: white;
-
-  /* Overrides default button properties */
-  width: 100%;
-  border: none;
 }
 
-.navbar-toggler:focus ~ .navbar-content, .navbar-toggler:focus ~ .navbar-closer
+#navbar-toggler-checkbox:checked ~ .navbar-content
 {
   /* background-color: blue; */
   /*
@@ -287,9 +268,9 @@
     padding: 0;
   }
 
-  .navbar-toggler, .navbar-toggler:focus ~ .navbar-closer
+  .navbar-toggler
   {
-    /* Hide the navbar toggler and the navbar-closer if it is open */
+    /* Hide the navbar toggler if it is open */
     display: none;
   }
 
@@ -331,7 +312,7 @@
   color: white;
 }
 
-.navbar-item .navbar-link:hover, .navbar-link.active, .dropdown:hover .dropbtn, .navbar-closer:hover
+.navbar-item .navbar-link:hover, .navbar-link.active, .dropdown:hover .dropbtn
 {
   background-color: gray;
 }
