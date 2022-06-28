@@ -16,6 +16,7 @@
 		<style></style>
 		<link rel = "stylesheet" href = "vendors/css/responsive-layout.css">
 		<link rel = "stylesheet" href = "vendors/css/responsive-navbar.css">
+		<link rel = "stylesheet" href = "resources/css/default-styles.css">
 		<link rel = "stylesheet" href = "resources/css/footer.css">
 		<link rel = "stylesheet" href = "resources/css/about-me.css">
 		<script>
@@ -34,13 +35,10 @@
 			</a> -->
 
 			<!-- Button to toggle navbar on smaller screens -->
-			<button type = "button" class = "navbar-toggler">
+			<input type = checkbox id = "navbar-toggler-checkbox" />
+			<label for = "navbar-toggler-checkbox" class = "navbar-toggler">
 				...
-			</button>
-
-			<button type = "button" class = "navbar-closer">
-				X
-			</button>
+			</label>
 
 			<div class = "navbar-content">
 				<ul class = "navbar-link-list">
@@ -69,7 +67,7 @@
 		<header>
 			<div class = "row">
 				<div class = "col-3">
-					<h1>About Me</h1>
+					<h1 id = "header-heading">About Me</h1>
 				</div>
 
 				<div class = "col-9">
@@ -92,7 +90,7 @@
 		<main>
 			<!-- Computer Science Section -->
 			<section class = "computer-science">
-				<div class = "row">
+				<div class = "row columns">
 					<div class = "col-6 section-img">
 						<img src = "resources/images/compsci-img.jpg" alt = "Image of computer science" />
 					</div>
