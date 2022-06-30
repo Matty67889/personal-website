@@ -1,3 +1,25 @@
+/**
+ * CSS for the projects.html page.
+ *
+ * This file contains CSS code for the projects.html page.
+ */
+
+/*
+  #### Table of Contents ####
+
+  1. global rules
+  2. header styles
+  3. section styles
+  4. component styles
+    4a. card-list styles
+    4b. card styles
+*/
+
+/*
+  ===========
+  1. global rules
+  ===========
+*/
 *
 {
   box-sizing: border-box;
@@ -10,6 +32,11 @@ body
   font-family: var(--font);
 }
 
+/*
+  ===========
+  2. header rules
+  ===========
+*/
 header
 {
   background-color: var(--secondary-color);
@@ -20,13 +47,29 @@ header
   text-align: center;
 }
 
+/*
+  ===========
+  3. section styles
+  ===========
+*/
 section
 {
   text-align: center;
   margin-bottom: 20px;
-  border-bottom: 1px solid black;
+  /* border-bottom: 1px solid black; */
 }
 
+/*
+  ===========
+  4. component styles
+  ===========
+*/
+
+/*
+  ===========
+  4a. card-list styles
+  ===========
+*/
 ul.card-list
 {
   list-style-type: none;
@@ -61,6 +104,11 @@ ul.card-list > li
   }
 }
 
+/*
+  ===========
+  4b. card styles
+  ===========
+*/
 .card
 {
   /* border: 3px solid black; */
@@ -73,7 +121,7 @@ ul.card-list > li
 
 .card:hover
 {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  box-shadow: 5px 8px 16px 0 rgba(0,0,0,0.7);
 }
 
 .card-img
@@ -98,7 +146,7 @@ ul.card-list > li
   border-radius: 0 0 20px 20px;
 }
 
-.card-desc a
+.card a
 {
   text-decoration: none;
   color: var(--primary-color);
