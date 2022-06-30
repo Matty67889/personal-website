@@ -16,3 +16,33 @@ main
   padding-left: 50px;
   padding-right: 50px;
 }
+
+/*
+  ===========
+  content skipper styles
+  ===========
+*/
+.skip-content-link
+{
+  display: inline-block;
+  position: absolute;
+  width: 25%;
+
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+
+  text-align: center;
+  text-decoration: none;
+
+  padding: 12px 8px;
+
+  border-radius: 0 0 2px 2px;
+
+  transform: translateX(-120%);
+  transition: transform 0.2s;
+}
+
+.skip-content-link:focus
+{
+  transform: translateX(0);
+}
