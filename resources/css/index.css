@@ -92,7 +92,7 @@ header p
   3a. general section rules
   ===========
 */
-section:not(last-of-type)
+section:not(:last-of-type)
 {
   border-bottom: 1px solid black;
 }
