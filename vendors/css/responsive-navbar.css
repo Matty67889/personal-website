@@ -20,7 +20,8 @@
 
 /*
   Note: DO NOT USE MORE THAN ONE NAVBAR ON A SINGLE PAGE, BECAUSE THE TOGGLE
-  WILL NOT WORK
+  WILL NOT WORK, AS THE INPUT USES AN ID. The ID will have to be changed for
+  each instance of the navbar.
 */
 
 /*
@@ -47,6 +48,16 @@
   Used in the element that will be interacted with for the user to open
   the navbar on smaller screen sizes. The element with this class must
   be a label with the for property set to #navbar-toggler-checkbox.
+
+  .nav-burger-top-bun
+  Used in the element that will serve as the top bun of the hambuger icon
+  that is used by the user to toggle the navbar open and closed on the
+  vertical navbar.
+
+  .nav-burger-bot-bun
+  Used in the element that will serve as the top bun of the hambuger icon
+  that is used by the user to toggle the navbar open and closed on the
+  vertical navbar.
 
   .navbar-content
   Used in the element that is a wrapper class for the element with the class
@@ -103,7 +114,8 @@
   <nav class = "navbar">
     <input type = checkbox id = "navbar-toggler-checkbox" />
 		<label for = "navbar-toggler-checkbox" class = "navbar-toggler">
-			...
+			<div class = "nav-burger-top-bun"></div>
+			<div class = "nav-burger-bot-bun"></div>
 		</label>
 
     <div class = "navbar-content">
@@ -154,9 +166,42 @@
 */
 
 /*
-  Use labels for toggles instead of .navbar-toggler?
+  #### Table of Contents ####
+
+  1. variables
+  2. global styles
+  3. vertical navbar styles
+    3a. general vertical navbar styles
+    3b. navbar toggler styles
+    3c. navbar content styles
+  4. horiztonal navbar styles
+    4a.general horizontal navbar styles
+    4b. navbar toggler styles
+    4c. navbar content styles
+  5. vertical and horizontal navbar common styles
+  6. clearfix
 */
 
+/*
+  ===========
+  1. variables
+  ===========
+*/
+:root
+{
+  --nav-background-color: #232323;
+  --nav-hover-color: gray;
+  --nav-text-color: white;
+
+  /* space between the two hamburger buns when navbar becomes vertical */
+  --bun-spacing: 10px;
+}
+
+/*
+  ===========
+  2. global styles
+  ===========
+*/
 /*
   Makes it so that margin and padding are included in the calculation of the
   width and height of an object
@@ -171,13 +216,22 @@
   users can click on to activate it
 */
 
+/*
+  ===========
+  3. vertical navbar styles
+  ===========
+*/
 /* Veritcal navbar */
+/*
+  ===========
+  3a. general vertical navbar styles
+  ===========
+*/
 .navbar
 {
-  background-color: #232323;
-  /* border: 3px solid blue; */
+  background-color: var(--nav-background-color);
 
-  padding: 10px;
+  padding: 13px 10px;
 
   /*
     For position: fixed:
@@ -189,40 +243,58 @@
   */
 }
 
-.navbar-toggler
-{
-  display: inline-block;
-
-  margin-bottom: 5px;
-
-  padding: 7px 14px;
-
-  background-color: transparent;
-  color: white;
-
-  border: 1px solid white;
-  border-radius: 20%;
-}
-
-.navbar-toggler:hover
-{
-  background-color: gray;
-}
-
+/*
+  ===========
+  3b. navbar toggler styles
+  ===========
+*/
 #navbar-toggler-checkbox
 {
   display: none;
 }
 
-#navbar-toggler-checkbox:checked ~ .navbar-content
+.navbar-toggler
 {
-  /* background-color: blue; */
-  /*
-    Show the navbar content when the toggle button is clicked (credits to
-    https://stackoverflow.com/questions/18749276/css-on-hover-show-another-element
-    for help on this issue)
-  */
-  display: block;
+  display: inline-block;
+
+  background-color: transparent;
+  color: var(--nav-text-color);
+
+  width: 32px;
+  padding-top: 7px;
+
+
+  cursor: pointer;
+}
+
+#navbar-toggler-checkbox:checked ~ .navbar-toggler
+{
+  padding-bottom: 7px;
+}
+
+.nav-burger-top-bun, .nav-burger-bot-bun
+{
+  background-color: var(--nav-text-color);
+
+  height: 1px;
+
+  transition: transform 0.3s;
+}
+
+.nav-burger-top-bun
+{
+  margin-bottom: var(--bun-spacing);
+}
+
+/* change hamburger into an X when user opens navbar */
+#navbar-toggler-checkbox:checked ~ .navbar-toggler > .nav-burger-top-bun
+{
+  transform: translateY(calc(var(--bun-spacing)/2)) rotate(45deg);
+}
+
+#navbar-toggler-checkbox:checked ~ .navbar-toggler > .nav-burger-bot-bun
+{
+  transform: translateY(calc(var(--bun-spacing)/-2)) rotate(-45deg);
 }
 
 /* .navbar-logo
@@ -232,18 +304,45 @@
   margin-left: 30%;
 } */
 
+/*
+  ===========
+  3c. navbar content styles
+  ===========
+*/
 .navbar-content
 {
-  /* Hide the links for vertical nav bars */
+  /* Hide the links for vertical nav bars. */
+  /*
+    Using visibility: hidden instead of display: none makes navbar slide in.
+    Inspiration from following source:
+    https://stackoverflow.com/questions/65742729/navigation-bar-transitions
+  */
   display: none;
+  /* visibility: hidden;
+
+  transform: translateX(-100vw);
+  transition: transform 1s, visibility 2s; */
+}
+
+/* when toggler is checked, show navbar */
+#navbar-toggler-checkbox:checked ~ .navbar-content
+{
+  /*
+    Show the navbar content when the toggle button is clicked (credits to
+    https://www.viralpatel.net/bootstrap-navbar-menu-without-javascript/
+    for help on this issue)
+  */
+  display: block;
+  /* visibility: visible;
+
+  transform: translateX(0vw); */
 }
 
 .navbar-link-list
 {
-  /* width: 30%; */
-  list-style-type: none;
+  background-color: var(--nav-background-color);
 
-  background-color: #232323;
+  list-style-type: none;
 
   padding: 0px;
   margin: 0px;
@@ -257,9 +356,19 @@
   display: block;
 }
 
+/*
+  ===========
+  4. horizontal navbar styles
+  ===========
+*/
 /* When the screen is 768px or more, display a horizontal navbar */
 @media only screen and (min-width: 768px)
 {
+  /*
+    ===========
+    4a. general horizontal navbar styles
+    ===========
+  */
   /* Horizontal navbar */
   .navbar
   {
@@ -268,12 +377,22 @@
     padding: 0;
   }
 
+  /*
+    ===========
+    4b. navbar toggler styles
+    ===========
+  */
   .navbar-toggler
   {
     /* Hide the navbar toggler if it is open */
     display: none;
   }
 
+  /*
+    ===========
+    4c. navbar content styles
+    ===========
+  */
   .navbar-content
   {
     /* Show the links for the navbar */
@@ -284,7 +403,6 @@
   {
     /* Navbar items will display right next to each other */
   	float: left;
-  	/* border-right: 1px solid black; */
   }
 
   .navbar-item .navbar-link, .dropbtn
@@ -298,23 +416,28 @@
   }
 }
 
+/*
+  ===========
+  5. vertical and horizontal navbar common styles
+  ===========
+*/
 /* Rules that stay the same for vertical and horiztonal navbars */
 .navbar-item .navbar-link, .dropbtn
 {
+  color: var(--nav-text-color);
+
   display: block;
 
   text-align: center;
 
-   /* background-color: #232323; */
   padding: 14px 16px;
 
   text-decoration: none;
-  color: white;
 }
 
 .navbar-item .navbar-link:hover, .navbar-link.active, .dropdown:hover .dropbtn
 {
-  background-color: gray;
+  background-color: var(--nav-hover-color);
 }
 
 .dropdown
@@ -326,8 +449,11 @@
 {
   display: none;
   position: absolute;
-  background-color: #232323;
+
+  background-color: var(--nav-background-color);
+
   min-width: 160px;
+
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
 }
@@ -335,15 +461,16 @@
 .dropdown-content .navbar-link
 {
   display: block;
-  color: white;
-  /* padding: 14px 16px; */
+
+  color: var(--nav-text-color);
+
   text-decoration: none;
   text-align: left;
 }
 
 .dropdown-content .navbar-link:hover
 {
-  background-color: c4c4c4;
+  background-color: var(--nav-hover-color);
 }
 
 .dropdown:hover .dropdown-content
@@ -352,6 +479,11 @@
   display: block;
 }
 
+/*
+  ===========
+  6. clearfix
+  ===========
+*/
 /* Clearfix to make items look near after an element with a float property */
 .clearfix::after
 {
