@@ -13,10 +13,8 @@
  * https://www.w3schools.com/Css/css_navbar.asp
  *
  * @author Matthew Mentis-Cort
- * Date last edited: February 19, 2022
+ * Date last edited: June 30, 2022
  */
-
-/* Navbar Set */
 
 /*
   Note: DO NOT USE MORE THAN ONE NAVBAR ON A SINGLE PAGE, BECAUSE THE TOGGLE
@@ -229,6 +227,7 @@
 */
 .navbar
 {
+  display: inline-block;
   background-color: var(--nav-background-color);
 
   padding: 13px 10px;
@@ -435,7 +434,7 @@
   text-decoration: none;
 }
 
-.navbar-item .navbar-link:hover, .navbar-link.active, .dropdown:hover .dropbtn
+.navbar-item .navbar-link:hover, .navbar-link:focus, .navbar-link.active, .dropdown:hover .dropbtn
 {
   background-color: var(--nav-hover-color);
 }
