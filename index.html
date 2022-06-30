@@ -26,6 +26,17 @@
 		</script>
 	</head>
 	<body onload = "initialize();">
+		<!-- Skip content links -->
+		<a class = "skip-content-link" href = "#header">
+			Skip to header
+		</a>
+		<a class = "skip-content-link" href = "#main-content">
+			Skip to main content
+		</a>
+		<a class = "skip-content-link" href = "#footer">
+			Skip to footer
+		</a>
+
 		<!-- Navbar -->
 		<!-- Use nav tag for main nav bar and ul for navbar content? -->
 		<nav class = "navbar">
@@ -65,7 +76,7 @@
 		</nav>
 
 		<!-- Header -->
-		<header>
+		<header id = "header">
 			<article>
 				<p>Keep working to achieve your goals.</p>
 				<div id = "button-wrapper">
@@ -100,7 +111,7 @@
 		</header>
 
 		<!-- Main content -->
-		<main>
+		<main id = "main-content">
 			<!-- Welcome Message -->
 			<section class = "welcome">
 				<div class = "row">
@@ -176,7 +187,7 @@
 		</main>
 
 		<!-- Footer -->
-		<footer>
+		<footer id = footer>
 			<div class = "row">
 				<div class = "col-6">
 					<h2>Contact Me!</h2>
