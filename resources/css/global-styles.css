@@ -1,0 +1,18 @@
+:root
+{
+  --font: "Brush Script MT", cursive, "Helvetica", sans-serif, "Verdana", sans-serif;
+  --primary-color: #ffffff;
+  /*
+    alternate background colors:
+    #ededed
+    #B8E2F2
+    burlywood
+  */
+  --secondary-color: #000000;
+}
+
+main
+{
+  padding-left: 50px;
+  padding-right: 50px;
+}
