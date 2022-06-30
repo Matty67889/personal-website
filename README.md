@@ -551,6 +551,104 @@ Date last updated: June 2, 2022
 		Markdown files
 		- README.md
 
+	Version 0.7:
+	Date Started: June 14, 2022
+	Date Finished: June 14, 2022
+	Objectives:
+	- Create a dark theme for the website
+	  - first make the website black and white to see it in its base version
+	- Skip to main content button
+	- Fix navbar on smaller devices
+	- Improve Projects
+	  - Add spacing between game cards on projects tab on smaller devices
+	  - improve the box shadow on the project cards
+	  - make whole card clickable?
+	  - fix the transition when the games move to a smaller screen
+	- Table of contents for css files of about-me, projects page, and footer.css
+	Description:
+	Added major quality of life changes to the website.
+
+	- Reduced site to black and white color scheme (using global-styles.css)
+		- Made it much easier to reduce the website to a black and white version which will make it easier in the future to add different themes
+		- Also allowed certain styles that was used on all pages to be added to just one place instead of every html page, such as the padding for main content, and the content skippers
+	- Improved user navigation (navbar, content skippers)
+		- Added buttons to skip content before navigation bar, for accessibility purposes
+		- Fixed the issue where when a link was clicked on the vertical navbar that appears on smaller screens, the navbar would disappear and the user would navigate to the desired page
+		- Improved icon that user clicks on to open vertical navbar and added animation when user opens and closes vertical navbar
+	- Improved index.html
+		- Removed short story on index.html and made header picture a background-image instead of an img tag.
+		- Added buttons to header for navigation to other pages
+		- Improved the styling of the buttons on the home page
+	- Improved about-me.html
+		- Vertically aligned text on about me page
+	- Improved projects.html
+		- Made entire card clickable for projects instead of just the description
+	- Improved organization of css files
+		- Added table of contents for responsive-navbars.css, about-me.css, projects.css, footer.css
+		Hierarchy:
+			Folders
+			resources
+				- css
+					- about-me.css
+					- definitiongames.css
+					- global-styles.css
+					- index.css
+					- footer.css
+					- projects.css
+				- data
+				- images
+					- projects
+						- SIP
+							- definition.jpg
+							- memory.jpg
+							- squared.png
+							- words.jpg
+						- web-dev
+							- animal-quiz.jpg
+							- crossing.jpg
+							- dice-roller.png
+							- haunted-house.jpg
+					    - hot-cold.jpg
+					- about-me-header.jpg
+					- compsci-img.jpg
+					- dq9-img.jpg
+					- home-header-img.jpg
+					- psychology-img.jpg
+					- read-write-img.jpg
+				- js
+					- definitiongames.js
+					- Word.js
+					- WordBank.js
+					- wordgames.js
+			vendors
+				- css
+					- buttonpack.css
+					- columns.css
+					- navbarpack.css
+					- responsive-layout.css
+					- responsive-navbar.css
+				- js
+					- utilities.js
+			webdev-files
+
+			HTML files
+			- about-me.html
+			- DefaultDefinitionGame.html
+			- DefinitionGameHomepage.html
+			- index.html
+			- MCDefGame.html
+			- MemoryGame.html
+			- projects.html
+			- SquareNumbers.html
+			- UserMadeDefinitionGames.html
+			- WebDevProjects.html
+
+			TXT files
+			- Plan.txt
+
+			Markdown files
+			- README.md
+
 # 5. RoadMap
 - Finish documentation for old and new files
 - Do About Me page
@@ -910,6 +1008,16 @@ Ideas:
 	- Intelligentsia
 	- Perennial
 	- Perdition
+	- curmudgeon
+	- copacetic
+	- notwithstanding
+	- chitin
+	- sternite
+	- entropy
+	- ontologically
+	- idiosyncrasy
+	- pasty
+	- nomophobia
 
 	Notes:
 	- MAKE ALL THE WORDS INTO "word" OBJECTS WITH A DEFINITION AND A WORD ATTRIBUTE AND PART OF SPEECH
