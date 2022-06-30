@@ -1,3 +1,22 @@
+/**
+ * CSS for the about-me.html page.
+ *
+ * This file contains CSS code for the about-me.html page.
+ */
+
+/*
+  #### Table of Contents ####
+
+  1. global rules
+  2. header rules
+  3. section rules
+*/
+
+/*
+  ===========
+  1. global rules
+  ===========
+*/
 *
 {
   box-sizing: border-box;
@@ -12,6 +31,11 @@ body
   font-family: "Brush Script MT", cursive, "Helvetica", sans-serif, "Verdana", sans-serif;
 }
 
+/*
+  ===========
+  2. header styles
+  ===========
+*/
 header
 {
   /* background-image: url("../images/about-me-header.jpg");
@@ -44,14 +68,23 @@ header
   /* border: 3px solid white; */
 }
 
+/*
+  ===========
+  3. section styles
+  ===========
+*/
 section
 {
   /* display: flex; */
   /* border: 3px solid black; */
-  border-bottom: 1px solid black;
 
   margin-top: 15px;
   padding: 10px 15px;
+}
+
+section:not(:last-of-type)
+{
+  border-bottom: 1px solid black;
 }
 
 section .row
