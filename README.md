@@ -553,7 +553,7 @@ Date last updated: June 2, 2022
 
 	Version 0.7:
 	Date Started: June 14, 2022
-	Date Finished: June 14, 2022
+	Date Finished: June 30, 2022
 	Objectives:
 	- Create a dark theme for the website
 	  - first make the website black and white to see it in its base version
