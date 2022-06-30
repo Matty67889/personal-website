@@ -1,3 +1,12 @@
+:root
+{
+  --footer-background-color: black;
+  /* alt color: #B2AC88 */
+  --footer-text-color: white;
+
+  --footer-link-hover-color: gray;
+}
+
 html, body
 {
   height: 100%; /* for sticky footer */
@@ -18,9 +27,8 @@ footer
 {
   flex-shrink: 0; /* for sticky footer */
 
-  background-color: black;
-  /* alt color: #B2AC88 */
-  color: white;
+  background-color: var(--footer-background-color);
+  color: var(--footer-text-color);
 
   /* margin-top: 15px; */
 
@@ -43,7 +51,7 @@ footer a:visited
 
 footer a:hover
 {
-  color: cyan;
+  color: var(--footer-link-hover-color);
 }
 
 .footer-row
