@@ -1,3 +1,64 @@
+/**
+ * CSS for a template footer on a webpage.
+ *
+ * This file contains CSS code for a template footer on a website. A footer is
+ * a section at the bottom of a website that gives the user additional
+ * information about the page, and/or links to other pages on the site.
+ *
+ * Credits to https://css-tricks.com/couple-takes-sticky-footer/ for tips on
+ * how to make the footer stay at the bottom of the page.
+ *
+ * @author Matthew Mentis-Cort
+ * Date last edited: June 30, 2022
+ */
+
+/*
+  Footer HTML template
+
+  <!-- Footer -->
+  <footer>
+    <div class = "row">
+      <div class = "col-6">
+        <h2>Contact Me!</h2>
+      </div>
+    </div>
+
+    <div class = "row footer-row">
+      <div class = "col-6">
+        <a href = "#">
+          Social Media Link
+        </a>
+      </div>
+      <div class = "col-6">
+        <a href = "index.html">Home</a>
+      </div>
+    </div>
+
+    <div class = "row footer-row">
+      <div class = "col-6">
+        <p>Email: email@email_provider.com</p>
+      </div>
+      <div class = "col-6">
+        <a href = "#">Link 2</a>
+      </div>
+    </div>
+  </footer>
+*/
+
+/*
+  #### Table of Contents ####
+
+  1. variables
+  2. global rules
+  3. main styles
+  4. footer styles
+*/
+
+/*
+  ===========
+  1. variables
+  ===========
+*/
 :root
 {
   --footer-background-color: black;
@@ -7,6 +68,11 @@
   --footer-link-hover-color: gray;
 }
 
+/*
+  ===========
+  2. global styles
+  ===========
+*/
 html, body
 {
   height: 100%; /* for sticky footer */
@@ -18,11 +84,21 @@ body
   flex-direction: column; /* for sticky footer */
 }
 
+/*
+  ===========
+  3. main styles
+  ===========
+*/
 main
 {
   flex: 1 0 auto; /* for sticky footer */
 }
 
+/*
+  ===========
+  4. footer styles
+  ===========
+*/
 footer
 {
   flex-shrink: 0; /* for sticky footer */
