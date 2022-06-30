@@ -16,7 +16,7 @@
 		<link rel = "stylesheet" href = "vendors/css/responsive-layout.css">
 		<link rel = "stylesheet" href = "vendors/css/responsive-navbar.css">
 		<link rel = "stylesheet" href = "vendors/css/columns.css">
-		<link rel = "stylesheet" href = "resources/css/default-styles.css">
+		<link rel = "stylesheet" href = "resources/css/global-styles.css">
 		<link rel = "stylesheet" href = "resources/css/footer.css">
 		<link rel = "stylesheet" href = "resources/css/index.css">
 		<script>
@@ -37,7 +37,8 @@
 			<!-- Button to toggle navbar on smaller screens -->
 			<input type = checkbox id = "navbar-toggler-checkbox" />
 			<label for = "navbar-toggler-checkbox" class = "navbar-toggler">
-				...
+				<div class = "nav-burger-top-bun"></div>
+				<div class = "nav-burger-bot-bun"></div>
 			</label>
 
 			<div class = "navbar-content">
@@ -140,10 +141,11 @@
 				</div>
 
 				<div class = "row">
-					<a href = "about-me.html">
-						<button type = "button" class = "main-button">Learn More...</button>
-					</a>
-
+					<div class = "btn-container">
+						<a href = "about-me.html">
+							<button type = "button" class = "main-button">Learn More...</button>
+						</a>
+					</div>
 				</div>
 			</section>
 
@@ -164,10 +166,11 @@
 				</div>
 
 				<div class = "row">
-					<a href = "projects.html">
-						<button type = "button" class = "main-button">Projects</button>
-					</a>
-
+					<div class = "btn-container">
+						<a href = "projects.html">
+							<button type = "button" class = "main-button">Projects</button>
+						</a>
+					</div>
 				</div>
 			</section>
 		</main>
