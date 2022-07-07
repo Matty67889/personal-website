@@ -12,7 +12,7 @@ Date last updated: July 7, 2022
 	4. [Versions](#versions)
 
 
-# Introduction {#intro}
+# Introduction{#intro}
 	This ReadMe was started on December 24th, 2021, with the objective of
 	documenting the transformation of this website. The plan is to create
 	different versions after a major feature for a version is implemented. A new
@@ -24,7 +24,7 @@ Date last updated: July 7, 2022
 	a mix of JavaDocs documentation and Python specifications.
 
 
-# Style Guide for this Document {#style-guide}
+# Style Guide for this Document{#style-guide}
 	Obey the 80 character rule (don't go over the gray line in Atom for one line
 	of text)
 
@@ -34,7 +34,7 @@ Date last updated: July 7, 2022
 	The ===== sign lines are for separation.
 
 
-# Website Hierarchy {#hierarchy}
+# Website Hierarchy{#hierarchy}
 	Credits for the ideas for the hierarchy goes to this [website](https://appcropolis.com/blog/web-technology/organize-html-css-javascript-files/)
 
 	Hierarchy:
@@ -83,7 +83,7 @@ Date last updated: July 7, 2022
 	[FreeRice's](https://freerice.com/) definition game
 
 
-# 4. Versions {#versions}
+# 4. Versions{#versions}
 ## Version 0.0
 	Date Started: Whenever I started making this website (which was approximately
 	2 years ago from the creation of this README)
