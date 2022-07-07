@@ -28,7 +28,12 @@ body
   background-color: var(--primary-color);
   color: var(--secondary-color);
 
-  font-family: "Brush Script MT", cursive, "Helvetica", sans-serif, "Verdana", sans-serif;
+  font-family: var(--font);
+}
+
+p
+{
+  font-size: var(--text-font-size);
 }
 
 /*
@@ -48,24 +53,19 @@ header
   /* text-align: center; */
   background-color: var(--secondary-color);
   color: var(--primary-color);
-
-  /* border: 3px solid white; */
 }
 
 #header-heading
 {
   text-align: center;
 
-  /* border: 3px solid white; */
+  font-size: 30pt;
 }
 
 #header-text
 {
   text-align: justify;
-  /* padding: 100px; */
   margin: auto auto;
-
-  /* border: 3px solid white; */
 }
 
 /*
@@ -95,7 +95,6 @@ section .row
 section .section-img, section .section-desc
 {
   padding: 14px;
-  /* border: 3px solid black; */
 }
 
 section .section-desc
@@ -106,6 +105,58 @@ section .section-desc
 .section-img img
 {
   width: 100%;
+}
+
+/* about-me grid */
+/* .grid-container
+{
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.grid-item
+{
+  border: 3px solid hotpink;
+}
+
+.grid-item img
+{
+  width: 100%;
+  height: 100%;
+  margin: auto auto;
+} */
+
+/* For about me click to show description function */
+.about-me-grid img
+{
+  width: 100%;
+  height: 100%;
+  margin: auto auto;
+}
+
+.about-me-grid div
+{
+  display: block;
+}
+
+.about-me-desc-radio-btn
+{
+  /* display: none; */
+}
+
+.about-me-desc-toggler
+{
+  cursor: pointer;
+}
+
+[class$="about-me-desc"]
+{
+  display: none;
+}
+
+.about-me-desc-radio-btn:checked ~ .about-me-desc-toggler
+{
+  display: block;
 }
 
 /* iframe
