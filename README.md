@@ -2,19 +2,17 @@ Author: Matthew Mentis-Cort
 
 Date Created: December 24, 2021
 
-Date last updated: June 2, 2022
+Date last updated: July 7, 2022
 
 
 # Table of Contents
-	1. Introduction
-	2. Style Guide for this Document
-	3. Website Hierarchy
-	4. Versions
-	5. RoadMap
-	6. Other Notes
+	1. [Introduction] (#intro)
+	2. [Style Guide for this Document] (#style-guide)
+	3. [Website Hierarchy] (#hierarchy)
+	4. [Versions] (#versions)
 
 
-# Introduction
+# Introduction {#intro}
 	This ReadMe was started on December 24th, 2021, with the objective of
 	documenting the transformation of this website. The plan is to create
 	different versions after a major feature for a version is implemented. A new
@@ -26,7 +24,7 @@ Date last updated: June 2, 2022
 	a mix of JavaDocs documentation and Python specifications.
 
 
-# Style Guide for this Document
+# Style Guide for this Document {#style-guide}
 	Obey the 80 character rule (don't go over the gray line in Atom for one line
 	of text)
 
@@ -36,7 +34,7 @@ Date last updated: June 2, 2022
 	The ===== sign lines are for separation.
 
 
-# Website Hierarchy
+# Website Hierarchy {#hierarchy}
 	Credits for the ideas for the hierarchy goes to this [website](https://appcropolis.com/blog/web-technology/organize-html-css-javascript-files/)
 
 	Hierarchy:
@@ -60,7 +58,6 @@ Date last updated: June 2, 2022
 			- js
 				- utilities.js
 		WebDevFiles
-			(these files can be found on the flash drive)
 
 		HTML files
 		- DefaultDefinitionGame.html
@@ -82,11 +79,12 @@ Date last updated: June 2, 2022
 	WebDevFiles folder: Contains files that have been created in the
 	"Web Development" class that was taken by the author.
 
-	Inspiration for the MCDefGame design game from [FreeRice's](https://freerice.com/) definition game
+	Inspiration for the MCDefGame design game from
+	[FreeRice's](https://freerice.com/) definition game
 
 
-# 4. Versions
-	Version 0.0:
+# 4. Versions {#versions}
+## Version 0.0
 	Date Started: Whenever I started making this website (which was approximately
 	2 years ago from the creation of this README)
 	Date Finished: December 24, 2021
@@ -136,7 +134,7 @@ Date last updated: June 2, 2022
 		- Plan.txt
 		- README.txt
 
-	Version 0.10:
+## Version 0.10
 	Date Started: December 24, 2021
 	Date Finished: December 28, 2021
 	Objectives:
@@ -195,7 +193,7 @@ Date last updated: June 2, 2022
 		- Plan.txt
 		- README.txt
 
-	Version 0.11:
+## Version 0.11
 	Date Started: December 28, 2021
 	Date Finished: December 28, 2021
 	Objectives:
@@ -245,7 +243,7 @@ Date last updated: June 2, 2022
 		- Plan.txt
 		- README.txt
 
-	Version 0.2:
+## Version 0.2
 	Date Started: December 28, 2021
 	Date Finished: February 12, 2022
 	Objectives:
@@ -315,7 +313,7 @@ Date last updated: June 2, 2022
 		- Plan.txt
 		- README.txt
 
-	Version 0.3:
+## Version 0.3
 	Date Started: February 12, 2022
 	Date Finished: February 14, 2022
 	Objectives: Restore the website's files to their former glory.
@@ -374,7 +372,7 @@ Date last updated: June 2, 2022
 		- Plan.txt
 		- README.txt
 
-	Version 0.4:
+## Version 0.4
 	Date Started: February 15, 2022
 	Date Finished: February 19, 2022
 	Objectives: Finish documentation for CSS files (responsive-navbar.css,
@@ -422,7 +420,7 @@ Date last updated: June 2, 2022
 		Markdown files
 		- README.md
 
-	Version 0.5:
+## Version 0.5
 	Date Started: February 19, 2022
 	Date Finished: June 1, 2022
 	Objectives:
@@ -479,7 +477,7 @@ Date last updated: June 2, 2022
 		Markdown files
 		- README.md
 
-	Version 0.6:
+## Version 0.6
 	Date Started: June 2, 2022
 	Date Finished: June 14, 2022
 	Objectives:
@@ -551,7 +549,7 @@ Date last updated: June 2, 2022
 		Markdown files
 		- README.md
 
-	Version 0.7:
+## Version 0.7
 	Date Started: June 14, 2022
 	Date Finished: June 30, 2022
 	Objectives:
@@ -649,401 +647,6 @@ Date last updated: June 2, 2022
 			Markdown files
 			- README.md
 
-# 5. RoadMap
-- Finish documentation for old and new files
-- Do About Me page
-- Upload resume to website (with options to print)
-- Relink web development projects to the main site
-	- Possibly make another site for the projects
-
-# 6. Other Notes
-Notes:
-- [Code Conventions](https://www.crockford.com/code.html)
-- [Word API to test](https://dictionaryapi.dev/)
-- [Possible Urban Dictionary API](https://rapidapi.com/community/api/urban-dictionary)
-- Try Math Jax for Squared Numbers Quiz
-- [Documentation for coding languages](https://devdocs.io/)
-
-Ideas:
-- add test cases for each class
-- use JSDoc instead of my custom documentation for JS documentation
-  (https://jsdoc.app/about-getting-started.html see this and related links for information on JSDoc)
-- Use KSS for CSS documentation
-- Instead of automatically putting definitions into the spans for MCDefGame,
-	use make an array that holds random word objects based on the number of
-	answer choices the user will have, and choose a random index to have the
-	correct definition be
-
-- Definition tester
-
-	Modes:
-	- Multple Choice Section
-		- Give word then ask user to give definition
-		- Give definition and ask user to give word
-		- Get 10 random words and let user see definitions
-
-	- Spelling Section
-		- Give word then ask user to give definition
-		- Give definition and ask user to give word
-
-	- Memory Tester Section
-		- Display words and give the user a set amount of time to memorize them
-		- Have a text box where the user can input as many words as they can recall, also on a timer
-		- As the user gets words correct, the correct words show up on list (toggleable option, by default this option is off)
-
-	Words to add to default WORDBANK:
-	- reverie (DONE)
-	- pussyfoot (DONE)
-	- holistic (DONE)
-	- duly (DONE)
-	- proselytizing (DONE)
-	- collegiate (DONE)
-	- uncouth (DONE)
-	- cesspool (DONE)
-	- impunity (DONE)
-	- meta (DONE)
-	- whimsical (DONE)
-	- taxonomy (DONE)
-	- mogul (DONE)
-	- equivocate (DONE)
-	- moniker (DONE)
-	- epiphora (DONE)
-	- clandestine  (DONE)
-	- scintillating (DONE)
-	- vicarious (DONE)
-	- apatetic (DONE)
-	- fidelity (DONE)
-	- assarting (DONE)
-	- odius (DONE)
-	- vapid (DONE)
-	- plasticity (DONE)
-	- ensemble (DONE)
-	- acumen (DONE)
-	- guerilla (DONE)
-	- litigates (DONE)
-	- esoteric
-	- bigot
-	- vernacular
-	- voir dire
-	- sequestered
-	- galvanize
-	- sandbag
-	- heuristic
-	- specious
-	- epithet
-	- frump
-	- peccadillos
-	- paramount
-	- palpable
-	- manna
-	- pro forma
-	- affidavit
-	- referendum
-	- crescendo
-	- immutable
-	- hunky-dory
-	- semblance
-	- monochromatic
-	- serif
-	- tenure
-	- dogma
-	- hygiene
-	- de facto
-	- gung-ho
-	- cutting-edge
-	- progeny
-	- acquiesce
-	- indelible
-	- loquacious
-	- poignant
-	- don
-	- aphrodisiac
-	- portly
-	- non sequitur
-	- behest
-	- smorgasbord
-	- breve
-	- fubar
-	- promiscuous
-	- gynecology
-	- artifice
-	- gamely
-	- gregarious
-	- gaslighting
-	- pensive
-	- rehash
-	- lethargic
-	- appropriation
-	- misconstrue
-	- hubris
-	- ignominious
-	- contentious
-	- carrion
-	- anemic
-	- wanton
-	- floozy
-	- tenacious
-	- jaded
-	- prima donna
-	- carpe diem
-	- admonition
-	- subterfuge
-	- collateral
-	- dexterity
-	- boudoir
-	- bravado
-	- geriatric
-	- chauvanism
-	- innundate - To overwhelm as if with a flood; swamp.
-	- apprehensive - Anxious or fearful about the future; uneasy.
-	- tawdry - Shameful or indecent.
-	- jager secret - The act of revealing information disseminated to a confidant during a period of intoxication.
-	- withholding - To refrain from giving or granting: withhold information; withhold judgment.
-	- bureaucracy - Administration of a government chiefly through bureaus or departments staffed with nonelected officials.
-	- moot - Of no practical importance; irrelevant.
-	- taxidermy - The art or operation of preparing, stuffing, and mounting the skins of dead animals for exhibition in a lifelike state.
-	- blase - Unconcerned; nonchalant.
-	- callous - Emotionally hardened; unfeeling.
-	- apathetic - Feeling or showing a lack of interest or concern; indifferent.
-	- arrivederci - Till we meet again : goodbye.
-	- pretentious
-	- audit
-	- tacit
-	- gigolo - A man who is hired as an escort or a dancing partner for a woman.
-	- sabbatical - Relating or appropriate to the Sabbath as the day of rest.
-	- aplomb - complete and confident composure or self-assurance : poise.
-	- ornery - Mean-spirited, disagreeable, and contrary in disposition; cantankerous.
-	- czar - A person having great power or authority.
-	- impotent - Incapable of sexual intercourse because of an inability to achieve or sustain an erection.
-	- pander - To cater to the lower tastes and desires of others or exploit their weaknesses.
-	- rictus - A gaping grimace.
-	- gauche - Lacking grace or social polish; awkward or tactless.
-	- caveat
-	- gyrate
-	- impromptu
-	- delegate
-	- eddies
-	- minutia
-	- fatuous
-	- arcane
-	- wench
-	- minx
-	- lithe
-	- supple
-	- baroque
-	- venerable
-	- herald
-	- espouseds
-	- pedantic
-	- extrapolate
-	- liaison
-	- hedge
-	- auxiliary
-	- insolence
-	- gall
-	- lyrical
-	- diaspora
-	- hearth
-	- lexicon
-	- emasculates
-	- sober
-	- carcinogenic
-	- celibacy
-	- exorbitant
-	- faux pas
-	- ersatz
-	- murk
-	- charlatan
-	- edification
-	- executrix
-	- repartee
-	- humblebrag
-	- stochastic
-	- exegesis
-	- cognition
-	- trow
-	- matriculate
-	- declamation
-	- equivocate
-	- ecumenical
-	- autochthonous
-	- chthonic
-	- diatribe
-	- ad hoc
-	- minuta
-	- infinitesimal
-	- portmanteau
-	- laconic
-	- posterity
-	- beget
-	- indelible
-	- solipsism
-	- droll
-	- impertinent
-	- enumeration
-	- eisegesis
-	- paradigm
-	- dreck
-	- attainder
-	- vice
-	- usurp
-	- recondite
-	- nick
-	- valor
-	- languid
-	- fanual
-	- nepotism
-	- filibuster
-	- codify
-	- convoluted
-	- admonished
-	- zany
-	- mar
-	- belfry
-	- romp
-	- maim
-	- dupe
-	- despot
-	- undulation
-	- sparling
-	- cronyism
-	- ninny
-	- condole
-	- macropterous
-	- gangling
-	- pilant
-	- tout
-	- pallid
-	- deign
-	- austere
-	- quadary
-	- berth
-	- balkanized
-	- pejorative
-	- hoi polloi
-	- bonhomie
-	- Autodidact
-	- corporeal
-	- avant garde
-	- tendentious
-	- gravitas
-	- salient
-	- albatross
-	- concurrent
-	- coy
-	- vitae
-	- eschatology
-	- doyen
-	- numismatic
-	- hermaphrodite
-	- adrogny
-	- extemporaneous
-	- ad-lib
-	- prima facie
-	- preclude
-	- propriety
-	- physiognomy
-	- deference
-	- wherewithal
-	- autodactic
-	- impetuous
-	- shrewd
-	- repatriate
-	- abscond
-	- cogent
-	- hegemony
-	- chicanery
-	- melifluous
-	- penance
-	- penchant
-	- quid pro quo
-	- vainglorious
-	- sacreliege
-	- upshot
-	- clemency
-	- modus operendi
-	- vitriolic
-	- unbidden
-	- kaibosh
-	- penal
-	- whet
-	- caustic
-	- sangfroid
-	- dinky
-	- ouroboros
-	- esprit de corps
-	- inundated
-	- punctilious
-	- gastronomy
-	- Freudian slip
-	- fecund
-	- bap
-	- vitriol
-	- sardonic
-	- tawdry
-	- isthmus
-	- insurgent
-	- apropos
-	- transmorgify
-	- impinging
-	- arrears
-	- zwischenzug
-	- pedant
-	- distro
-	- philanthropy
-	- emeritus
-	- Umami
-	- Listerv
-	- Rebuff
-	- Maroon
-	- Cauterize
-	- Amorphous
-	- Pigdin
-	- Cordon
-	- Masticate
-	- Surfeit
-	- Subterfuge
-	- Portent
-	- Municipal
-	- Intelligentsia
-	- Perennial
-	- Perdition
-	- curmudgeon
-	- copacetic
-	- notwithstanding
-	- chitin
-	- sternite
-	- entropy
-	- ontologically
-	- idiosyncrasy
-	- pasty
-	- nomophobia
-
-	Notes:
-	- MAKE ALL THE WORDS INTO "word" OBJECTS WITH A DEFINITION AND A WORD ATTRIBUTE AND PART OF SPEECH
-	- FIX THE CSS LINKS ON ALL THE PAGES (Add the slash to close the tag)
-	- Use transparent div to overlap over quiz questions to disable them?
-
-	- Add part of speech tester thing? (maybe after construction of final project)
-	- Add thing that allows you to make your own quiz? (ADDED)
-	- Dropdown box to link to user made definition game and regular definition game (ADDED)
-	- Use a table for the quiz container (make a function so that as words are displayed on the screen, they are put into a table)
-	- Make a function to do spell checks for defintions and check for spaces (Make a function that allows the user to still get the question right even if they put an extra space
-	or a period at the end in certain situations
-	- Make the textbox area a nice size
-	- Add a max value for the textarea?
-	- Maybe get rid of the question that asks the user how many words they want to be displayed?
-	- Use IXL as a reference for page layout
-	- change "==" to "==="
-
-	- timed game mode
-	- hangman
-	- flash cards
-	- urbn dictionary, spanish, dictionary of oscure sorrows
-
-	- Make a database for the information
-
-
-Squared numbers Quiz
-
-	- Develop formula to find perfect squares (use patterns in perfect squares
+## Version 0.8
+	Date Started: June 14, 2022
+	Date Finished: June 30, 2022
