@@ -1,0 +1,217 @@
+/**
+ * CSS for the mc-def-game.html page.
+ *
+ * This file contains CSS code for the mc-def-game.html page.
+ */
+
+/*
+  #### Table of Contents ####
+
+  1. variables
+  2. global rules
+  3. target word styles
+  4. answer choice styles
+  5. button styles
+  6. feedback messsage styles
+*/
+
+/*
+  ===========
+  1. variables
+  ===========
+*/
+:root
+{
+  /* Fonts */
+  --form-font: "Garamond", sans-serif, "Helvetica", sans-serif, "Verdana", sans-serif;
+  --choice-font: "Garamond", sans-serif, "Helvetica", sans-serif, "Verdana", sans-serif;
+  --title-font-size: 1.5em;
+  --choice-font-size: 16px;
+  /*  "Brush Script MT", cursive,  */
+  --msg-font-size: 14pt;
+
+  /* Form styles */
+  --quiz-primary-color: #ffffff;
+  /*
+    Alternative color:
+    #71EBE5
+  */
+  --quiz-border-color: #000000;
+  /* #BF363C */
+
+  /* Choice Styles */
+  --choice-primary-color: #ffffff;
+  /* #FAA916 */
+  --choice-border-color: #000000;
+  /* #813405 */
+  --choice-text-color: #000000;
+  --choice-hover-color: #000000;
+  --choice-hovered-border-color: #000000;
+  --choice-hovered-text-color: #ffffff;
+
+  /* Button styles */
+  /* New Word button styles */
+  --new-word-button-primary-color: #0069d9;
+  /* #FAA916 */
+  --new-word-button-border-color: #0062cc;
+  /* #813405 */
+  --new-word-button-text-color: #ffffff;
+
+  /* Submit button styles */
+  --submit-button-primary-color: #30bf51;
+  --submit-button-border-color: #218838;
+  --submit-button-text-color: #ffffff;
+}
+
+/*
+  ===========
+  2. global rules
+  ===========
+*/
+*
+{
+  box-sizing: border-box;
+}
+
+/* Form styling */
+form
+{
+  margin: 0 auto;
+  padding: 10px 10px;
+
+  width: 350px;
+
+  background-color: var(--quiz-primary-color);
+
+  border: 3px solid var(--quiz-border-color);
+  border-radius: 10px;
+
+  text-align: center;
+  font-family: var(--form-font);
+}
+
+@media only screen and (min-width: 768px)
+{
+  form
+  {
+    width: 600px;
+  }
+}
+
+/*
+  ===========
+  3. target word styles
+  ===========
+*/
+.form-title
+{
+  /* Centers the target word */
+  text-align: center;
+}
+
+.target-word
+{
+  font-weight: bold;
+  font-size: var(--title-font-size);
+}
+
+/*
+  ===========
+  4. answer choice styles
+  ===========
+*/
+/* Answer choice styling */
+.definition
+{
+  margin-bottom: 15px;
+  padding: 16px 28px;
+
+  border: 3px solid var(--choice-border-color);
+  border-radius: 10px;
+
+  background-color: var(--choice-primary-color);
+
+  transition-duration: 0.4s;
+
+  cursor: pointer;
+}
+
+.definition:hover
+{
+  /* Makes choices change color when hovered over */
+  background-color: var(--choice-hover-color);
+  color: var(--choice-hovered-text-color);
+
+  border-color: var(--choice-hovered-border-color);
+}
+
+input
+{
+  /* Removes dots at the side of radio buttons */
+  display: none;
+}
+
+input:checked + .definition
+{
+  /* Allows choices to appear selected when clicked */
+  background-color: var(--choice-hover-color);
+  color: var(--choice-hovered-text-color);
+}
+
+/*
+  ===========
+  5. button styles
+  ===========
+*/
+/* Button Styling */
+.button-container
+{
+  margin-top: 20px;
+}
+
+.ui-button
+{
+  padding: 10px 16px;
+
+  border-radius: 7px;
+
+  font-family: var(--choice-font);
+  font-size: var(--choice-font-size);
+}
+
+.ui-button:hover
+{
+  opacity: 0.8;
+
+  cursor: pointer;
+
+  transition-duration: 0.4s;
+}
+
+.submit-button
+{
+  border: 2px solid var(--submit-button-border-color);
+
+  background-color: var(--submit-button-primary-color);
+  color: var(--submit-button-text-color);
+}
+
+.check-button
+{
+  border: 2px solid var(--new-word-button-border-color);
+
+  background-color: var(--new-word-button-primary-color);
+  color: var(--new-word-button-text-color);
+}
+
+/*
+  ===========
+  6. feedback message syles
+  ===========
+*/
+/* Feedback message styling */
+#feedback-msg
+{
+  margin-top: 10px;
+  font-size: var(--msg-font-size);
+}
