@@ -1,6 +1,8 @@
 :root
 {
-  --font: "Brush Script MT", cursive, "Helvetica", sans-serif, "Verdana", sans-serif;
+  --font: "Garamond", serif, "Helvetica", sans-serif, "Verdana", sans-serif;
+  /*  "Brush Script MT", cursive, */
+  --text-font-size: 14pt;
   --primary-color: #ffffff;
   /*
     alternate background colors:
@@ -34,7 +36,9 @@ main
   text-align: center;
   text-decoration: none;
 
-  padding: 12px 8px;
+  font-size: var(--text-font-size);
+
+  padding: 12px 4px;
 
   border-radius: 0 0 2px 2px;
 
@@ -45,4 +49,9 @@ main
 .skip-content-link:focus
 {
   transform: translateX(0);
+}
+
+.navbar
+{
+  font-size: var(--text-font-size);
 }
