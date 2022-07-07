@@ -36,6 +36,11 @@ body
   font-family: var(--font);
 }
 
+p
+{
+  font-size: var(--text-font-size);
+}
+
 /*
   ===========
   2. header rules
@@ -55,14 +60,6 @@ header
   /* margin-top: 15px; */
 
   text-align: center;
-
-  /* border: 3px solid hotpink; */
-}
-
-header article
-{
-  /* border: 3px solid white; */
-  /* margin-top: 20%; */
 }
 
 header p
@@ -103,6 +100,8 @@ section
   margin-left: auto;
   margin-right: auto;
   padding: 20px 25px;
+
+  font-size: var(--text-font-size);
 }
 
 section h1
