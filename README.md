@@ -2,7 +2,7 @@ Author: Matthew Mentis-Cort
 
 Date Created: December 24, 2021
 
-Date last updated: July 7, 2022
+Date last updated: July 6, 2022
 
 
 # Table of Contents
@@ -12,7 +12,7 @@ Date last updated: July 7, 2022
 	4. [Versions](#versions)
 
 
-# Introduction{#intro}
+# Introduction {#intro}
 	This ReadMe was started on December 24th, 2021, with the objective of
 	documenting the transformation of this website. The plan is to create
 	different versions after a major feature for a version is implemented. A new
@@ -24,7 +24,7 @@ Date last updated: July 7, 2022
 	a mix of JavaDocs documentation and Python specifications.
 
 
-# Style Guide for this Document{#style-guide}
+# Style Guide for this Document {#style-guide}
 	Obey the 80 character rule (don't go over the gray line in Atom for one line
 	of text)
 
@@ -34,7 +34,7 @@ Date last updated: July 7, 2022
 	The ===== sign lines are for separation.
 
 
-# Website Hierarchy{#hierarchy}
+# Website Hierarchy {#hierarchy}
 	Credits for the ideas for the hierarchy goes to this [website](https://appcropolis.com/blog/web-technology/organize-html-css-javascript-files/)
 
 	Hierarchy:
@@ -83,7 +83,7 @@ Date last updated: July 7, 2022
 	[FreeRice's](https://freerice.com/) definition game
 
 
-# 4. Versions{#versions}
+# Versions {#versions}
 ## Version 0.0
 	Date Started: Whenever I started making this website (which was approximately
 	2 years ago from the creation of this README)
@@ -583,70 +583,161 @@ Date last updated: July 7, 2022
 		- Made entire card clickable for projects instead of just the description
 	- Improved organization of css files
 		- Added table of contents for responsive-navbars.css, about-me.css, projects.css, footer.css
-		Hierarchy:
-			Folders
-			resources
-				- css
-					- about-me.css
-					- definitiongames.css
-					- global-styles.css
-					- index.css
-					- footer.css
-					- projects.css
-				- data
-				- images
-					- projects
-						- SIP
-							- definition.jpg
-							- memory.jpg
-							- squared.png
-							- words.jpg
-						- web-dev
-							- animal-quiz.jpg
-							- crossing.jpg
-							- dice-roller.png
-							- haunted-house.jpg
-					    - hot-cold.jpg
-					- about-me-header.jpg
-					- compsci-img.jpg
-					- dq9-img.jpg
-					- home-header-img.jpg
-					- psychology-img.jpg
-					- read-write-img.jpg
-				- js
-					- definitiongames.js
-					- Word.js
-					- WordBank.js
-					- wordgames.js
-			vendors
-				- css
-					- buttonpack.css
-					- columns.css
-					- navbarpack.css
-					- responsive-layout.css
-					- responsive-navbar.css
-				- js
-					- utilities.js
-			webdev-files
+	Hierarchy:
+		Folders
+		resources
+			- css
+				- about-me.css
+				- definitiongames.css
+				- global-styles.css
+				- index.css
+				- footer.css
+				- projects.css
+			- data
+			- images
+				- projects
+					- SIP
+						- definition.jpg
+						- memory.jpg
+						- squared.png
+						- words.jpg
+					- web-dev
+						- animal-quiz.jpg
+						- crossing.jpg
+						- dice-roller.png
+						- haunted-house.jpg
+				    - hot-cold.jpg
+				- about-me-header.jpg
+				- compsci-img.jpg
+				- dq9-img.jpg
+				- home-header-img.jpg
+				- psychology-img.jpg
+				- read-write-img.jpg
+			- js
+				- definitiongames.js
+				- Word.js
+				- WordBank.js
+				- wordgames.js
+		vendors
+			- css
+				- buttonpack.css
+				- columns.css
+				- navbarpack.css
+				- responsive-layout.css
+				- responsive-navbar.css
+			- js
+				- utilities.js
+		webdev-files
 
-			HTML files
-			- about-me.html
-			- DefaultDefinitionGame.html
-			- DefinitionGameHomepage.html
-			- index.html
-			- MCDefGame.html
-			- MemoryGame.html
-			- projects.html
-			- SquareNumbers.html
-			- UserMadeDefinitionGames.html
-			- WebDevProjects.html
+		HTML files
+		- about-me.html
+		- DefaultDefinitionGame.html
+		- DefinitionGameHomepage.html
+		- index.html
+		- MCDefGame.html
+		- MemoryGame.html
+		- projects.html
+		- SquareNumbers.html
+		- UserMadeDefinitionGames.html
+		- WebDevProjects.html
 
-			TXT files
-			- Plan.txt
+		TXT files
+		- Plan.txt
 
-			Markdown files
-			- README.md
+		Markdown files
+		- README.md
 
 ## Version 0.8
 	Date Started: June 14, 2022
-	Date Finished: June 30, 2022
+	Date Finished: July 6, 2022
+	Objectives:
+	- Choose new font that will work on firefox
+	- Create a dark theme for the website
+	- Make input start unchecked for navbar (if possible with CSS)
+	- Improve About Me page
+	  - Figure out how to add resume to about me page (or make a
+	  separate page for it)
+	    - Maybe have one page where it is an image of resume and a button
+	    underneath that you can click to download
+	  - Make about me page a thing where you click on an image to show
+	  text after an animation?
+	    - Make about me page clickable buttons that that displays text in a box and
+	      brings the user up to the box as the user clicks on them
+	- make scrollbars on projects page look better
+	Description:
+	Changed font size and styles for 3 main pages (index, about-me, projects.html)
+	For mc def game:
+	- changed spans to divs for the answer choices to make it easier to edit if
+	needed
+	- added variables for rules to reduce redundancies
+	- changed font and coloring of buttons
+	- adjusted size of content on smaller and larger screens to have a minimum
+	width and maximum width
+	- changed wordbank to give users access to all the words instead of just 4
+	- Added a function in mc-def-game to request from FreeDictionaryAPI for
+	words, did not incorporate into main code yet
+	Hierarchy:
+		Folders
+		resources
+			- css
+				- about-me.css
+				- definitiongames.css
+				- global-styles.css
+				- index.css
+				- footer.css
+				- projects.css
+			- data
+			- images
+				- projects
+					- SIP
+						- definition.jpg
+						- memory.jpg
+						- squared.png
+						- words.jpg
+					- web-dev
+						- animal-quiz.jpg
+						- crossing.jpg
+						- dice-roller.png
+						- haunted-house.jpg
+				    - hot-cold.jpg
+				- about-me-header.jpg
+				- compsci-img.jpg
+				- dq9-img.jpg
+				- home-header-img.jpg
+				- psychology-img.jpg
+				- read-write-img.jpg
+			- js
+				- definitiongames.js
+				- mc-def-game.js
+				- Word.js
+				- WordBank.js
+				- wordgames.js
+		vendors
+			- css
+				- buttonpack.css
+				- columns.css
+				- mc-def-game.csss
+				- navbarpack.css
+				- responsive-layout.css
+				- responsive-navbar.css
+			- js
+				- utilities.js
+		webdev-files
+
+		HTML files
+		- about-me.html
+		- DefaultDefinitionGame.html
+		- DefinitionGameHomepage.html
+		- index.html
+		- MCDefGame.html
+		- MemoryGame.html
+		- projects.html
+		- SquareNumbers.html
+		- UserMadeDefinitionGames.html
+		- WebDevProjects.html
+
+		TXT files
+		- Plan.txt
+
+		Markdown files
+		- README.md
