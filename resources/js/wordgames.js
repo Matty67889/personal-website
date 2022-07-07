@@ -113,96 +113,31 @@ function findArrayIndex(testArray, item)
 	}
 }
 
-// Generates a random word from WORDBANK, sets wordToDefine.innerHTML to the word, and returns the word
-// Generates a random number between 0 and the WORDBANK.length - 1 and gets the word at that index of WORDBANK.
-// Sets wordToDefine.innerHTML to the new word, then returns the word.
-
-// let request = new XMLHttpRequest();
-// const url = "https://pokeapi.co/api/v2/pokemon/?limit=100";
-//
-// let pokemonCounter = 0;
-//
-// request.open("GET", url, true);
-//
-// request.onload = function()
+/**
+ * Returns the definition of the word "word" as recorded on the Free
+ * Dictionary API.
+ *
+ * To be used with the random word generator on mc-def-game.js to generate
+ * definitions for words.
+ *
+ * @param  string a string that represents the name of the word to access
+ *                the definition of.
+ * @return        the string at index item
+ */
+// function requestWord(word)
 // {
-//   let data = JSON.parse(this.response);
-//   let row = null;
+// 	const url = "https://api.dictionaryapi.dev/api/v2/entries/en/" + word;
+// 	console.log(url);
 //
-//   if (request.status >= 200 && request.status < 400)
-//   {
-//     data.results.forEach(pokemon =>
-//     {
-//       // Creates new rows
-//       if (pokemonCounter % 4 == 0)
-//       {
-//         row = document.createElement('div');
-//         row.className = "row";
-//         $("#pokelist").append(row);
+// 	let data = fetch(url)
+//     .then(response => {
+//       if (!response.ok) {
+//         throw new Error("Bad response");
 //       }
-//
-//       // Create a new card
-//       let card = document.createElement('div');
-//       card.className = "col-3 pokemon";
-//
-//       let p = document.createElement('p');
-//       p.textContent = pokemon.name;
-//
-//       // Adds the pokemon sprites
-//       let sprite = document.createElement("img");
-//
-//       let pokemonRequest = new XMLHttpRequest();
-//       let urlPokeInfo = "https://pokeapi.co/api/v2/pokemon/" + pokemon.name + "/";
-//
-//       pokemonRequest.open("GET", urlPokeInfo, true);
-//
-//       pokemonRequest.onload = function()
-//       {
-//         let pokemonData = JSON.parse(this.response);
-//
-//         if (pokemonRequest.status >= 200 && pokemonRequest.status < 400)
-//         {
-//           sprite.setAttribute("src", pokemonData.sprites.front_default);
-//
-//           card.onclick = function()
-//           {
-//             sprite.setAttribute("src", pokemonData.sprites.front_shiny);
-//           }
-//         }
-//       };
-//
-//       pokemonRequest.send();
-//
-//       // Add the card to the row
-//       card.appendChild(p);
-//       card.appendChild(sprite);
-//       row.appendChild(card);
-//       pokemonCounter++;
-//     });
-//   }
-// };
-//
-// request.send();
-//
-// function getPokemonInfo(name)
-// {
-//   let pokemonRequest = new XMLHttpRequest();
-//   let urlPokeInfo = "https://pokeapi.co/api/v2/pokemon/" + name + "/";
-//   let link = "";
-//
-//   pokemonRequest.open("GET", urlPokeInfo, true);
-//
-//   pokemonRequest.onload = function()
-//   {
-//     let data = JSON.parse(this.response);
-//
-//     if (pokemonRequest.status >= 200 && pokemonRequest.status < 400)
-//     {
-//       link = data.sprites.front_default;
-//       return link;
-//     }
-//   };
-//
-//   console.log(link);
-//   pokemonRequest.send();
+//       return response.json();
+//     })
+//     .then(data =>
+//       console.log(data[0].meanings[0].definitions[0].definition))
+//     .catch(err =>
+//       console.error(err));
 // }
