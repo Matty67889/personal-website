@@ -6,13 +6,13 @@ Date last updated: July 6, 2022
 
 
 # Table of Contents
-	1. [Introduction](#intro)
-	2. [Style Guide for this Document](#style-guide)
-	3. [Website Hierarchy](#hierarchy)
+	1. [Introduction](#introduction)
+	2. [Style Guide for this Document](#style-guide-for-this-document)
+	3. [Website Hierarchy](#website-hierarchy)
 	4. [Versions](#versions)
 
 
-# Introduction {#intro}
+# Introduction {#introduction}
 	This ReadMe was started on December 24th, 2021, with the objective of
 	documenting the transformation of this website. The plan is to create
 	different versions after a major feature for a version is implemented. A new
@@ -24,7 +24,7 @@ Date last updated: July 6, 2022
 	a mix of JavaDocs documentation and Python specifications.
 
 
-# Style Guide for this Document {#style-guide}
+# Style Guide for this Document {#style-guide-for-this-document}
 	Obey the 80 character rule (don't go over the gray line in Atom for one line
 	of text)
 
@@ -34,7 +34,7 @@ Date last updated: July 6, 2022
 	The ===== sign lines are for separation.
 
 
-# Website Hierarchy {#hierarchy}
+# Website Hierarchy {#website-hierarchy}
 	Credits for the ideas for the hierarchy goes to this [website](https://appcropolis.com/blog/web-technology/organize-html-css-javascript-files/)
 
 	Hierarchy:
@@ -741,3 +741,7 @@ Date last updated: July 6, 2022
 
 		Markdown files
 		- README.md
+
+## Version 0.9
+	Date Started: July 6, 2022
+	Date Finished: July 6, 2022
