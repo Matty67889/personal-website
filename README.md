@@ -6,10 +6,10 @@ Date last updated: July 7, 2022
 
 
 # Table of Contents
-	1. [Introduction] (#intro)
-	2. [Style Guide for this Document] (#style-guide)
-	3. [Website Hierarchy] (#hierarchy)
-	4. [Versions] (#versions)
+	1. [Introduction](#intro)
+	2. [Style Guide for this Document](#style-guide)
+	3. [Website Hierarchy](#hierarchy)
+	4. [Versions](#versions)
 
 
 # Introduction {#intro}
