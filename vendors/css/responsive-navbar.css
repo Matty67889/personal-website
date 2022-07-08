@@ -110,7 +110,7 @@
 /*
   Navbar HTML Template
   <nav class = "navbar">
-    <input type = checkbox id = "navbar-toggler-checkbox" />
+    <input type = "checkbox" id = "navbar-toggler-checkbox" />
 		<label for = "navbar-toggler-checkbox" class = "navbar-toggler">
 			<div class = "nav-burger-top-bun"></div>
 			<div class = "nav-burger-bot-bun"></div>

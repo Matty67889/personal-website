@@ -55,6 +55,9 @@ function deselectRadioButtonsInForm(inputForm)
 {
 	for (i = 0; i < inputForm.getElementsByTagName("input").length; i++)
 	{
-		inputForm.getElementsByTagName("input")[i].checked = false;
+    if (inputForm.getElementsByTagName("input")[i].type === "radio")
+    {
+      inputForm.getElementsByTagName("input")[i].checked = false;
+    }
 	}
 }

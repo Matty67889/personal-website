@@ -6,13 +6,27 @@ function initialize()
   formOne = document.getElementById("question1");
 
   wordToDefine = document.getElementById("word");
+  wordBankSwitch = document.getElementById("wordbank-switch");
   feedbackMsg = document.getElementById("feedback-msg");
 
   // the number of choices that the user can pick from in the game
   NUM_CHOICES = 4;
 
+  // swtich off doos wordbank
+  wordBankSwitch.checked = false;
+
   // the word bank of words for the game
-  currentWordBank = new WordBank(WORDBANK);
+  doosWordBank = new WordBank(DOOSWORDBANK);
+  standardWordBank = new WordBank(WORDBANK);
+  currentWordBank = standardWordBank;
+  if (wordBankSwitch.checked)
+  {
+    currentWordBank = doosWordBank;
+  }
+  else
+  {
+    currentWordBank = standardWordBank;
+  }
 
   // an array of the Word objects that are involved in the current
   // display
@@ -28,7 +42,32 @@ function initialize()
 }
 
 /**
+ * Changes the wordBank that words are being generated from when the user
+ * clicks a switch on the site.
+ *
+ * When the user clicks the switch and it becomes toggled to on, the
+ * doosWordBank will be used to generate words. When the user clicks the
+ * switch and it becomes toggled to off, the standardWordBank will be used
+ * to generate words.
+ */
+function toggleWordBank()
+{
+  if (!wordBankSwitch.checked)
+  {
+    currentWordBank = doosWordBank;
+  }
+  else
+  {
+    currentWordBank = standardWordBank;
+  }
+
+  generateNewQuiz();
+}
+
+/**
  * Returns a random Word from currentWordBank.
+ *
+ * @return a Word that represents a random Word from currentWordBank.
  */
 function generateRandWord()
 {
@@ -120,7 +159,7 @@ function checkAnswer()
   }
   else
   {
-    if (formOne.question.value == correctAnswerChoice)
+    if (formOne.choices.value == correctAnswerChoice)
     {
       feedbackMsg.style.color = "green";
       feedbackMsg.innerHTML = "Correct";

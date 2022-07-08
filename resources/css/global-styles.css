@@ -1,6 +1,6 @@
 :root
 {
-  --font: "Garamond", serif, "Helvetica", sans-serif, "Verdana", sans-serif;
+  --font: "Garamond", sans-serif, "Helvetica", sans-serif, "Verdana", sans-serif;
   /*  "Brush Script MT", cursive, */
   --text-font-size: 14pt;
   --primary-color: #ffffff;

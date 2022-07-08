@@ -9,10 +9,15 @@
 
   1. variables
   2. global rules
-  3. target word styles
-  4. answer choice styles
-  5. button styles
-  6. feedback messsage styles
+  3. text emphasis styles
+  4. game form syles
+  5. target word styles
+  6. answer choice styles
+  7. component styles
+    7a. button styles
+    7b. WordBank switch styles
+  8. feedback messsage styles
+  9. skip content syles
 */
 
 /*
@@ -22,13 +27,23 @@
 */
 :root
 {
+  /* Colors */
+  --confirm-green: #30bf51;
+
   /* Fonts */
-  --form-font: "Garamond", sans-serif, "Helvetica", sans-serif, "Verdana", sans-serif;
-  --choice-font: "Garamond", sans-serif, "Helvetica", sans-serif, "Verdana", sans-serif;
+  --global-text-font: "Garamond", sans-serif, "Helvetica", sans-serif, "Verdana", sans-serif;
+  --form-font: var(--global-text-font);
+  --choice-font: var(--global-text-font);
+  --section-text-font: var(--global-text-font);
   --title-font-size: 1.5em;
   --choice-font-size: 16px;
   /*  "Brush Script MT", cursive,  */
   --msg-font-size: 14pt;
+
+  /* Header styles */
+  --primary-color: #000000;
+  --header-title-font: var(--global-text-font);
+  --header-text-color: #ffffff;
 
   /* Form styles */
   --quiz-primary-color: #ffffff;
@@ -58,7 +73,7 @@
   --new-word-button-text-color: #ffffff;
 
   /* Submit button styles */
-  --submit-button-primary-color: #30bf51;
+  --submit-button-primary-color: var(--confirm-green);
   --submit-button-border-color: #218838;
   --submit-button-text-color: #ffffff;
 }
@@ -73,13 +88,61 @@
   box-sizing: border-box;
 }
 
-/* Form styling */
-form
+body
+{
+  margin: 0;
+}
+
+header
+{
+  padding: 20vh 1vw;
+
+  background-color: var(--primary-color);
+  color: var(--header-text-color);
+
+  text-align: center;
+  font-family: var(--header-title-font);
+}
+
+section
+{
+  padding: 0 7vw;
+}
+
+section:not(:last-of-type)
+{
+  margin-bottom: 10px;
+  border-bottom: 1px solid black;
+}
+
+section:not(#game)
+{
+  font-family: var(--section-text-font);
+  font-size: var(--msg-font-size);
+}
+
+/*
+  ===========
+  3. text emphasis syles
+  ===========
+*/
+.bold
+{
+  font-weight: bold;
+}
+
+/*
+  ===========
+  4. game form syles
+  ===========
+*/
+/* game form styling */
+.def-game
 {
   margin: 0 auto;
   padding: 10px 10px;
 
-  width: 350px;
+  width: 315px;
 
   background-color: var(--quiz-primary-color);
 
@@ -88,11 +151,13 @@ form
 
   text-align: center;
   font-family: var(--form-font);
+
+  overflow: auto;
 }
 
 @media only screen and (min-width: 768px)
 {
-  form
+  .def-game
   {
     width: 600px;
   }
@@ -100,7 +165,7 @@ form
 
 /*
   ===========
-  3. target word styles
+  5. target word styles
   ===========
 */
 .form-title
@@ -111,13 +176,12 @@ form
 
 .target-word
 {
-  font-weight: bold;
   font-size: var(--title-font-size);
 }
 
 /*
   ===========
-  4. answer choice styles
+  6. answer choice styles
   ===========
 */
 /* Answer choice styling */
@@ -160,7 +224,13 @@ input:checked + .definition
 
 /*
   ===========
-  5. button styles
+  7. component styles
+  ===========
+*/
+
+/*
+  ===========
+  7a. button styles
   ===========
 */
 /* Button Styling */
@@ -169,14 +239,17 @@ input:checked + .definition
   margin-top: 20px;
 }
 
+.ui-component
+{
+  font-family: var(--choice-font);
+  font-size: var(--choice-font-size);
+}
+
 .ui-button
 {
   padding: 10px 16px;
 
   border-radius: 7px;
-
-  font-family: var(--choice-font);
-  font-size: var(--choice-font-size);
 }
 
 .ui-button:hover
@@ -190,6 +263,7 @@ input:checked + .definition
 
 .submit-button
 {
+  display: inline-block;
   border: 2px solid var(--submit-button-border-color);
 
   background-color: var(--submit-button-primary-color);
@@ -198,6 +272,7 @@ input:checked + .definition
 
 .check-button
 {
+  display: inline-block;
   border: 2px solid var(--new-word-button-border-color);
 
   background-color: var(--new-word-button-primary-color);
@@ -206,7 +281,74 @@ input:checked + .definition
 
 /*
   ===========
-  6. feedback message syles
+  7b. WordBank swtich styles
+  ===========
+*/
+/* WordBank Switch */
+#wordbank-switch
+{
+  display: none;
+}
+
+.wordbank-switch-toggler
+{
+  display: inline-block;
+
+  margin-top: 10px;
+
+  text-align: center;
+  /*
+    Used to remove the space created between on-switch and off-switch with
+    display:inline-block
+  */
+  font-size: 0;
+
+  border: 2px solid black;
+
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 768px)
+{
+  .wordbank-switch-toggler
+  {
+    margin-top: 0;
+  }
+}
+
+.on-switch, .off-switch
+{
+  display: inline-block;
+  /* width: 100%; */
+
+  margin: 0 auto;
+  padding: 5px 14px;
+
+  text-align: center;
+
+  transition: 0.5s;
+}
+
+.on-switch
+{
+  border-right: 2px solid black;
+}
+
+#wordbank-switch:checked ~ .wordbank-switch-toggler > .on-switch
+{
+  background-color: green;
+  color: white;
+}
+
+#wordbank-switch:not(:checked) ~ .wordbank-switch-toggler > .off-switch
+{
+  background-color: red;
+  color: white;
+}
+
+/*
+  ===========
+  8. feedback message syles
   ===========
 */
 /* Feedback message styling */
@@ -214,4 +356,36 @@ input:checked + .definition
 {
   margin-top: 10px;
   font-size: var(--msg-font-size);
+}
+
+/*
+  ===========
+  9. skip content syles
+  ===========
+*/
+.skip-content-link
+{
+  display: inline-block;
+  position: absolute;
+  width: 25%;
+
+  background-color: var(--primary-color);
+  color: var(--header-text-color);
+
+  text-align: center;
+  text-decoration: none;
+
+  font-size: var(--msg-font-size);
+
+  padding: 12px 4px;
+
+  border-radius: 0 0 2px 2px;
+
+  transform: translateX(-120%);
+  transition: transform 0.2s;
+}
+
+.skip-content-link:focus
+{
+  transform: translateX(0);
 }
