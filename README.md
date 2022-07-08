@@ -6,9 +6,9 @@ Date last updated: July 6, 2022
 
 
 # Table of Contents
-	1. [Introduction](#introduction)
-	2. [Style Guide for this Document](#style-guide-for-this-document)
-	3. [Website Hierarchy](#website-hierarchy)
+	1. Introduction
+	2. Style Guide for this Document
+	3. Website Hierarchy
 
 
 # Introduction
