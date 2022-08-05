@@ -2,13 +2,12 @@ Author: Matthew Mentis-Cort
 
 Date Created: December 24, 2021
 
-Date last updated: July 6, 2022
+Date last updated: August 4, 2022
 
 
 # Table of Contents
 	1. Introduction
 	2. Style Guide for this Document
-	3. Website Hierarchy
 
 
 # Introduction
@@ -29,5 +28,3 @@ Date last updated: July 6, 2022
 
 	Update the "Date last updated" section when a new entry is added to this
 	document
-
-	The ===== sign lines are for separation.
