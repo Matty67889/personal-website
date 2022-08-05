@@ -89,7 +89,7 @@ section:not(:last-of-type)
 
 section .row
 {
-  display: flex;
+  /* display: flex; */
 }
 
 section .section-img, section .section-desc
@@ -106,61 +106,3 @@ section .section-desc
 {
   width: 100%;
 }
-
-/* about-me grid */
-/* .grid-container
-{
-  display: grid;
-  grid-template-columns: 50% 50%;
-}
-
-.grid-item
-{
-  border: 3px solid hotpink;
-}
-
-.grid-item img
-{
-  width: 100%;
-  height: 100%;
-  margin: auto auto;
-} */
-
-/* For about me click to show description function */
-.about-me-grid img
-{
-  width: 100%;
-  height: 100%;
-  margin: auto auto;
-}
-
-.about-me-grid div
-{
-  display: block;
-}
-
-.about-me-desc-radio-btn
-{
-  /* display: none; */
-}
-
-.about-me-desc-toggler
-{
-  cursor: pointer;
-}
-
-[class$="about-me-desc"]
-{
-  display: none;
-}
-
-.about-me-desc-radio-btn:checked ~ .about-me-desc-toggler
-{
-  display: block;
-}
-
-/* iframe
-{
-  height: 1000px;
-  width: 100%;
-} */
