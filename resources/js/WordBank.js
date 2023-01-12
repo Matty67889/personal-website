@@ -5,7 +5,7 @@
  * object.
  *
  * @author Matthew Mentis-Cort
- * Date last edited: February 14, 2022
+ * Date last edited: August 9, 2022
  */
 
 /**
@@ -89,13 +89,9 @@ class WordBank
 	{
 		for (var i = 0; i < referenceArr.length; i++)
 		{
-			//console.log(this.referenceWordArray[i]);
 			var newWord = new Word(getWordDetail(referenceArr[i], WORD), getWordDetail(referenceArr[i], DEFINITION));
 			this.addWord(newWord);
-			//console.log(newWordBank.bank);
 		}
-
-		// console.log("Filled bank: " + this.#bank);
 	}
 
 	// toString method
@@ -163,49 +159,3 @@ class WordBank
 		return false;
 	}
 }
-
-// // Precondition: referenceWordArray must have at least 4 values
-// function WordBank()
-// {
-// 	this.referenceWordArray = WORDBANK;
-//
-// 	this.bank = [];
-// 	this.createWordCollection();
-// }
-//
-// /**
-//  * Creates a new word collection with the words in the this.referenceWordArray.
-//  *
-// */
-// WordBank.prototype.createWordCollection = function()
-// {
-// 	//var newWordBank = new WordBank();
-//
-// 	//console.log(this.referenceWordArray);
-// 	//console.log("Word: " + WORD);
-// 	//console.log("Definition: " + DEFINITION);
-// 	for (var i = 0; i < this.referenceWordArray.length; i++)
-// 	{
-// 		//console.log(this.referenceWordArray[i]);
-// 		var newWord = new Word(getWordDetail(this.referenceWordArray[i], WORD), getWordDetail(this.referenceWordArray[i], DEFINITION));
-// 		this.addWord(newWord);
-// 		//console.log(newWordBank.bank);
-// 	}
-//
-// 	console.log("Filled bank: " + this.bank);
-//
-// 	//return newWordBank;
-// }
-//
-// // getters
-// WordBank.prototype.getRandomWord = function()
-// {
-// 	rndNum = getRandomInteger(0, this.bank.length - 1);
-// 	return this.bank[rndNum];
-// }
-//
-// // action methods
-// WordBank.prototype.addWord = function(word)
-// {
-// 	this.bank.push(word);
-// }

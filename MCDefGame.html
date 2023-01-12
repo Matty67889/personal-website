@@ -42,6 +42,9 @@
 		<a class = "skip-content-link" href = "#doos-option">
 			Skip to Dictionary of Obscure Sorrows Option
 		</a>
+		<a class = "skip-content-link" href = "#wordbank-display">
+			Skip to Word Bank
+		</a>
 
 		<!-- Header -->
 		<header id = "header">
@@ -83,6 +86,26 @@
 			<section id = "game">
 				<!-- Answer Form -->
 				<form class = "def-game" id = "question1">
+					<!-- Button Container -->
+					<div class = "button-container">
+						<button class = "ui-component ui-button submit-button" type = "button" onclick = "checkAnswer();">
+							Check Answer
+						</button>
+						<button class = "ui-component ui-button check-button" type = "button" onclick = "generateNewQuiz();">
+							New Word
+						</button>
+
+						<input type = "checkbox" id = "wordbank-switch" />
+						<label for = "wordbank-switch" class = "wordbank-switch-toggler" onclick = "toggleWordBank();">
+							<div class = "ui-component on-switch">
+								ON
+							</div>
+							<div class = "ui-component off-switch">
+								OFF
+							</div>
+						</label>
+					</div>
+
 					<div class = "form-title">
 						<p class = "target-word bold" id = "word"></p>
 					</div>
@@ -106,26 +129,6 @@
 						<input type = "radio" name = "choices" value = "4" />
 						<div class = "definition"></div>
 					</label>
-
-					<!-- Button Container -->
-					<div class = "button-container">
-						<button class = "ui-component ui-button submit-button" type = "button" onclick = "checkAnswer();">
-							Check Answer
-						</button>
-						<button class = "ui-component ui-button check-button" type = "button" onclick = "generateNewQuiz();">
-							New Word
-						</button>
-
-						<input type = "checkbox" id = "wordbank-switch" />
-						<label for = "wordbank-switch" class = "wordbank-switch-toggler" onclick = "toggleWordBank();">
-							<div class = "ui-component on-switch">
-								ON
-							</div>
-							<div class = "ui-component off-switch">
-								OFF
-							</div>
-						</label>
-					</div>
 
 					<!-- Feedback Message -->
 					<div id = "feedback-msg"></div>
@@ -153,6 +156,16 @@
 					can memorize them and spread the magic of expressed emotion in their
 					daily lives. All credits for this work of art goes to John Koenig.
 				</p>
+			</section>
+
+			<section id = "wordbank-display">
+				<h2>Word Bank</h2>
+				<p>
+					Below is a list of the current words in the current word bank. The
+					current word bank is the <span id = "chosen-wordbank"></span>. There
+					are <span id = "word-count"></span> words in this word bank.
+				</p>
+				<div id = "wordgrid" class = "wordgrid"></div>
 			</section>
 		</main>
 	</body>

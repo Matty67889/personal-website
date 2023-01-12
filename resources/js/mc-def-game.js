@@ -8,6 +8,9 @@ function initialize()
   wordToDefine = document.getElementById("word");
   wordBankSwitch = document.getElementById("wordbank-switch");
   feedbackMsg = document.getElementById("feedback-msg");
+  chosenWordBank = document.getElementById("chosen-wordbank");
+  wordCount = document.getElementById("word-count");
+  wordGrid = document.getElementById("wordgrid");
 
   // the number of choices that the user can pick from in the game
   NUM_CHOICES = 4;
@@ -189,6 +192,30 @@ function displayDefinitions()
   }
 }
 
+function generateWordBankGrid()
+{
+  wordGrid.innerHTML = "";
+
+	for (let idx = 0; idx < currentWordBank.getLength(); idx++)
+  {
+    containerDiv = document.createElement("div");
+    containerDiv.className = "wordgrid-item";
+
+    newWord = document.createElement("p");
+    newWord.className = "word";
+    newWord.innerHTML = currentWordBank.getWord(idx).getName();
+
+    newDef = document.createElement("p");
+    newDef.className = "def";
+    newDef.innerHTML = currentWordBank.getWord(idx).getDefinition();
+
+    containerDiv.appendChild(newWord);
+    containerDiv.appendChild(newDef);
+
+    wordGrid.appendChild(containerDiv);
+  }
+}
+
 /**
  * Sends output to the screen.
  *
@@ -198,6 +225,22 @@ function displayDefinitions()
 function display()
 {
   wordToDefine.innerHTML = targetWord.getName();
-  // createRandomDefinitions();
   displayDefinitions();
+  // updates which wordbank words are being generated from in the "Word Bank"
+  // section
+  if (currentWordBank === standardWordBank)
+  {
+    chosenWordBank.innerHTML = "Standard English Word Bank";
+  }
+  else
+  {
+    if (currentWordBank === doosWordBank)
+    {
+      chosenWordBank.innerHTML = "Dictionary of Obscure Sorrows Word Bank";
+    }
+  }
+
+  // updates the count for the current word bank in the "Word Bank" section
+  wordCount.innerHTML = currentWordBank.getLength();
+  generateWordBankGrid();
 }

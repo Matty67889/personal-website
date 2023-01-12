@@ -16,6 +16,7 @@
   7. component styles
     7a. button styles
     7b. WordBank switch styles
+    7c. Word grid item styles
   8. feedback messsage styles
   9. skip content syles
 */
@@ -234,11 +235,6 @@ input:checked + .definition
   ===========
 */
 /* Button Styling */
-.button-container
-{
-  margin-top: 20px;
-}
-
 .ui-component
 {
   font-family: var(--choice-font);
@@ -344,6 +340,35 @@ input:checked + .definition
 {
   background-color: red;
   color: white;
+}
+
+/*
+  ===========
+  7c. Word grid item styles
+  ===========
+*/
+.wordgrid
+{
+  /* max number of columns in grid */
+  --max-columns: 4;
+  display: grid;
+  width: calc(100% / 3))
+  grid-template-columns: repeat(auto-fit, minmax(max(calc(100% / var(--max-columns))), 1fr));
+  /* grid-gap: 1em; */
+}
+
+.wordgrid-item
+{
+  /* margin-bottom: 4em; */
+
+  text-align: center;
+
+  border: 2px solid black;
+}
+
+.wordgrid-item .word
+{
+  font-weight: bold;
 }
 
 /*

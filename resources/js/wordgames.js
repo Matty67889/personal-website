@@ -377,6 +377,7 @@ WORDBANK =
 	"ontological;Of or relating to essence or the nature of being.",
 	"idiosyncrasy;A structural or behavioral characteristic peculiar to an individual or group.",
 	"nomophobia;Fear of being without access to a working cell phone.",
+	"sychophant;a person who uses flattery to win favour from individuals wielding influence."
 ];
 
 DOOSWORDBANK =
