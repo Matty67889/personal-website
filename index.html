@@ -1,7 +1,8 @@
 <!DOCTYPE HTML>
 <html>
-	<head>
-		<!--
+
+<head>
+	<!--
 			Tag for responsive web design. The meta tag allows designers access
 			properties of the viewport of the browser, which is the visible area of
 			a web page. This tag makes the content on the screen fit according to the
@@ -10,85 +11,85 @@
 			Credits to https://www.w3schools.com/css/css_rwd_viewport.asp for this
 			information. To learn more, visit this website.
 		-->
-		<meta name = "viewport" content = "width=device-width, initial-scale = 1.0">
-		<title>Matthew's Website</title>
-		<style></style>
-		<link rel = "stylesheet" href = "vendors/css/responsive-layout.css">
-		<link rel = "stylesheet" href = "vendors/css/responsive-navbar.css">
-		<link rel = "stylesheet" href = "vendors/css/columns.css">
-		<link rel = "stylesheet" href = "resources/css/global-styles.css">
-		<link rel = "stylesheet" href = "resources/css/footer.css">
-		<link rel = "stylesheet" href = "resources/css/index.css">
-		<script>
-			function initialize()
-			{
-			}
-		</script>
-	</head>
-	<body onload = "initialize();">
-		<!-- Skip content links -->
-		<a class = "skip-content-link" href = "#header">
-			Skip to header
-		</a>
-		<a class = "skip-content-link" href = "#main-content">
-			Skip to main content
-		</a>
-		<a class = "skip-content-link" href = "#footer">
-			Skip to footer
-		</a>
+	<meta name="viewport" content="width=device-width, initial-scale = 1.0">
+	<title>Matthew's Website</title>
+	<style></style>
+	<link rel="stylesheet" href="vendors/css/responsive-layout.css">
+	<link rel="stylesheet" href="vendors/css/responsive-navbar.css">
+	<link rel="stylesheet" href="vendors/css/columns.css">
+	<link rel="stylesheet" href="resources/css/global-styles.css">
+	<link rel="stylesheet" href="resources/css/footer.css">
+	<link rel="stylesheet" href="resources/css/index.css">
+	<script>
+		function initialize() {
+		}
+	</script>
+</head>
 
-		<!-- Navbar -->
-		<!-- Use nav tag for main nav bar and ul for navbar content? -->
-		<nav class = "navbar">
-			<!-- Link to Homepage on the logo -->
-			<!-- <a class = "navbar-logo clearfix" href = "#">
+<body onload="initialize();">
+	<!-- Skip content links -->
+	<a class="skip-content-link" href="#header">
+		Skip to header
+	</a>
+	<a class="skip-content-link" href="#main-content">
+		Skip to main content
+	</a>
+	<a class="skip-content-link" href="#footer">
+		Skip to footer
+	</a>
+
+	<!-- Navbar -->
+	<!-- Use nav tag for main nav bar and ul for navbar content? -->
+	<nav class="navbar">
+		<!-- Link to Homepage on the logo -->
+		<!-- <a class = "navbar-logo clearfix" href = "#">
 				Matthew Mentis-Cort
 			</a> -->
 
-			<!-- Button to toggle navbar on smaller screens -->
-			<input type = "checkbox" id = "navbar-toggler-checkbox" />
-			<label for = "navbar-toggler-checkbox" class = "navbar-toggler">
-				<div class = "nav-burger-top-bun"></div>
-				<div class = "nav-burger-bot-bun"></div>
-			</label>
+		<!-- Button to toggle navbar on smaller screens -->
+		<input type="checkbox" id="navbar-toggler-checkbox" />
+		<label for="navbar-toggler-checkbox" class="navbar-toggler">
+			<div class="nav-burger-top-bun"></div>
+			<div class="nav-burger-bot-bun"></div>
+		</label>
 
-			<div class = "navbar-content">
-				<ul class = "navbar-link-list">
-					<li class = "navbar-item">
-						<a class = "navbar-link active" href = "index.html">
-							Home
-						</a>
-					</li>
+		<div class="navbar-content">
+			<ul class="navbar-link-list">
+				<li class="navbar-item">
+					<a class="navbar-link active" href="index.html">
+						Home
+					</a>
+				</li>
 
-					<li class = "navbar-item">
-						<a class = "navbar-link" href = "about-me.html">
-							About Me
-						</a>
-					</li>
+				<li class="navbar-item">
+					<a class="navbar-link" href="about-me.html">
+						About Me
+					</a>
+				</li>
 
-					<li class = "navbar-item">
-						<a class = "navbar-link" href = "projects.html">
-							Projects
-						</a>
-					</li>
-				</ul>
+				<li class="navbar-item">
+					<a class="navbar-link" href="projects.html">
+						Projects
+					</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+
+	<!-- Header -->
+	<header id="header">
+		<article>
+			<p>Keep working to achieve your goals.</p>
+			<div id="button-wrapper">
+				<a href="about-me.html">
+					<button type="button" class="header-button">About Me</button>
+				</a>
+				<a href="projects.html">
+					<button type="button" class="header-button">My Projects</button>
+				</a>
 			</div>
-		</nav>
-
-		<!-- Header -->
-		<header id = "header">
-			<article>
-				<p>Keep working to achieve your goals.</p>
-				<div id = "button-wrapper">
-					<a href = "about-me.html">
-						<button type = "button" class = "header-button">About Me</button>
-					</a>
-					<a href = "projects.html">
-						<button type = "button" class = "header-button">My Projects</button>
-					</a>
-				</div>
-			</article>
-			<!-- <div class = "row">
+		</article>
+		<!-- <div class = "row">
 				<div class = "col-9">
 						Image from Unsplash:
 						https://unsplash.com/s/photos/do-something-great
@@ -108,111 +109,131 @@
 					</div>
 				</div>
 			</div> -->
-		</header>
+	</header>
 
-		<!-- Main content -->
-		<main id = "main-content">
-			<!-- Welcome Message -->
-			<section class = "welcome">
-				<div class = "row">
-					<div class = "col-12">
-						<h1>
-							Welcome, my name is Matthew Mentis-Cort, and I am a human being.
-						</h1>
-						<h1>
-							This website is still in development, so please bear with
-							its initial looks. They will get better with time.
-						</h1>
-					</div>
+	<!-- Main content -->
+	<main id="main-content">
+		<!-- Welcome Message -->
+		<section class="welcome">
+			<div class="row">
+				<div class="col-12">
+					<h1>
+						Welcome, my name is Matthew Mentis-Cort, and I am a human being.
+					</h1>
+					<h1>
+						This website is still in development, so please bear with
+						its initial looks. They will get better with time.
+					</h1>
 				</div>
-			</section>
+			</div>
+		</section>
 
-			<!-- About Me Section -->
-			<section class = "about-me">
-				<div class = "row">
-					<div class = "col-12">
-						<h1>About Me</h1>
-					</div>
-				</div>
-
-				<div class = "row">
-					<div class = "col-12">
-						<p>
-							I am a Freshman at Cornell University studying Computer Science.
-							I hope to use my the knowledge that I gain from coding
-							technology to develop ways to make education easier
-							and more accessible for people around the world. Apart from
-							Computer Science, I am interested in learning concepts in
-							Psychology. It is an interesting field to me as it helps me
-							learn about how are brains work, and I also think that it will
-							allow aid me in my goal of making learning easier for people.
-							In my free time, I read, write, and play video games.
-						</p>
-					</div>
-				</div>
-
-				<div class = "row">
-					<div class = "btn-container">
-						<a href = "about-me.html">
-							<button type = "button" class = "main-button">Learn More...</button>
-						</a>
-					</div>
-				</div>
-			</section>
-
-			<!-- Projects Section -->
-			<section class = "projects">
-				<div class = "row">
-					<div class = "col-12">
-						<h1>Projects</h1>
-					</div>
-				</div>
-
-				<div class = "row">
-					<div class = "col-12">
-						<p>
-							Here are some of the projects I've been working on.
-						</p>
-					</div>
-				</div>
-
-				<div class = "row">
-					<div class = "btn-container">
-						<a href = "projects.html">
-							<button type = "button" class = "main-button">Projects</button>
-						</a>
-					</div>
-				</div>
-			</section>
-		</main>
-
-		<!-- Footer -->
-		<footer id = footer>
-			<div class = "row">
-				<div class = "col-6">
-					<h2>Contact Me!</h2>
+		<!-- About Me Section -->
+		<section class="about-me">
+			<div class="row">
+				<div class="col-12">
+					<h1>About Me</h1>
 				</div>
 			</div>
 
-			<div class = "row footer-row">
-				<div class = "col-6">
-					<a href = "https://www.linkedin.com/in/matthew-mentis-cort-374430203" target = "_blank">
-						LinkedIn
+			<div class="row">
+				<div class="col-12">
+					<p>
+						I am a Freshman at Cornell University studying Computer Science.
+						I hope to use my the knowledge that I gain from coding
+						technology to develop ways to make education easier
+						and more accessible for people around the world. Apart from
+						Computer Science, I am interested in learning concepts in
+						Psychology. It is an interesting field to me as it helps me
+						learn about how are brains work, and I also think that it will
+						allow aid me in my goal of making learning easier for people.
+						In my free time, I read, write, and play video games.
+					</p>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="btn-container">
+					<a href="about-me.html">
+						<button type="button" class="main-button">Learn More...</button>
 					</a>
 				</div>
-				<div class = "col-6">
-					<a href = "index.html">Home</a>
+			</div>
+		</section>
+
+		<!-- Projects Section -->
+		<section class="projects">
+			<div class="row">
+				<div class="col-12">
+					<h1>Projects</h1>
 				</div>
 			</div>
 
-			<div class = "row footer-row">
-				<div class = "col-6">
-					<p>Email: mmentiscort67889@gmail.com</p>
-				</div>
-				<div class = "col-6">
-					<a href = "about-me.html">About Me</a>
+			<div class="row">
+				<p>
+					Need help tracking your financial
+					transactions? Try this budget tracker that I developed!
+				</p>
+			</div>
+
+			<div class="row">
+				<p>
+					<a href="https://docs.google.com/spreadsheets/d/15VoR0reYmjJ1I9F86nASAiqQKU3ZmatmkqD_nfchzEs/edit#gid=1049191629"
+						target="_blank">Budget
+						Tracker</a>
+				</p>
+				<p>
+					<a href="https://docs.google.com/document/d/1XHIK5tXIJNrmSdF7BY_8MYeSJV9fx_PxwYmjuN0rufY/edit"
+						target="_blank">README</a>
+				</p>
+			</div>
+
+			<div class="row">
+				<div class="col-12">
+					<p>
+						Here are some of the projects I've been working on.
+					</p>
 				</div>
 			</div>
-		</footer>
-	</body>
+
+			<div class="row">
+				<div class="btn-container">
+					<a href="projects.html">
+						<button type="button" class="main-button">Projects</button>
+					</a>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<!-- Footer -->
+	<footer id=footer>
+		<div class="row">
+			<div class="col-6">
+				<h2>Contact Me!</h2>
+			</div>
+		</div>
+
+		<div class="row footer-row">
+			<div class="col-6">
+				<a href="https://www.linkedin.com/in/matthew-mentis-cort-374430203" target="_blank">
+					LinkedIn
+				</a>
+			</div>
+			<div class="col-6">
+				<a href="index.html">Home</a>
+			</div>
+		</div>
+
+		<div class="row footer-row">
+			<div class="col-6">
+				<p>Email: mmentiscort67889@gmail.com</p>
+			</div>
+			<div class="col-6">
+				<a href="about-me.html">About Me</a>
+			</div>
+		</div>
+	</footer>
+</body>
+
 </html>
