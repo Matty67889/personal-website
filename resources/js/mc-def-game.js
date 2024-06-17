@@ -1,8 +1,7 @@
 /**
  * Sets the webpage variables to their default values.
  */
-function initialize()
-{
+function initialize() {
   formOne = document.getElementById("question1");
 
   wordToDefine = document.getElementById("word");
@@ -22,12 +21,10 @@ function initialize()
   doosWordBank = new WordBank(DOOSWORDBANK);
   standardWordBank = new WordBank(WORDBANK);
   currentWordBank = standardWordBank;
-  if (wordBankSwitch.checked)
-  {
+  if (wordBankSwitch.checked) {
     currentWordBank = doosWordBank;
   }
-  else
-  {
+  else {
     currentWordBank = standardWordBank;
   }
 
@@ -53,14 +50,11 @@ function initialize()
  * switch and it becomes toggled to off, the standardWordBank will be used
  * to generate words.
  */
-function toggleWordBank()
-{
-  if (!wordBankSwitch.checked)
-  {
+function toggleWordBank() {
+  if (!wordBankSwitch.checked) {
     currentWordBank = doosWordBank;
   }
-  else
-  {
+  else {
     currentWordBank = standardWordBank;
   }
 
@@ -72,8 +66,7 @@ function toggleWordBank()
  *
  * @return a Word that represents a random Word from currentWordBank.
  */
-function generateRandWord()
-{
+function generateRandWord() {
   var rndNum =
     generateRandomInteger(0, currentWordBank.getLength() - 1);
   var newWord = currentWordBank.getWord(rndNum);
@@ -90,21 +83,18 @@ function generateRandWord()
  *        Precondiiton: numWords must be an int > 0
  * @return an array of Words
  */
-function generateUniqueWords(numWords)
-{
+function generateUniqueWords(numWords) {
   var words = [];
   var newWord = generateRandWord();
 
   // for each definition that needs to be added, find a unique
   // definition to add to the array
-  for (var wordCounter = 0; wordCounter < numWords; wordCounter++)
-  {
+  for (var wordCounter = 0; wordCounter < numWords; wordCounter++) {
     // keep searching for a new definition until it is not a duplicate
     // of a definition already in the list and it is not the definition
     // of targetWord
     newWord = generateRandWord();
-    while (words.indexOf(newWord) > -1)
-    {
+    while (words.indexOf(newWord) > -1) {
       newWord = generateRandWord();
     }
 
@@ -122,8 +112,7 @@ function generateUniqueWords(numWords)
  * word. Deselects all radio buttons in the form. Displays the new
  * definitions with a call to display.
  */
-function generateNewQuiz()
-{
+function generateNewQuiz() {
   // removes the feedback message
   feedbackMsg.style.display = "none";
 
@@ -153,22 +142,17 @@ function generateNewQuiz()
  * message should be:
  * "Incorrect"
  */
-function checkAnswer()
-{
-  if (!formChoiceSelected())
-  {
+function checkAnswer() {
+  if (!formChoiceSelected()) {
     feedbackMsg.style.color = "#0E34A0";
     feedbackMsg.innerHTML = "Please make a choice.";
   }
-  else
-  {
-    if (formOne.choices.value == correctAnswerChoice)
-    {
+  else {
+    if (formOne.choices.value == correctAnswerChoice) {
       feedbackMsg.style.color = "green";
       feedbackMsg.innerHTML = "Correct";
     }
-    else
-    {
+    else {
       feedbackMsg.style.color = "red";
       feedbackMsg.innerHTML = "Incorrect";
     }
@@ -183,36 +167,52 @@ function checkAnswer()
  * Iterates through the array the spans in the answer form and
  * populates them with definitions.
  */
-function displayDefinitions()
-{
-  for (var i = 0; i < formOne.getElementsByClassName("definition").length; i++)
-  {
+function displayDefinitions() {
+  for (var i = 0; i < formOne.getElementsByClassName("definition").length; i++) {
     formOne.getElementsByClassName("definition")[i].innerHTML =
       currentWords[i].getDefinition();
   }
 }
 
-function generateWordBankGrid()
-{
+/**
+ * Returns a div with class "wordgrid-item" populated with word ``word`` and
+ * its definition, ``definition``.
+ *
+ * This div will be appended to ``wordGrid``
+ * for displaying the grid of words and their definitions.
+ */
+function createGridBox(word, definition) {
+  containerDiv = document.createElement("div");
+  containerDiv.className = "wordgrid-item";
+
+  newWord = document.createElement("p");
+  newWord.className = "word";
+  newWord.innerHTML = word
+
+  newDef = document.createElement("p");
+  newDef.className = "def";
+  newDef.innerHTML = definition
+
+  containerDiv.appendChild(newWord);
+  containerDiv.appendChild(newDef);
+
+  return containerDiv;
+}
+
+/**
+ * Populates ``wordGrid`` with the divs
+ * containing information for the words in ``currentWordBank``.
+ *
+ * This div will be appended to ``wordGrid``
+ * for displaying the grid of words and their definitions.
+ */
+function generateWordBankGrid() {
   wordGrid.innerHTML = "";
 
-	for (let idx = 0; idx < currentWordBank.getLength(); idx++)
-  {
-    containerDiv = document.createElement("div");
-    containerDiv.className = "wordgrid-item";
-
-    newWord = document.createElement("p");
-    newWord.className = "word";
-    newWord.innerHTML = currentWordBank.getWord(idx).getName();
-
-    newDef = document.createElement("p");
-    newDef.className = "def";
-    newDef.innerHTML = currentWordBank.getWord(idx).getDefinition();
-
-    containerDiv.appendChild(newWord);
-    containerDiv.appendChild(newDef);
-
-    wordGrid.appendChild(containerDiv);
+  for (let idx = 0; idx < currentWordBank.getLength(); idx++) {
+    word = currentWordBank.getWord(idx).getName();
+    def = currentWordBank.getWord(idx).getDefinition();
+    wordGrid.appendChild(createGridBox(word, def));
   }
 }
 
@@ -222,20 +222,16 @@ function generateWordBankGrid()
  * Displays the target word and the definitions the user can choose
  * from on the screen.
  */
-function display()
-{
+function display() {
   wordToDefine.innerHTML = targetWord.getName();
   displayDefinitions();
   // updates which wordbank words are being generated from in the "Word Bank"
   // section
-  if (currentWordBank === standardWordBank)
-  {
+  if (currentWordBank === standardWordBank) {
     chosenWordBank.innerHTML = "Standard English Word Bank";
   }
-  else
-  {
-    if (currentWordBank === doosWordBank)
-    {
+  else {
+    if (currentWordBank === doosWordBank) {
       chosenWordBank.innerHTML = "Dictionary of Obscure Sorrows Word Bank";
     }
   }

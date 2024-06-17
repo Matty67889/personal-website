@@ -1,30 +1,23 @@
-Author: Matthew Mentis-Cort
+# Personal Website Project
 
-Date Created: December 24, 2021
+## Table of Contents
 
-Date last updated: August 4, 2022
+- [Introduction](#introduction)
 
+## Introduction
 
-# Table of Contents
-	1. Introduction
-	2. Style Guide for this Document
+This is a personal website project for myself. It will
+serve as a portfolio of my work, and give people a place
+to learn more about me easily.
 
+As a challenge for myself, I am attempting to create the website
+with mostly only CSS. That is, for the main pages,
+I will try to not use any Javascript or external packages.
+For the projects featured on the site, I am permitting
+myself to use as much JavaScript as I want, but I will
+try to use as little as possible. The website should
+also be accessible, so I will attempt to follow the
+guidelines in the [W3C Accessibility Initiative](https://www.w3.org/WAI/).
+This was inspired by the prevalence of JavaScript blockers nowadays.
 
-# Introduction
-	This ReadMe was started on December 24th, 2021, with the objective of
-	documenting the transformation of this website. The plan is to create
-	different versions after a major feature for a version is implemented. A new
-	version will be created when this feature is done, and work will continue
-	from that version. The descriptions of each version will be listed here for
-	reference.
-
-	The documentation for the JavaScript files in the website were made using
-	a mix of JavaDocs documentation and Python specifications.
-
-
-# Style Guide for this Document
-	Obey the 80 character rule (don't go over the gray line in Atom for one line
-	of text)
-
-	Update the "Date last updated" section when a new entry is added to this
-	document
+This site is a work in progress and will be updated as time permits.

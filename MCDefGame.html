@@ -1,172 +1,167 @@
 <!DOCTYPE HTML>
 <html>
-	<!-- Notes -->
-	<!--
-		Instead of creating defintions for each word immediatley before putting
-		it in a span, put the words in an array and then fill them into a span
-		for createRandomDefinitions()?
-	-->
 
-	<head>
-		<meta name = "viewport" content = "width=device-width, initial-scale = 1.0">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale = 1.0">
 
-		<title>Definition Game</title>
-		<style></style>
-		<link rel = "stylesheet" href = "vendors/css/responsive-layout.css">
-		<link rel = "stylesheet" href = "resources/css/mc-def-game.css">
+	<title>Definition Game</title>
+	<style></style>
+	<link rel="stylesheet" href="vendors/css/responsive-layout.css">
+	<link rel="stylesheet" href="resources/css/mc-def-game.css">
 
-		<script src = "vendors/js/utilities.js"></script>
-		<script src = "resources/js/wordgames.js"></script>
-		<script src = "resources/js/WordBank.js"></script>
-		<script src = "resources/js/Word.js"></script>
-		<script src = "resources/js/mc-def-game.js"></script>
-		<script></script>
-	</head>
-	<body onload = "initialize();">
-		<!-- Skip content links -->
-		<a class = "skip-content-link" href = "#header">
-			Skip to header
-		</a>
-		<a class = "skip-content-link" href = "#main-content">
-			Skip to main content
-		</a>
-		<a class = "skip-content-link" href = "#about">
-			Skip to About
-		</a>
-		<a class = "skip-content-link" href = "#how-to-play">
-			Skip to How to Play
-		</a>
-		<a class = "skip-content-link" href = "#game">
-			Skip to Game
-		</a>
-		<a class = "skip-content-link" href = "#doos-option">
-			Skip to Dictionary of Obscure Sorrows Option
-		</a>
-		<a class = "skip-content-link" href = "#wordbank-display">
-			Skip to Word Bank
-		</a>
+	<script src="vendors/js/utilities.js"></script>
+	<script src="resources/js/wordgames.js"></script>
+	<script src="resources/js/WordBank.js"></script>
+	<script src="resources/js/Word.js"></script>
+	<script src="resources/js/mc-def-game.js"></script>
+</head>
 
-		<!-- Header -->
-		<header id = "header">
-			<h1>Multiple Choice Definition Game</h1>
-		</header>
-		<!-- Main content -->
-		<main id = "main-content">
-			<section id = "about">
-				<h2>About</h2>
-				<p>
-					This game features a game where you select definitions of words to
-					test your knowledge. It was designed to help users learn more words
-					by testing their ability to remember the definitions of the words.
-				</p>
-			</section>
+<body onload="initialize();">
+	<!-- Skip content links -->
+	<a class="skip-content-link" href="#header">
+		Skip to header
+	</a>
+	<a class="skip-content-link" href="#main-content">
+		Skip to main content
+	</a>
+	<a class="skip-content-link" href="#about">
+		Skip to About
+	</a>
+	<a class="skip-content-link" href="#how-to-play">
+		Skip to How to Play
+	</a>
+	<a class="skip-content-link" href="#game">
+		Skip to Game
+	</a>
+	<a class="skip-content-link" href="#doos-option">
+		Skip to Dictionary of Obscure Sorrows Option
+	</a>
+	<a class="skip-content-link" href="#wordbank-display">
+		Skip to Word Bank
+	</a>
 
-			<section id = "how-to-play">
-				<h2>How to Play</h2>
-				<p>
-					In the box below, you will see a word in bold at the top, followed
-					by 4 answer choices. To play, select the correct answer choice and
-					then click the <q>Check Answer</q> button to check if your
-					choice was correct. To generate a new word, click on the New Word
-					button.
-				</p>
+	<!-- Header -->
+	<header id="header">
+		<h1>Multiple Choice Definition Game</h1>
+	</header>
+	<!-- Main content -->
+	<main id="main-content">
+		<section id="about">
+			<h2>About</h2>
+			<p>
+				This game features a game where you select definitions of words to
+				test your knowledge. It was designed to help users learn more words
+				by testing their ability to remember the definitions of the words.
+			</p>
+		</section>
 
-				<p>
-					The game usually draws from a pool of standard English words, but if
-					you wish to change the pool of words that the game generates words
-					from to word from the
-					<a href = "https://www.dictionaryofobscuresorrows.com/" target = "_blank">Dictionary of Obscure Sorrows</a>,
-					click the on/off switch. When the switch is toggled to on, words from
-					the Dictionary of Obscure Sorrows will be used. See the
-					<a href = "#doos-option">Dictionary of Obscure Sorrows Option</a>
-					section for more information on the effects of the switch.
-				</p>
-			</section>
+		<section id="how-to-play">
+			<h2>How to Play</h2>
+			<p>
+				In the box below, you will see a word in bold at the top, followed
+				by 4 answer choices. To play, select the correct answer choice and
+				then click the <q>Check Answer</q> button to check if your
+				choice was correct. To generate a new word, click on the New Word
+				button.
+			</p>
 
-			<section id = "game">
-				<!-- Answer Form -->
-				<form class = "def-game" id = "question1">
-					<!-- Button Container -->
-					<div class = "button-container">
-						<button class = "ui-component ui-button submit-button" type = "button" onclick = "checkAnswer();">
-							Check Answer
-						</button>
-						<button class = "ui-component ui-button check-button" type = "button" onclick = "generateNewQuiz();">
-							New Word
-						</button>
+			<p>
+				The game usually draws from a pool of standard English words, but if
+				you wish to change the pool of words that the game generates words
+				from to word from the
+				<a href="https://www.dictionaryofobscuresorrows.com/" target="_blank">Dictionary of Obscure Sorrows</a>,
+				click the on/off switch. When the switch is toggled to on, words from
+				the Dictionary of Obscure Sorrows will be used. See the
+				<a href="#doos-option">Dictionary of Obscure Sorrows Option</a>
+				section for more information on the effects of the switch.
+			</p>
+		</section>
 
-						<input type = "checkbox" id = "wordbank-switch" />
-						<label for = "wordbank-switch" class = "wordbank-switch-toggler" onclick = "toggleWordBank();">
-							<div class = "ui-component on-switch">
-								ON
-							</div>
-							<div class = "ui-component off-switch">
-								OFF
-							</div>
-						</label>
-					</div>
+		<section id="game">
+			<!-- Answer Form -->
+			<form class="def-game" id="question1">
+				<!-- Button Container -->
+				<div class="button-container">
+					<button class="ui-component ui-button submit-button" type="button" onclick="checkAnswer();">
+						Check Answer
+					</button>
+					<button class="ui-component ui-button check-button" type="button" onclick="generateNewQuiz();">
+						New Word
+					</button>
 
-					<div class = "form-title">
-						<p class = "target-word bold" id = "word"></p>
-					</div>
-
-					<label>
-						<input type = "radio" name = "choices" value = "1" />
-						<div class = "definition"></div>
+					<input type="checkbox" id="wordbank-switch" />
+					<label for="wordbank-switch" class="wordbank-switch-toggler" onclick="toggleWordBank();">
+						<div class="ui-component on-switch">
+							ON
+						</div>
+						<div class="ui-component off-switch">
+							OFF
+						</div>
 					</label>
+				</div>
 
-					<label>
-						<input type = "radio" name = "choices" value = "2" />
-						<div class = "definition"></div>
-					</label>
+				<div class="form-title">
+					<p class="target-word bold" id="word"></p>
+				</div>
 
-					<label>
-						<input type = "radio" name = "choices" value = "3" />
-						<div class = "definition"></div>
-					</label>
+				<label>
+					<input type="radio" name="choices" value="1" />
+					<div class="definition"></div>
+				</label>
 
-					<label>
-						<input type = "radio" name = "choices" value = "4" />
-						<div class = "definition"></div>
-					</label>
+				<label>
+					<input type="radio" name="choices" value="2" />
+					<div class="definition"></div>
+				</label>
 
-					<!-- Feedback Message -->
-					<div id = "feedback-msg"></div>
-				</form>
-			</section>
+				<label>
+					<input type="radio" name="choices" value="3" />
+					<div class="definition"></div>
+				</label>
 
-			<section id = "doos-option">
-				<h2>Dictionary of Obscure Sorrows Option</h2>
-				<p>
-					The Dictionary of Obscure Sorrows is a collection of words
-					developed by John Koenig to explain some of the deeper emotions
-					that humans experience that cannot quite be explained with standard
-					dictionary words.
-					If you would like a copy of the book, it is available on
-					<a href = "https://www.amazon.com/exec/obidos/ASIN/1501153641?tag=simonsayscom" target = "_blank">Amazon</a>,
-					Barnes & Noble, and quite possibly your local bookstore. You can
-					also go to <a href = "https://bit.ly/3z1RYvH" target = "_blank">Simon & Schuster</a>
-					to get a copy of the book.
-				</p>
+				<label>
+					<input type="radio" name="choices" value="4" />
+					<div class="definition"></div>
+				</label>
 
-				<p>
-					I <span class = "bold">DO NOT</span> claim rights to the
-					Dictionary of Obscure Sorrows, or any of the words used in it. I am
-					simply using the words in the dictionary for the game so that others
-					can memorize them and spread the magic of expressed emotion in their
-					daily lives. All credits for this work of art goes to John Koenig.
-				</p>
-			</section>
+				<!-- Feedback Message -->
+				<div id="feedback-msg"></div>
+			</form>
+		</section>
 
-			<section id = "wordbank-display">
-				<h2>Word Bank</h2>
-				<p>
-					Below is a list of the current words in the current word bank. The
-					current word bank is the <span id = "chosen-wordbank"></span>. There
-					are <span id = "word-count"></span> words in this word bank.
-				</p>
-				<div id = "wordgrid" class = "wordgrid"></div>
-			</section>
-		</main>
-	</body>
+		<section id="doos-option">
+			<h2>Dictionary of Obscure Sorrows Option</h2>
+			<p>
+				The Dictionary of Obscure Sorrows is a collection of words
+				developed by John Koenig to explain some of the deeper emotions
+				that humans experience that cannot quite be explained with standard
+				dictionary words.
+				If you would like a copy of the book, it is available on
+				<a href="https://www.amazon.com/exec/obidos/ASIN/1501153641?tag=simonsayscom" target="_blank">Amazon</a>,
+				Barnes & Noble, and quite possibly your local bookstore. You can
+				also go to <a href="https://bit.ly/3z1RYvH" target="_blank">Simon & Schuster</a>
+				to get a copy of the book.
+			</p>
+
+			<p>
+				I <span class="bold">DO NOT</span> claim rights to the
+				Dictionary of Obscure Sorrows, or any of the words used in it. I am
+				simply using the words in the dictionary for the game so that others
+				can memorize them and spread the magic of expressed emotion in their
+				daily lives. All credits for this work of art goes to John Koenig.
+			</p>
+		</section>
+
+		<section id="wordbank-display">
+			<h2>Word Bank</h2>
+			<p>
+				Below is a list of the current words in the current word bank. The
+				current word bank is the <span id="chosen-wordbank"></span>. There
+				are <span id="word-count"></span> words in this word bank.
+			</p>
+			<div id="wordgrid" class="wordgrid"></div>
+		</section>
+	</main>
+</body>
+
 </html>

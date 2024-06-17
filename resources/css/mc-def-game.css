@@ -26,8 +26,7 @@
   1. variables
   ===========
 */
-:root
-{
+:root {
   /* Colors */
   --confirm-green: #30bf51;
 
@@ -84,18 +83,15 @@
   2. global rules
   ===========
 */
-*
-{
+* {
   box-sizing: border-box;
 }
 
-body
-{
+body {
   margin: 0;
 }
 
-header
-{
+header {
   padding: 20vh 1vw;
 
   background-color: var(--primary-color);
@@ -105,19 +101,16 @@ header
   font-family: var(--header-title-font);
 }
 
-section
-{
+section {
   padding: 0 7vw;
 }
 
-section:not(:last-of-type)
-{
+section:not(:last-of-type) {
   margin-bottom: 10px;
   border-bottom: 1px solid black;
 }
 
-section:not(#game)
-{
+section:not(#game) {
   font-family: var(--section-text-font);
   font-size: var(--msg-font-size);
 }
@@ -127,8 +120,7 @@ section:not(#game)
   3. text emphasis syles
   ===========
 */
-.bold
-{
+.bold {
   font-weight: bold;
 }
 
@@ -138,8 +130,7 @@ section:not(#game)
   ===========
 */
 /* game form styling */
-.def-game
-{
+.def-game {
   margin: 0 auto;
   padding: 10px 10px;
 
@@ -156,10 +147,8 @@ section:not(#game)
   overflow: auto;
 }
 
-@media only screen and (min-width: 768px)
-{
-  .def-game
-  {
+@media only screen and (min-width: 768px) {
+  .def-game {
     width: 600px;
   }
 }
@@ -169,14 +158,12 @@ section:not(#game)
   5. target word styles
   ===========
 */
-.form-title
-{
+.form-title {
   /* Centers the target word */
   text-align: center;
 }
 
-.target-word
-{
+.target-word {
   font-size: var(--title-font-size);
 }
 
@@ -186,8 +173,7 @@ section:not(#game)
   ===========
 */
 /* Answer choice styling */
-.definition
-{
+.definition {
   margin-bottom: 15px;
   padding: 16px 28px;
 
@@ -201,8 +187,7 @@ section:not(#game)
   cursor: pointer;
 }
 
-.definition:hover
-{
+.definition:hover {
   /* Makes choices change color when hovered over */
   background-color: var(--choice-hover-color);
   color: var(--choice-hovered-text-color);
@@ -210,14 +195,12 @@ section:not(#game)
   border-color: var(--choice-hovered-border-color);
 }
 
-input
-{
+input {
   /* Removes dots at the side of radio buttons */
   display: none;
 }
 
-input:checked + .definition
-{
+input:checked+.definition {
   /* Allows choices to appear selected when clicked */
   background-color: var(--choice-hover-color);
   color: var(--choice-hovered-text-color);
@@ -235,21 +218,18 @@ input:checked + .definition
   ===========
 */
 /* Button Styling */
-.ui-component
-{
+.ui-component {
   font-family: var(--choice-font);
   font-size: var(--choice-font-size);
 }
 
-.ui-button
-{
+.ui-button {
   padding: 10px 16px;
 
   border-radius: 7px;
 }
 
-.ui-button:hover
-{
+.ui-button:hover {
   opacity: 0.8;
 
   cursor: pointer;
@@ -257,8 +237,7 @@ input:checked + .definition
   transition-duration: 0.4s;
 }
 
-.submit-button
-{
+.submit-button {
   display: inline-block;
   border: 2px solid var(--submit-button-border-color);
 
@@ -266,8 +245,7 @@ input:checked + .definition
   color: var(--submit-button-text-color);
 }
 
-.check-button
-{
+.check-button {
   display: inline-block;
   border: 2px solid var(--new-word-button-border-color);
 
@@ -281,13 +259,11 @@ input:checked + .definition
   ===========
 */
 /* WordBank Switch */
-#wordbank-switch
-{
+#wordbank-switch {
   display: none;
 }
 
-.wordbank-switch-toggler
-{
+.wordbank-switch-toggler {
   display: inline-block;
 
   margin-top: 10px;
@@ -304,16 +280,14 @@ input:checked + .definition
   cursor: pointer;
 }
 
-@media only screen and (min-width: 768px)
-{
-  .wordbank-switch-toggler
-  {
+@media only screen and (min-width: 768px) {
+  .wordbank-switch-toggler {
     margin-top: 0;
   }
 }
 
-.on-switch, .off-switch
-{
+.on-switch,
+.off-switch {
   display: inline-block;
   /* width: 100%; */
 
@@ -325,19 +299,16 @@ input:checked + .definition
   transition: 0.5s;
 }
 
-.on-switch
-{
+.on-switch {
   border-right: 2px solid black;
 }
 
-#wordbank-switch:checked ~ .wordbank-switch-toggler > .on-switch
-{
+#wordbank-switch:checked~.wordbank-switch-toggler>.on-switch {
   background-color: green;
   color: white;
 }
 
-#wordbank-switch:not(:checked) ~ .wordbank-switch-toggler > .off-switch
-{
+#wordbank-switch:not(:checked)~.wordbank-switch-toggler>.off-switch {
   background-color: red;
   color: white;
 }
@@ -347,18 +318,16 @@ input:checked + .definition
   7c. Word grid item styles
   ===========
 */
-.wordgrid
-{
+.wordgrid {
   /* max number of columns in grid */
   --max-columns: 4;
   display: grid;
-  width: calc(100% / 3))
+  /* width: calc(100% / 3); */
   grid-template-columns: repeat(auto-fit, minmax(max(calc(100% / var(--max-columns))), 1fr));
   /* grid-gap: 1em; */
 }
 
-.wordgrid-item
-{
+.wordgrid-item {
   /* margin-bottom: 4em; */
 
   text-align: center;
@@ -366,8 +335,7 @@ input:checked + .definition
   border: 2px solid black;
 }
 
-.wordgrid-item .word
-{
+.wordgrid-item .word {
   font-weight: bold;
 }
 
@@ -377,8 +345,7 @@ input:checked + .definition
   ===========
 */
 /* Feedback message styling */
-#feedback-msg
-{
+#feedback-msg {
   margin-top: 10px;
   font-size: var(--msg-font-size);
 }
@@ -388,8 +355,7 @@ input:checked + .definition
   9. skip content syles
   ===========
 */
-.skip-content-link
-{
+.skip-content-link {
   display: inline-block;
   position: absolute;
   width: 25%;
@@ -410,7 +376,6 @@ input:checked + .definition
   transition: transform 0.2s;
 }
 
-.skip-content-link:focus
-{
+.skip-content-link:focus {
   transform: translateX(0);
 }
